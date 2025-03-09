@@ -74,3 +74,46 @@ function checkFlexGap() {
     if (!isSupported) document.body.classList.add("no-flexbox-gap");
 }
 checkFlexGap();
+
+// hero section dynamic height calculator
+
+document.addEventListener("DOMContentLoaded", function () {
+    const header = document.querySelector(".header");
+    const heroSection = document.querySelector(".section-hero");
+
+    function updateHeroMargin() {
+        const headerHeight = header.offsetHeight; // Get actual header height
+        if (header.classList.contains("sticky")) {
+            heroSection.style.marginTop = `${headerHeight + 30}px`; // Add extra space for better spacing
+        } else {
+            heroSection.style.marginTop = "0"; // Reset when not sticky
+        }
+    }
+
+    // Run on page load
+    updateHeroMargin();
+
+    // Update dynamically when window resizes
+    window.addEventListener("resize", updateHeroMargin);
+
+    // Observe when navbar becomes sticky
+    const observer = new IntersectionObserver(
+        function (entries) {
+            const [entry] = entries;
+            if (!entry.isIntersecting) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
+            }
+            updateHeroMargin(); // Ensure correct spacing
+        },
+        {
+            root: null,
+            threshold: 0,
+            rootMargin: `-${header.offsetHeight}px`,
+        }
+    );
+
+    observer.observe(heroSection);
+});
+
