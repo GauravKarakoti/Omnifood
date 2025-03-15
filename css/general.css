@@ -67,13 +67,14 @@ Medium: 11px
     /* outline: 4px dotted #e67e22;
     outline-offset: 8px; */
     box-shadow: inset 0 0 0 0.8rem rgba(230, 125, 34, 0.5);
+    transition: box-shadow 0.2s ease;
 }
 
 html {
     /* font-size: 10px; */
     font-size: 62.5%;
     overflow-x: hidden;
-    /* scroll-behavior: smooth; */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -162,8 +163,8 @@ body {
 
 .grid {
     display: grid;
-    row-gap: 9.6rem;
-    column-gap: 6.4rem;
+    row-gap: clamp(3.2rem, 5vw, 9.6rem);
+    column-gap: clamp(2.4rem, 4vw, 6.4rem);
     /* margin-bottom: 9.6rem; */
 }
 
@@ -180,15 +181,15 @@ body {
 }
 
 .grid--3-cols {
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
 }
 
 .grid--4-cols {
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
 }
 
 .grid--5-cols {
-    grid-template-columns: repeat(5,1fr);
+    grid-template-columns: repeat(auto-fit, minmax(1rem, 1fr));
 }
 
 .grid--center-v {
@@ -223,6 +224,7 @@ body {
 .link:hover, .link:active {
     color: #cf711f;
     border-bottom: 1px solid transparent;
+    opacity: 0.8;
 }
 
 .list {
@@ -230,6 +232,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1.6rem;
+    margin-bottom: 0;
 }
 
 .list-icon {
@@ -257,10 +260,6 @@ body {
 
 strong {
     font-weight: 500;
-}
-
-.center-text {
-    text-align: center;
 }
 
 .text-center {

@@ -363,10 +363,6 @@
     }
 
     .delivered-text {
-        font-size: 1.4rem;
-    }
-
-    .delivered-text {
         font-size: 1.2rem; /* Smaller for mobile */
     }
 }

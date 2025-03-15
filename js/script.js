@@ -95,11 +95,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const heroSection = document.querySelector(".section-hero");
 
     function updateHeroMargin() {
-        const headerHeight = header.offsetHeight; // Get actual header height
+        const headerHeight = header.offsetHeight; 
         if (header.classList.contains("sticky")) {
-            heroSection.style.marginTop = `${headerHeight + 30}px`; // Add extra space for better spacing
+            heroSection.style.marginTop = `${headerHeight + 30}px`; 
         } else {
-            heroSection.style.marginTop = "0"; // Reset when not sticky
+            heroSection.style.marginTop = "0"; 
         }
     }
 
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 header.classList.remove("sticky");
             }
-            updateHeroMargin(); // Ensure correct spacing
+            updateHeroMargin(); 
         },
         {
             root: null,
@@ -146,18 +146,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
 const trackClick = async (buttonName) => {
     try {
-      await fetch("http://localhost:5000/track-click", {  // Change port if needed
+        await fetch("http://localhost:5000/track-click", {  
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ buttonName }),
-      });
-      console.log(`✅ Click recorded for: ${buttonName}`);
+    });
+        console.log(`✅ Click recorded for: ${buttonName}`);
     } catch (error) {
-      console.error("❌ Error tracking click:", error);
+        console.error("❌ Error tracking click:", error);
     }
-  };
-  
+};
+
   // Attach Event Listeners to Buttons
-  document.querySelector("#try-for-free").addEventListener("click", () => trackClick("Try for free"));
-  document.querySelector("#start-eating-well").addEventListener("click", () => trackClick("Start eating well"));
-  
+    document.querySelector("#try-for-free").addEventListener("click", () => trackClick("Try for free"));
+    document.querySelector("#start-eating-well").addEventListener("click", () => trackClick("Start eating well"));
+
+ // Registering the service worker
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+        .register("/service-worker.js")
+        .then(() => console.log("✅ Service Worker Registered"))
+        .catch((err) => console.log("❌ Service Worker Registration Failed:", err));
+    }

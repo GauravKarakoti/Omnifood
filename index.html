@@ -192,7 +192,7 @@
                             Receive meals at convenient time
                         </h3>
                         <p class="step-description">
-                            Best chefs in town will cook your selected meal every day, and we will deliver it to your door whenver works best for you. You can change delivery schedule and address daily!
+                            Best chefs in town will cook your selected meal every day, and we will deliver it to your door whenever works best for you. You can change delivery schedule and address daily!
                         </p>
                     </div>
                     <div class="step-img-box">
@@ -200,7 +200,7 @@
                             src="img/app/app-screen-3.png" 
                             class="step-img" 
                             alt="iPhone App Delivery Screen"
-                    />
+                        />
                     </div>
                 </div>
             </section>
@@ -217,6 +217,7 @@
                             src="img/meals/meal-1.jpg" 
                             class="meal-img" 
                             alt="Japanese Gyozas" 
+                            loading="lazy"
                         />
                         <div class="meal-content">
                             <div class="meal-tag">
@@ -243,7 +244,7 @@
                                         class="meal-icon" 
                                         name="star-outline"
                                     ></ion-icon>
-                                    <span><strong>4.9</strong> rating(537)</span>
+                                    <span><strong>4.9</strong> rating (537)</span>
                                 </li>
                             </ul>
                         </div>
@@ -253,6 +254,7 @@
                             src="img/meals/meal-2.jpg" 
                             class="meal-img" 
                             alt="Avocado Salad" 
+                            loading="lazy"
                         />
                         <div class="meal-content">
                             <div class="meal-tag">
@@ -265,6 +267,7 @@
                                     <ion-icon 
                                         class="meal-icon" 
                                         name="flame-outline"
+                                        aria-label="Calories"
                                     ></ion-icon>
                                     <span><strong>400</strong> calories</span>
                                 </li>
@@ -272,6 +275,7 @@
                                     <ion-icon 
                                         class="meal-icon" 
                                         name="restaurant-outline"
+                                        aria-label="Calories"
                                     ></ion-icon>
                                     <span>Nutriscore &reg; <strong>92</strong></span>
                                 </li>
@@ -279,8 +283,9 @@
                                     <ion-icon 
                                         class="meal-icon" 
                                         name="star-outline"
+                                        aria-label="Calories"
                                     ></ion-icon>
-                                    <span><strong>4.8</strong> rating(441)</span>
+                                    <span><strong>4.8</strong> rating (441)</span>
                                 </li>
                             </ul>
                         </div>
@@ -320,7 +325,7 @@
                             </li>
                             <li class="list-item">
                                 <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
-                                <span>Low FOODMAP</span>
+                                <span>Low FODMAP</span>
                             </li>
                             <li class="list-item">
                                 <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
@@ -330,7 +335,7 @@
                     </div>
                 </div>
                 <div class="container all-recipes">
-                    <a href="#" class="link">See all recipes &rarr;</a>
+                    <a href="#" class="link" aria-label="See all available recipes">See all recipes &rarr;</a>
                 </div>
             </section>
             <section class="section-testimonials" id="testimonials">
@@ -511,6 +516,9 @@
                             </li>
                             <li class="list-item">
                                 <ion-icon class="list-icon" name="close-outline"></ion-icon>
+                                <span>
+                                    Get access to the latest recipes
+                                </span>
                             </li>
                         </ul>
                         <div class="plan-sign-up">
@@ -603,7 +611,7 @@
                             <p class="cta-text">
                                 Healthy, tasty and hassle-free meals are waiting for you. Start eating well today. You can cancel or pause anytime. And the first meal is on us!
                             </p>
-                            <form class="cta-form" name="sign-up" netlify>
+                            <form class="cta-form" name="sign-up" netlify  aria-label="Sign-up form for a free meal">
                                 <div>
                                     <label for="full-name">Full Name</label>
                                     <input 
@@ -649,8 +657,8 @@
                 </div>
             </section>
 
-            <button id="scrollBtn" onclick="scrollToTop()">
-                <img src="./img/omnifood-logo.png" alt="Up Arrow">
+            <button id="scrollBtn" onclick="scrollToTop()" aria-label="Scroll to top">
+                <ion-icon name="arrow-up-outline"></ion-icon>
             </button>
         </main>
 
@@ -662,10 +670,10 @@
                     </a>
                     <ul class="social-links">
                         <li>
-                            <a class="footer-link" href="https://instagram.com/gaurav._.karakoti"><ion-icon class="social-icon" name="logo-instagram"></ion-icon></a>
+                            <a class="footer-link" href="https://instagram.com/gaurav._.karakoti" target="_blank" rel="noopener noreferrer"><ion-icon class="social-icon" name="logo-instagram"></ion-icon></a>
                         </li>
                         <li>
-                            <a class="footer-link" href="https://x.com/GauravKara_Koti"><ion-icon class="social-icon" name="logo-twitter"></ion-icon></a>
+                            <a class="footer-link" href="https://x.com/GauravKara_Koti" target="_blank" rel="noopener noreferrer"><ion-icon class="social-icon" name="logo-twitter"></ion-icon></a>
                         </li>
                     </ul>
                     <p class="copyright">
@@ -713,30 +721,29 @@
             </div>
         </footer>
 
-        <script>
-            let scrollBtn = document.getElementById("scrollBtn");
+<script>
+    let scrollBtn = document.getElementById("scrollBtn");
 
 // Show button when scrolled down
-window.onscroll = function () {
-    if (document.documentElement.scrollTop >50) {
-        scrollBtn.style.display = "block";
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+        scrollBtn.classList.add("visible");
     } else {
-        scrollBtn.style.display = "none";
+        scrollBtn.classList.remove("visible");
     }
-};
+});
 
 function scrollToTop() {
-    // Add rotation effect
     scrollBtn.classList.add("rotate");
 
-    // Smooth scroll to top
     window.scrollTo({ top: 0, behavior: "smooth" });
 
-    // Remove rotation class after animation
     setTimeout(() => scrollBtn.classList.remove("rotate"), 400);
 }
 
 document.getElementById("year").textContent = new Date().getFullYear();
-        </script>
-    </body>
+</script>
+
+
+</body>
 </html>
