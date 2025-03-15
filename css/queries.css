@@ -371,3 +371,26 @@
     }
 }
 
+/* Responsive Form */
+@media (max-width: 768px) {
+    .cta {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .cta-form {
+        grid-template-columns: 1fr;
+    }
+    .cta-text-box {
+        padding: 3.2rem;
+    }
+}
+
+@media screen and (prefers-contrast: high) {
+    .cta,
+    .cta-form input,
+    .cta-form select {
+        border: 2px solid #000;
+    }
+}
+
+
