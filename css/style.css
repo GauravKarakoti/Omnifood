@@ -232,11 +232,20 @@
     display: flex;
     justify-content: space-around;
 }
+.logos:active
+{
+    opacity: 1;
+}
 
 .logos img {
     height: 3.2rem; /* Increase logo size for visibility */
     filter: brightness(0);
     opacity: 50%;
+    
+}
+.logos img:hover
+{
+    opacity: 100%;
 }
 
 /*******************************************/
@@ -257,7 +266,7 @@
 .step-number {
     font-size: 8.6rem;
     font-weight: 600;
-    color: #ddd;
+    color: #7e7d7d;
     margin-bottom: 1.2rem;
 }
 
@@ -460,6 +469,10 @@
 /* PRICING SECTION */
 /*******************************************/
 
+#try
+{
+    background-image: linear-gradient(to right bottom,#dd5211,#e67e22, rgb(250, 37, 37));
+}
 .section-pricing {
     padding: 9.6rem 0;
 }
@@ -571,11 +584,15 @@
     padding: 4.8rem 0 12.8rem;
 }
 
+#button
+{
+    background-image: linear-gradient(to right bottom,#dd5211,#e67e22, rgb(225, 42, 42));
+}
 .cta {
     display: grid;
     grid-template-columns: 2fr 1fr;
     /* background-color: #e67e22; */
-    background-image: linear-gradient(to right bottom,#eb984e,#e67e22);
+    background-image: linear-gradient(to right bottom,#dd5211,#e67e22, rgb(225, 42, 42));
     box-shadow: 0 2.4rem 4.8rem rgba(0,0,0,0.15);
     border-radius: 11px;
     overflow: hidden;
@@ -673,7 +690,7 @@
 
 .footer-link:link, .footer-link:visited {
     text-decoration: none;
-    color: #767676;
+    color: #7b7b7b;
     font-size: 1.6rem;
     transition: all 0.3s;
 }
@@ -700,7 +717,7 @@
 
 .copyright {
     font-size: 1.4rem;
-    color: #767676;
+    color: #7d7d7d;
     line-height: 1.6;
     margin-top: auto;
 }
