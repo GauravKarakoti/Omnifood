@@ -1101,3 +1101,78 @@
     opacity: 1;
     visibility: visible;
 }
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between search bar and location */
+}
+
+.search-container {
+    position: relative;
+    width: 200px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 20px; /* Space for the search icon */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    
+}
+
+.search-input:hover{
+    background-color: rgba(239, 232, 232, 0.906);
+}
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 20px; /* Adjust size */
+    height: 20px;
+    cursor: pointer;
+    
+}
+
+.location-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between icon and text */
+    cursor: pointer;
+}
+
+.location-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.location-text {
+    font-size: 16px;
+    color: #1f1d1d;
+    font-weight: bold;
+}
+
+/* Hidden input initially */
+.location-input {
+    display: none;
+    position: absolute;
+    left: -10px;
+    top: -5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    width: 150px;
+    height: 30px;
+    margin-top: 50px;
+}
+
+/* Show input on hover */
+.location-container:hover .location-input {
+    display: block;
+}

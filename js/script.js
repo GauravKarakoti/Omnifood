@@ -291,5 +291,29 @@ if ("serviceWorker" in navigator) {
         .register("/service-worker.js")
         .then(() => console.log("✅ Service Worker Registered"))
         .catch((err) => console.log("❌ Service Worker Registration Failed:", err));
-}
+    }
+})
 
+document.addEventListener("DOMContentLoaded", function () {
+    const locationText = document.querySelector(".location-text");
+    const locationInput = document.querySelector(".location-input");
+
+    locationInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Prevent form submission
+            if (locationInput.value.trim() !== "") {
+                locationText.textContent = locationInput.value; // Update location text
+            }
+            locationInput.style.display = "none"; // Hide input box
+        }
+    });
+
+    document.querySelector(".location-container").addEventListener("mouseleave", function () {
+        locationInput.style.display = "none"; // Hide input on mouse leave
+    });
+
+    document.querySelector(".location-icon").addEventListener("click", function () {
+        locationInput.style.display = "block"; // Show input on click
+        locationInput.focus();
+    });
+});
