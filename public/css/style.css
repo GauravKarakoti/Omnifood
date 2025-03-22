@@ -2,6 +2,12 @@
 /* HEADER */
 /*******************************************/
 
+:root {
+    --animation-duration-short: 0.3s;
+    --animation-duration-medium: 0.4s;
+    --animation-duration-long: 1s;
+}
+
 .logo {
     height: 8rem; /* Reduced height */
     padding-top: 4px; /* Adjust padding */
@@ -44,7 +50,7 @@
     color: #333;
     font-weight: 500;
     font-size: 1.8rem;
-    transition: all 0.3s ease-in-out;
+    transition: all var(--animation-duration-short) ease-in-out;
     display: inline-block;
     position: relative;
     padding-bottom: 0.5rem;
@@ -59,7 +65,7 @@
     width: 0;
     height: 3px;
     background-color: #cf711f;
-    transition: all 0.3s ease-in-out;
+    transition: all var(--animation-duration-short) ease-in-out;
     transform: translateX(-50%);
 }
 
@@ -71,7 +77,7 @@
 .main-nav-link:hover, .main-nav-link:active {
     color: #cf711f;
     transform: scale(1.1);
-    transition: all 0.3s ease-in-out;
+    transition: all var(--animation-duration-short) ease-in-out;
 }
 
 /* Call-to-action (CTA) button */
@@ -80,7 +86,7 @@
     border-radius: 9px;
     color: #fff;
     background-color: #e67e22;
-    transition: all 0.3s ease-in-out;
+    transition: all var(--animation-duration-short) ease-in-out;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -89,14 +95,14 @@
     background-color: #cf711f;
     transform: translateY(-2px);
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out;
+    transition: all var(--animation-duration-short) ease-in-out;
 }
 
 /* Click effect */
 .main-nav-link.nav-cta:active {
     transform: translateY(1px);
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease-in-out;
+    transition: all var(--animation-duration-short) ease-in-out;
 }
 
 /* MOBILE */
@@ -157,7 +163,7 @@
     z-index: 998;
     border-radius: 9px 0 0 9px; /* Rounded corners on left side */
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+    transition: all var(--animation-duration-medium) ease-in-out;
 }
 
 /* Ensure mobile nav overlay covers full screen */
@@ -171,7 +177,7 @@
     z-index: 998;
     border-radius: 9px 0 0 9px; /* Rounded corners on left side */
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+    transition: all var(--animation-duration-medium) ease-in-out;
 }
 
 /* Update mobile navigation styles */
@@ -185,7 +191,7 @@
     z-index: 998;
     border-radius: 9px 0 0 9px;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s ease-in-out;
+    transition: all var(--animation-duration-medium) ease-in-out;
     backdrop-filter: blur(10px); /* Add blur effect */
     -webkit-backdrop-filter: blur(10px);
 }
@@ -207,7 +213,7 @@
     background: rgba(0, 0, 0, 0.5); /* Darkens background when nav is open */
     z-index: 997; /* Below the nav but above other content */
     opacity: 1;
-    transition: opacity 0.3s ease-in-out;
+    transition: opacity var(--animation-duration-short) ease-in-out;
 }
 
 /* Background overlay with improved animation */
@@ -220,7 +226,7 @@
     height: 100vh;
     background: rgba(0, 0, 0, 0);
     z-index: 997;
-    transition: background-color 0.4s ease-in-out;
+    transition: background-color var(--animation-duration-medium) ease-in-out;
 }
 
 /* Fade in overlay when nav is open */
@@ -240,7 +246,7 @@
     height: 7rem; /* Reduced height */
     padding: 4rem 2rem; /* Adjust padding */
     box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
-    transition: height 0.3s ease-in-out, padding 0.3s ease-in-out; /* Specify exact properties */
+    transition: height var(--animation-duration-short) ease-in-out, padding var(--animation-duration-short) ease-in-out; /* Specify exact properties */
 }
 
 /* No fixed margin, JS handles it dynamically */
@@ -347,7 +353,7 @@
 .feature {
     text-align: center;
     padding: 20px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform var(--animation-duration-short) ease-in-out;
 }
 
 .feature:hover {
@@ -358,7 +364,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     color: #333;
-    transition: color 0.3s ease-in-out;
+    transition: color var(--animation-duration-short) ease-in-out;
 }
 
 .feature:hover .feature-title {
@@ -541,7 +547,7 @@
     box-shadow: 0 2.4rem 4.8rem rgba(0,0,0,0.075);
     border-radius: 11px;
     overflow: hidden;
-    transition: all 0.3s ease-in-out;
+    transition: all var(--animation-duration-short) ease-in-out;
 }
 
 .meal:hover {
@@ -747,7 +753,7 @@
 .pricing-plan {
     border-radius: 11px;
     width: 75%;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: transform var(--animation-duration-short) ease-in-out, box-shadow var(--animation-duration-short) ease-in-out;
 }
 
 .pricing-plan--starter {
@@ -819,25 +825,25 @@
 /* Hover effect for the plan header text */
 .pricing-plan:hover .plan-header p {
     color: #00aaff; /* Change color when hovered */
-    transition: color 0.3s ease-in-out;
+    transition: color var(--animation-duration-short) ease-in-out;
 }
 
 /* Hover effect for the plan list items */
 .pricing-plan:hover .list-item {
     color: #333; /* Change text color on hover */
-    transition: color 0.3s ease-in-out;
+    transition: color var(--animation-duration-short) ease-in-out;
 }
 
 .pricing-plan:hover .list-icon {
     color: #00aaff; /* Change icon color on hover */
-    transition: color 0.3s ease-in-out;
+    transition: color var(--animation-duration-short) ease-in-out;
 }
 
 /* Change background color of the button on hover */
 .pricing-plan:hover .btn--full {
     background-color: #00aaff; /* Change button background color */
     color: #fff; /* Change button text color */
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    transition: background-color var(--animation-duration-short) ease-in-out, color var(--animation-duration-short) ease-in-out;
 }
 
 /*******************************************/
@@ -915,7 +921,7 @@
     url('../img/eating.jpg');
     background-size: cover;
     background-position: center;
-    transition: transform 0.3s ease-in-out;
+    transition: transform var(--animation-duration-short) ease-in-out;
 }
 
 .cta-img-box:hover {
@@ -1024,13 +1030,13 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: all var(--animation-duration-short) ease-in-out;
 }
 
 .cta-btn:hover {
     background-color: #cf711f;
     transform: scale(1.05);
-    transition: all 0.3s ease-in-out;
+    transition: all var(--animation-duration-short) ease-in-out;
 }
 
 /* Ensure sufficient contrast for .btn--form:hover */
@@ -1052,7 +1058,7 @@
 }
 
 .cta {
-    animation: fadeIn 1s ease-in-out;
+    animation: fadeIn var(--animation-duration-long) ease-in-out;
 }
 
 
@@ -1236,7 +1242,7 @@
     color: black;
     text-decoration: none;
     cursor: pointer;
-    transition: color 0.3s ease-in-out;
+    transition: color var(--animation-duration-short) ease-in-out;
 }
 
 #confirmation-message {
@@ -1260,7 +1266,16 @@
 
 /* Target specific elements instead */
 button:focus, input:focus, select:focus, textarea:focus {
-    transition: box-shadow 0.2s ease;
+    transition: box-shadow var(--animation-duration-short) ease;
+}
+
+@font-face {
+    font-family: 'YourFontFamily';
+    src: url('path/to/font.woff2') format('woff2'),
+         url('path/to/font.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* Add this line */
 }
 
 /* Disable hover effects on touch devices */
