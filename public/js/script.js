@@ -34,27 +34,24 @@ function closeNavbar() {
     window.scrollTo(0, scrollPosition); // Restore original scroll position
 }
 
-btnNavEl.addEventListener("click", function (e) {
+function removeEventListeners() {
+    btnNavEl.removeEventListener("click", toggleNav);
+    document.removeEventListener("click", closeNavOnClickOutside);
+    mainNav.removeEventListener("click", preventNavClose);
+    window.removeEventListener('resize', handleResize);
+}
 
-    function removeEventListeners() {
-        btnNavEl.removeEventListener("click", toggleNav);
-        document.removeEventListener("click", closeNavOnClickOutside);
-        mainNav.removeEventListener("click", preventNavClose);
-        window.removeEventListener('resize', handleResize);
-    }
-
-    function toggleNav(e) {
-        e.stopPropagation(); // Prevent click from bubbling to document
-        if (window.innerWidth <= 944) { // Only toggle nav in mobile view
-            headerEl.classList.toggle("nav-open");
-            if (headerEl.classList.contains("nav-open")) {
-                openNavbar();
-            } else {
-                closeNavbar();
-            }
+function toggleNav(e) {
+    e.stopPropagation(); // Prevent click from bubbling to document
+    if (window.innerWidth <= 944) { // Only toggle nav in mobile view
+        headerEl.classList.toggle("nav-open");
+        if (headerEl.classList.contains("nav-open")) {
+            openNavbar();
+        } else {
+            closeNavbar();
         }
     }
-});
+}
 
 // Add click handler to close mobile nav when clicking outside
 document.addEventListener("click", function (e) {
@@ -65,32 +62,33 @@ document.addEventListener("click", function (e) {
             !btnNavEl.contains(e.target)) {
             headerEl.classList.remove("nav-open");
             closeNavbar();
+        }
     }
+
+    function preventNavClose(e) {
+        e.stopPropagation();
+    }
+
+    // Handle resize to reset nav and scrolling when switching to desktop view
+    function handleResize() {
+        if (window.innerWidth > 944) { // Breakpoint for mobile navigation
+            headerEl.classList.remove('nav-open');
+            closeNavbar(); // Ensure scrolling is re-enabled
+        }
+    }
+
+    // Listen for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Attach event listeners
+    btnNavEl.addEventListener("click", toggleNav);
+    document.addEventListener("click", closeNavOnClickOutside);
+    mainNav.addEventListener("click", preventNavClose);
+    window.addEventListener('resize', handleResize);
+
+    // Call removeEventListeners() when needed to clean up
+    // Example: removeEventListeners() when unmounting a component in a SPA
 });
-
-function preventNavClose(e) {
-    e.stopPropagation();
-}
-
-// Handle resize to reset nav and scrolling when switching to desktop view
-function handleResize() {
-    if (window.innerWidth > 944) { // Breakpoint for mobile navigation
-        headerEl.classList.remove('nav-open');
-        closeNavbar(); // Ensure scrolling is re-enabled
-    }
-}
-
-// Listen for window resize
-window.addEventListener("resize", handleResize);
-
-// Attach event listeners
-btnNavEl.addEventListener("click", toggleNav);
-document.addEventListener("click", closeNavOnClickOutside);
-mainNav.addEventListener("click", preventNavClose);
-window.addEventListener('resize', handleResize);
-
-// Call removeEventListeners() when needed to clean up
-// Example: removeEventListeners() when unmounting a component in a SPA
 
 ///////////////////////////////////////////////////
 const sectionHeroEl = document.querySelector(".section-hero");
@@ -400,4 +398,15 @@ document.addEventListener("DOMContentLoaded", function () {
     if (scrollToTopBtn) {
         scrollToTopBtn.addEventListener("click", scrollToTop);
     }
+});
+
+function setCSPHeaders() {
+    const meta = document.createElement('meta');
+    meta.httpEquiv = "Content-Security-Policy";
+    meta.content = "default-src 'self'; script-src 'self' https://apis.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.example.com";
+    document.head.appendChild(meta);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    setCSPHeaders();
 });

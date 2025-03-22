@@ -39,6 +39,11 @@
         <meta name="twitter:site" content="@GauravKara_Koti" />
         <meta name="twitter:creator" content="@GauravKara_Koti" />
 
+        <link rel="preload" href="path/to/font.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+        <link rel="preload" href="path/to/font.woff" as="font" type="font/woff" crossorigin="anonymous">
+
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' https://fonts.googleapis.com https://cdn.jsdelivr.net; img-src 'self' data: https://omnifood-meal-available.netlify.app; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-src 'none';">
+
     </head>
     <body>
         <header class="header">
