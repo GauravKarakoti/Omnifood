@@ -36,66 +36,55 @@ function removeEventListeners() {
 
 function toggleNav(e) {
     e.stopPropagation(); // Prevent click from bubbling to document
-    if (window.innerWidth <= 944) { // Only toggle nav in mobile view
-        headerEl.classList.toggle("nav-open"); // Toggle the "nav-open" class
-        if (headerEl.classList.contains("nav-open")) {  // If nav is closed
-        } else {
-            closeNavbar(); // Close the navbar
-        }
+    headerEl.classList.toggle("nav-open");
+    if (headerEl.classList.contains("nav-open")) {
+        openNavbar();
+    } else {
+        closeNavbar();
     }
-<<<<<<< HEAD
 }
-=======
 
-    document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape" && headerEl.classList.contains("nav-open")) {
-            headerEl.classList.remove("nav-open");
-            closeNavbar();
-        }
-    });
-});
->>>>>>> ba0d681 (Critical Improvements done - Accessibility, Responsive Behavior, Performance Optimization, and Code Quality)
+// Handle resize to reset nav and scrolling when switching to desktop view
+function handleResize() {
+    if (window.innerWidth > 944) { // Breakpoint for mobile navigation
+        headerEl.classList.remove("nav-open");
+        closeNavbar(); // Ensure scrolling is re-enabled
+    }
+}
 
 // Add click handler to close mobile nav when clicking outside
-document.addEventListener("click", function (e) {
-    function closeNavOnClickOutside(e) {
-        // Close nav if clicking outside nav and nav is open
-        if (headerEl.classList.contains("nav-open") &&
-            !mainNav.contains(e.target) &&
-            !btnNavEl.contains(e.target)) {
-            headerEl.classList.remove("nav-open");
-            closeNavbar();
-        }
+function closeNavOnClickOutside(e) {
+    if (
+        headerEl.classList.contains("nav-open") &&
+        !mainNav.contains(e.target) &&
+        !btnNavEl.contains(e.target)
+    ) {
+        headerEl.classList.remove("nav-open");
+        closeNavbar();
     }
+}
 
-    function preventNavClose(e) {
-        e.stopPropagation();
+// Prevent nav close when clicking inside the nav
+function preventNavClose(e) {
+    e.stopPropagation();
+}
+
+// Attach event listeners
+btnNavEl.addEventListener("click", toggleNav);
+document.addEventListener("click", closeNavOnClickOutside);
+mainNav.addEventListener("click", preventNavClose);
+window.addEventListener("resize", handleResize);
+
+// Close nav on Escape key press
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && headerEl.classList.contains("nav-open")) {
+        headerEl.classList.remove("nav-open");
+        closeNavbar();
     }
-
-    // Handle resize to reset nav and scrolling when switching to desktop view
-    function handleResize() {
-        if (window.innerWidth > 944) { // Breakpoint for mobile navigation
-            headerEl.classList.remove('nav-open');
-            closeNavbar(); // Ensure scrolling is re-enabled
-        }
-    }
-
-    // Listen for window resize
-    window.addEventListener("resize", handleResize);
-
-    // Attach event listeners
-    btnNavEl.addEventListener("click", toggleNav);
-    document.addEventListener("click", closeNavOnClickOutside);
-    mainNav.addEventListener("click", preventNavClose);
-    window.addEventListener('resize', handleResize);
-
-    // Call removeEventListeners() when needed to clean up
-    // Example: removeEventListeners() when unmounting a component in a SPA
 });
 
 ///////////////////////////////////////////////////
 const sectionHeroEl = document.querySelector(".section-hero");
-<<<<<<< HEAD
 
 // Create an intersection observer to add/remove sticky header
 const obs = new IntersectionObserver(function (entries) {
@@ -113,28 +102,6 @@ const obs = new IntersectionObserver(function (entries) {
     rootMargin: `-${headerEl.offsetHeight}px` // Adjust dynamically
 });
 obs.observe(sectionHeroEl); // Start observing the hero section
-=======
-const obs = new IntersectionObserver(
-    function (entries, observer) {
-        try {
-            const ent = entries[0];
-            document.body.classList.toggle("sticky", !ent.isIntersecting);
-        } catch (error) {
-            console.error("IntersectionObserver error:", error);
-        }
-    },
-    {
-        root: null,
-        threshold: 0,
-        rootMargin: `-${headerEl.offsetHeight}px`,
-    }
-);
-if (sectionHeroEl) {
-    obs.observe(sectionHeroEl);
-} else {
-    console.warn("Section hero element not found for IntersectionObserver.");
-}
->>>>>>> ba0d681 (Critical Improvements done - Accessibility, Responsive Behavior, Performance Optimization, and Code Quality)
 
 ///////////////////////////////////////////////////
 const allLinks = document.querySelectorAll("a:link");
@@ -380,6 +347,73 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.querySelector("#try-for-free").addEventListener("click", () => trackClick("Try for free"));
 document.querySelector("#start-eating-well").addEventListener("click", () => trackClick("Start eating well"));
+
+// Registering the service worker
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker
+        .register("/serviceworker.js")
+        .then(() => console.log("✅ Service Worker Registered"))
+        .catch((err) => console.log("❌ Service Worker Registration Failed:", err));
+}
+document.addEventListener("DOMContentLoaded", function () {
+    const locationText = document.querySelector(".location-text");
+    const locationInput = document.querySelector(".location-input");
+
+    locationInput.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Prevent form submission
+            if (locationInput.value.trim() !== "") {
+                locationText.textContent = locationInput.value; // Update location text
+            }
+            locationInput.style.display = "none"; // Hide input box
+        }
+    });
+
+    document.querySelector(".location-container").addEventListener("mouseleave", function () {
+        locationInput.style.display = "none"; // Hide input on mouse leave
+    });
+
+    document.querySelector(".location-icon").addEventListener("click", function () {
+        locationInput.style.display = "block"; // Show input on click
+        locationInput.focus();
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector(".cta-form");
+    const modal = document.getElementById("confirmation-modal");
+    const closeBtn = document.querySelector(".close-btn");
+    const confirmationMessage = document.getElementById("confirmation-message");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent default form submission
+
+        // Simulate form submission (replace this with actual form submission logic)
+        setTimeout(() => {
+            // Show success message
+            confirmationMessage.textContent = "Thank you! Your submission has been received.";
+            modal.style.display = "block";
+        }, 1000);
+    });
+
+    // Close the modal when the user clicks on <span> (x)
+    closeBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    // Close the modal when the user clicks anywhere outside of the modal
+    window.addEventListener("click", function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const isAuthenticated = localStorage.getItem("omni:authenticated");
+    const authLink = document.querySelector(".auth");
+
+    if (isAuthenticated) {
+        authLink.textContent = 'Profile';
 
 // Registering the service worker
 if ("serviceWorker" in navigator) {
