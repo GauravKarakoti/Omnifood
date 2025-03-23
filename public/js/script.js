@@ -43,7 +43,18 @@ function toggleNav(e) {
             closeNavbar(); // Close the navbar
         }
     }
+<<<<<<< HEAD
 }
+=======
+
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && headerEl.classList.contains("nav-open")) {
+            headerEl.classList.remove("nav-open");
+            closeNavbar();
+        }
+    });
+});
+>>>>>>> ba0d681 (Critical Improvements done - Accessibility, Responsive Behavior, Performance Optimization, and Code Quality)
 
 // Add click handler to close mobile nav when clicking outside
 document.addEventListener("click", function (e) {
@@ -84,6 +95,7 @@ document.addEventListener("click", function (e) {
 
 ///////////////////////////////////////////////////
 const sectionHeroEl = document.querySelector(".section-hero");
+<<<<<<< HEAD
 
 // Create an intersection observer to add/remove sticky header
 const obs = new IntersectionObserver(function (entries) {
@@ -101,6 +113,28 @@ const obs = new IntersectionObserver(function (entries) {
     rootMargin: `-${headerEl.offsetHeight}px` // Adjust dynamically
 });
 obs.observe(sectionHeroEl); // Start observing the hero section
+=======
+const obs = new IntersectionObserver(
+    function (entries, observer) {
+        try {
+            const ent = entries[0];
+            document.body.classList.toggle("sticky", !ent.isIntersecting);
+        } catch (error) {
+            console.error("IntersectionObserver error:", error);
+        }
+    },
+    {
+        root: null,
+        threshold: 0,
+        rootMargin: `-${headerEl.offsetHeight}px`,
+    }
+);
+if (sectionHeroEl) {
+    obs.observe(sectionHeroEl);
+} else {
+    console.warn("Section hero element not found for IntersectionObserver.");
+}
+>>>>>>> ba0d681 (Critical Improvements done - Accessibility, Responsive Behavior, Performance Optimization, and Code Quality)
 
 ///////////////////////////////////////////////////
 const allLinks = document.querySelectorAll("a:link");
