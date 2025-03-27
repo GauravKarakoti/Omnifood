@@ -1,0 +1,116 @@
+/*******************************************/
+/* FEATURED IN SECTION */
+/*******************************************/
+.feature {
+    text-align: center;
+    padding: 20px;
+    transition: transform var(--animation-duration-short) ease-in-out;
+}
+
+.feature:hover {
+    transform: scale(1.05);
+}
+
+.feature-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    transition: color var(--animation-duration-short) ease-in-out;
+}
+
+.feature:hover .feature-title {
+    color: #ff5733; /* Attractive color change on hover #ff5733*/
+}
+
+.heading-featured-in {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 2.4rem;
+    color: #888;
+}
+.heading-primary {
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.heading-secondary {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.section-featured {
+    padding: 4.8rem 0 3.2rem 0;
+}
+
+.logos {
+    display: flex;
+    justify-content: space-around;
+}
+
+.logos img {
+    height: 3.2rem; /* Increase logo size for visibility */
+    filter: brightness(0);
+    opacity: 50%;
+}
+
+/*******************************************/
+/* HOW IT WORKS SECTION */
+/*******************************************/
+
+.section-how {
+    padding: 9.6rem 0;
+}
+
+.step-img {
+    border-radius: 20px;
+    width: 35%;
+    border: 10px solid black;
+    /* z-index: 10; */
+}
+
+.step-number {
+    font-size: 8.6rem;
+    font-weight: 600;
+    color: #ddd;
+    margin-bottom: 1.2rem;
+}
+
+.step-description {
+    font-size: 1.8rem;
+    line-height: 1.8;
+}
+
+.step-img-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.step-img-box::before {
+    width: 60%;
+    /* height: 60%; */
+    padding-bottom: 60%;
+    background-color: #fdf2e9;
+    z-index: -2;
+}
+
+.step-img-box::after {
+    width: 45%;
+    padding-bottom: 45%;
+    background-color: #fae5d3;
+    z-index: -1;
+}
+
+.step-img-box::after, .step-img-box::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}

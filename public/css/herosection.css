@@ -1,0 +1,90 @@
+/*******************************************/
+/* HERO SECTION */
+/*******************************************/
+
+.section-hero {
+    background-color: #fdf2e9;
+    padding: 4rem 0; /* Reduced padding */
+}
+
+.section-hero a:active
+{
+    font-weight: 500; 
+    color: inherit;
+}
+.hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1250px; /* Slightly reduced width */
+    margin: 0 auto;
+    align-items: center;
+    gap: 4rem;
+    /* padding: 4rem 2rem; Less padding for better spacing */
+}
+
+.no-flexbox-gap .hero {
+    margin-inline: 4rem;
+}
+
+.hero-text-box {
+    text-align: left;
+}
+
+/* ================= HERO IMAGE ================= */
+.hero img {
+    width: 100%;
+    max-width: 500px; /* Add max-width constraint */
+}
+
+/* ================= TEXT AND BUTTONS ================= */
+.hero-description {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    margin-bottom: 2.5rem; /* Less bottom space */
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem; /* Smaller buttons */
+    font-size: 1.6rem;
+    min-height: 48px; /* Ensure minimum touch target size */
+}
+
+.btn--large {
+    padding: 2rem 4rem;
+    font-size: 2.4rem;
+}
+
+/* ================= DELIVERED MEALS ================= */
+.delivered-meals {
+    display: flex;
+    margin-top: 3rem; /* Reduced top margin */
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.no-flexbox-gap .delivered-meals {
+    margin-inline: 1.2rem;
+}
+
+.delivered-imgs img {
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    margin-right: -1rem;
+}
+
+.delivered-imgs img:last-child {
+    margin: 0;
+}
+
+.delivered-text {
+    font-size: 1.6rem; /* Slightly smaller for better fit */
+    font-weight: 600;
+    color: #333;
+}
+
+.delivered-text span {
+    color: #cf711f;
+    font-weight: 700;
+}

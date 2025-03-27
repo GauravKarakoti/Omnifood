@@ -1,0 +1,40 @@
+/* =====================loacation_continer========================== */
+.location-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between icon and text */
+    cursor: pointer;
+}
+
+.location-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.location-text {
+    font-size: 16px;
+    color: #1f1d1d;
+    font-weight: bold;
+}
+
+/* Hidden input initially */
+.location-input {
+    display: none;
+    position: absolute;
+    left: -10px;
+    top: -5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    width: 150px;
+    height: 30px;
+    margin-top: 50px;
+}
+
+/* Show input on hover */
+.location-container:hover .location-input {
+    display: block;
+}

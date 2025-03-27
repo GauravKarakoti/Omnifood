@@ -1,0 +1,141 @@
+/*******************************************/
+/* PRICING SECTION */
+/*******************************************/
+
+.section-pricing {
+    padding: 9.6rem 0;
+}
+
+.plan-name {
+    color: #cf711f;
+    font-weight: 600;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.75;
+    margin-bottom: 3.2rem;
+}
+
+.plan-price {
+    font-size: 6.2rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1.6rem;
+}
+
+.plan-price span {
+    font-size: 3rem;
+    font-weight: 500;
+    margin-right: 0.8rem;
+}
+
+.plan-text {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    color: #6f6f6f;
+}
+
+.plan-header {
+    text-align: center;
+    margin-bottom: 4.8rem;
+}
+
+.plan-sign-up {
+    text-align: center;
+    margin-top: 4.8rem;
+}
+
+.pricing-plan {
+    border-radius: 11px;
+    width: 75%;
+    transition: transform var(--animation-duration-short) ease-in-out, box-shadow var(--animation-duration-short) ease-in-out;
+}
+
+.pricing-plan--starter {
+    justify-self: end;
+    border: 2px solid #fdf2e9;
+    padding: 4.6rem;
+}
+
+.pricing-plan--complete {
+    background-color: #fdf2e9;
+    padding: 4.8rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.pricing-plan--complete::after {
+    content: "Best value";
+    position: absolute;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    font-weight: 700;
+    top: 6%;
+    right: -18%;
+    background-color: #ffd43b;
+    padding: 0.8rem 8rem;
+    color: #333;
+    transform: rotate(45deg);
+}
+
+.feature-icon {
+    color: #e67e22;
+    height: 3.2rem;
+    width: 3.2rem;
+    margin-bottom: 3.2rem;
+    background-color: #fdf2e9;
+    padding: 1.6rem;
+    border-radius: 50%;
+}
+
+.feature-title {
+    font-size: 2.4rem;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 1.6rem;
+}
+
+.feature-text {
+    font-size: 1.8rem;
+    line-height: 1.8;
+}
+
+.plan-details {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Basic styles for the pricing plan */
+.pricing-plan {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover effect for the pricing plan */
+.pricing-plan:hover {
+    transform: translateY(-10px); /* Slight lift effect */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+}
+
+/* Hover effect for the plan header text */
+.pricing-plan:hover .plan-header p {
+    color: #00aaff; /* Change color when hovered */
+    transition: color var(--animation-duration-short) ease-in-out;
+}
+
+/* Hover effect for the plan list items */
+.pricing-plan:hover .list-item {
+    color: #333; /* Change text color on hover */
+    transition: color var(--animation-duration-short) ease-in-out;
+}
+
+.pricing-plan:hover .list-icon {
+    color: #00aaff; /* Change icon color on hover */
+    transition: color var(--animation-duration-short) ease-in-out;
+}
+
+/* Change background color of the button on hover */
+.pricing-plan:hover .btn--full {
+    background-color: #00aaff; /* Change button background color */
+    color: #fff; /* Change button text color */
+    transition: background-color var(--animation-duration-short) ease-in-out, color var(--animation-duration-short) ease-in-out;
+}

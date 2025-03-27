@@ -1,0 +1,224 @@
+
+/*******************************************/
+/* CTA SECTION */
+/*******************************************/
+
+.section-cta {
+    padding: 9.6rem 0 12.8rem 0;
+}
+
+.cta {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    
+    /* background-color: #e67e22; */
+    background-image: -webkit-linear-gradient(to right bottom, #eb984e, #e67e22);
+    background-image: -moz-linear-gradient(to right bottom, #eb984e, #e67e22);
+    background-image: -o-linear-gradient(to right bottom, #eb984e, #e67e22);
+    background-image: -ms-linear-gradient(to right bottom, #eb984e, #e67e22);
+    background-image: linear-gradient(to right bottom, #eb984e, #e67e22);
+    box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
+    border-radius: 11px;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+.cta *:focus {
+    outline: 2px solid #ff8000; /* Visible outline with sufficient contrast */
+    outline-offset: 4px; /* Offset to ensure the outline is visible */
+    box-shadow: none; /* Remove box-shadow */
+}
+
+.cta .heading-secondary {
+    color: inherit;
+    margin-bottom: 3.2rem;
+}
+
+.cta-text-box {
+    color: #45260a;
+    padding: 4.8rem 6.4rem 6.4rem 6.4rem;
+}
+
+.cta-img-box {
+    background-image: -webkit-linear-gradient(
+        to right bottom,
+        rgba(235, 151, 78, 0.35),
+        rgba(230, 125, 34, 0.35)
+    ),
+    url('../img/eating.jpg');
+    background-image: -moz-linear-gradient(
+        to right bottom,
+        rgba(235, 151, 78, 0.35),
+        rgba(230, 125, 34, 0.35)
+    ),
+    url('../img/eating.jpg');
+    background-image: -o-linear-gradient(
+        to right bottom,
+        rgba(235, 151, 78, 0.35),
+        rgba(230, 125, 34, 0.35)
+    ),
+    url('../img/eating.jpg');
+    background-image: -ms-linear-gradient(
+        to right bottom,
+        rgba(235, 151, 78, 0.35),
+        rgba(230, 125, 34, 0.35)
+    ),
+    url('../img/eating.jpg');
+    background-image: linear-gradient(
+        to right bottom,
+        rgba(235, 151, 78, 0.35),
+        rgba(230, 125, 34, 0.35)
+    ),
+    url('../img/eating.jpg');
+    background-size: cover;
+    background-position: center;
+    transition: transform var(--animation-duration-short) ease-in-out;
+}
+
+.cta-img-box:hover {
+    transform: scale(1.05);
+}
+
+.cta-text {
+    font-size: 1.8rem;
+    line-height: 1.8;
+    margin-bottom: 4.8rem;
+}
+
+.cta-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 3.2rem;
+    row-gap: 2.4rem;
+}
+
+
+
+.cta-form label {
+    display: block;
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+}
+
+/* Input and Select Styling */
+.cta-form input,
+.cta-form select {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.8rem;
+    font-family: inherit;
+    border: 2px solid transparent; /* Default border */
+    background-color: #fdf2e9;
+    border-radius: 9px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    color: inherit;
+    transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+.cta-form input:focus,
+.cta-form select:focus {
+    border-color: #ff8c00;
+    background-color: #fff3e0;
+}
+
+/* Placeholder Styling */
+.cta-form input::-webkit-input-placeholder {
+    color: #aaa;
+}
+.cta-form input::-moz-placeholder {
+    color: #aaa;
+}
+.cta-form input:-ms-input-placeholder {
+    color: #aaa;
+}
+.cta-form input::-ms-input-placeholder {
+    color: #aaa;
+}
+.cta-form input::placeholder {
+    color: #aaa;
+}
+
+.cta-form input:focus, 
+.cta-form select:focus {
+    background-color: #ffffff !important; 
+    border-color: purple !important; 
+    outline: none !important;
+}
+
+/* 🔴 Error State: When input is invalid */
+.cta-form input:invalid,
+.cta-form select:invalid {
+    border-color: #e63946; /* Red border */
+    background-color: #ffe5e5; /* Light red background */
+}
+
+/* ✅ Valid State: When input is correct */
+.cta-form input:valid {
+    border-color: #2ecc71; /* Green border */
+    background-color: #e6f7e6; /* Light green background */
+}
+
+/* 🔥 Adding Error Message Below Inputs */
+.cta-form input:invalid + .error-message,
+.cta-form select:invalid + .error-message {
+    display: block;
+    color: #c71224;
+    font-weight: 500;
+    font-size: 1.7rem;
+    margin-top: 0.5rem;
+}
+
+/* CTA Button */
+.cta-btn {
+    display: inline-block;
+    padding: 1.2rem 2.4rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+    background-color: #e67e22;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all var(--animation-duration-short) ease-in-out;
+}
+
+.cta-btn:hover {
+    background-color: #cf711f;
+    transform: scale(1.05);
+    transition: all var(--animation-duration-short) ease-in-out;
+}
+
+/* Ensure sufficient contrast for .btn--form:hover */
+.btn--form:hover {
+    background-color: #333; /* Darker background */
+    color: #fff; /* White text */
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cta {
+    animation: fadeIn var(--animation-duration-long) ease-in-out;
+}
+
+
+
+/* Hide error messages by default */
+.error-message {
+    display: none; /* Hidden by default */
+    color:#e67e22;
+    font-size: 0%;
+}
