@@ -322,7 +322,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Validate email field on blur (when the user leaves the field)
     emailInput.addEventListener("blur", function () {
-        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+        if (/^[^\s@]+\@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
             emailInput.classList.remove("error");
             emailInput.setAttribute("aria-invalid", "false");
             errorEmail.style.display = "none";
@@ -461,4 +461,27 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollToTopBtn.addEventListener("click", scrollToTop);
     }
     setCSPHeaders();
+});
+
+// iOS viewport height calculation
+function setViewportHeight() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+
+// Update viewport height on load and resize
+window.addEventListener('resize', setViewportHeight);
+document.addEventListener('DOMContentLoaded', setViewportHeight);
+
+// Apply dynamic height to hero section
+document.addEventListener("DOMContentLoaded", function () {
+    const heroSection = document.querySelector(".section-hero");
+    function updateHeroHeight() {
+        const vh = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--vh'));
+        heroSection.style.height = `${vh * 100}px`;
+    }
+
+    setViewportHeight();
+    updateHeroHeight();
+    window.addEventListener('resize', updateHeroHeight);
 });
