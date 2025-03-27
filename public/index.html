@@ -79,11 +79,12 @@
                 </div>
         
                 <!-- Location Section -->
-                <div class="location-box">
+                <div class="location-box" onclick="toggleLocationInput(event)">
                     <img src="img/location-dot-solid.svg" alt="Location" class="location-icon">
                     <span class="location-text">Delhi,<br>India</span>
-                    <input type="text" class="location-field" placeholder=" Enter location...">
+                    <input type="text" class="location-field" placeholder="Enter location..." id="location-input">
                 </div>
+                
         
                 <li><a href="#how" class="navbar-link">How it works</a></li>
                 <li><a href="#meals" class="navbar-link">Meals</a></li>
@@ -95,10 +96,10 @@
         </nav>
         
         </nav>
-        <button class="btn-mobile-nav">
-            <i class="bi bi-list icon-mobile-nav" name="menu-outline"></i>
-            <i class="bi bi-x-lg icon-mobile-nav" name="close-outline"></i>
+        <button class="btn-mobile-nav" id="mobile-menu-btn">
+            <img src="img/menu-icon.svg" alt="Menu" class="icon-mobile-nav">
         </button>
+        
     </header>
     <main>
         <section class="section-hero">

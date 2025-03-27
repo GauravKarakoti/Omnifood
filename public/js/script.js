@@ -485,3 +485,19 @@ document.addEventListener("DOMContentLoaded", function () {
     updateHeroHeight();
     window.addEventListener('resize', updateHeroHeight);
 });
+document.addEventListener("click", function (event) {
+    const locationBox = document.querySelector(".location-box");
+    const locationInput = document.querySelector("#location-input");
+
+    if (locationBox.contains(event.target)) {
+        // Show input field when clicking inside the location-box
+        locationInput.style.display = "block";
+    } else {
+        // Hide input field when clicking outside
+        locationInput.style.display = "none";
+    }
+});
+document.getElementById("mobile-menu-btn").addEventListener("click", function () {
+    document.querySelector(".main-nav-list").classList.toggle("show");
+});
+

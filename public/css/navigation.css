@@ -122,3 +122,47 @@
 
 .navbar-link.navbar-cta:hover, .navbar-link.navbar-cta:active {
     background-color: #cf711
+}
+.location-field {
+    display: none; /* Initially hidden */
+    width: 150px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+/* Hide the button by default */
+.btn-mobile-nav {
+    display: none; 
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 1000;
+}
+
+/* Show only on small screens */
+@media (max-width: 768px) {
+    .btn-mobile-nav {
+        display: block; /* Show in mobile view */
+    }
+
+    .main-nav-list {
+        display: none; /* Hide full menu */
+        flex-direction: column;
+        background-color: white;
+        position: absolute;
+        top: 80px;
+        right: 20px;
+        width: 200px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .main-nav-list.show {
+        display: flex; /* Show when menu is open */
+    }
+}
