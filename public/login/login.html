@@ -1,206 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="../img/favicon.webp" />
-    <link rel="apple-touch-icon" href="../img/apple-touch-icon.webp" />
-    <script
-      src="https://kit.fontawesome.com/64d58efce2.js"
-      crossorigin="anonymous"
-    ></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../img/favicon.webp" />
+  <link rel="apple-touch-icon" href="../img/apple-touch-icon.webp" />
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
   <link rel="stylesheet" href="style.css" />
-    
-    <title>Sign in & Sign up Form</title>
-  </head>
-  <body>
-        
-    
-    <div class="container">
-        
-      <div class="forms-container">
-        <a href="../index.html" class="back-btn">
-            <picture>
-                <source srcset="images/back-icon.avif" type="image/avif">
-                <source srcset="images/back-icon.webp" type="image/webp">
-                <img 
-                    src="images/back-icon.png" 
-                    srcset="back-icon-400.png 400w, back-icon-800.png 800w, back-icon-1200.png 1200w" 
-                    sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px" 
-                    alt="Back to Home" 
-                    loading="lazy"
-                />
-            </picture>
-        </a>
 
-        <div class="signin-signup">
-          <form action="#" class="sign-in-form" id="signInForm">
-            <h2 class="title">Sign in</h2>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <label for="signInUsername" >Username</label>
-              <input type="text" id="signInUsername" name="username" placeholder="Username" />
-              <small class="error-message"></small>
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <label for="signInPassword" >Password</label>
-              <input type="password" placeholder="Password" id="signInPassword" />
-              <small class="error-message"></small>
-            </div>
-            <input type="submit" value="Login" class="btn solid" />
-            <p class="social-text">Or Sign in with social platforms</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class='bi bi-twitter-x' style='font-size:18px'></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-            
-          </form>
-          
-          <form action="#" class="sign-up-form" id="signUpForm">
-            <h2 class="title">Sign up</h2>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <label for="signUpUsername" >Username</label>
-              <input type="text" placeholder="Username" id="signUpUsername"/>
-              <small class="error-message"></small>
-            </div>
-            <div class="input-field">
-              <i class="fas fa-envelope"></i>
-              <label for="signUpEmail" >Email</label>
-              <input type="email" placeholder="Email" id="signUpEmail"/>
-              <small class="error-message"></small>
-            </div>
-            <div class="input-field">
-              <i class="fas fa-lock"></i>
-              <label for="signUpPassword" >Password</label>
-              <input type="password" placeholder="Password"  id="signUpPassword"/>
-              <small class="error-message"></small>
-            </div>
-            <div id="password-strength">Password Strength: Weak</div>
+  <title>Sign in & Sign up Form</title>
+</head>
 
-            <!-- Password Requirements -->
-            <div id="password-requirements">
-              <p id="length">✅ Minimum 8 characters</p>
-              <p id="uppercase">✅ 1 uppercase letter</p>
-              <p id="number">✅ 1 number</p>
-              <p id="special">✅ 1 special character</p>
-            </div>
+<body>
 
-            <input type="submit" class="btn" value="Sign up" />
-            <p class="social-text">Or Sign up with social platforms</p>
-            <div class="social-media">
-              <a href="#" class="social-icon">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class='bi bi-twitter-x' style='font-size:18px'></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-google"></i>
-              </a>
-              <a href="#" class="social-icon">
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-          </form>
-        </div>
-      </div>
 
-      <div class="panels-container">
-        <div class="panel left-panel">
-          <a href="../index.html" class="back-btn">
-              <picture>
-                  <source srcset="images/back-icon.avif" type="image/avif">
-                  <source srcset="images/back-icon.webp" type="image/webp">
-                  <img 
-                      src="images/back-icon.png" 
-                      srcset="back-icon-400.png 400w, back-icon-800.png 800w, back-icon-1200.png 1200w" 
-                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px" 
-                      alt="Back to Home" 
-                      loading="lazy"
-                  />
-              </picture>
-          </a>
-          <div class="content">
-            <h3>New here ?</h3>
-            <p>
-              Welcome to our community. We are glad to have you here. Just sign up and you are good to go.
-            </p>
-            <button class="btn transparent" id="sign-up-btn">
-              Sign up
-            </button>
+  <div class="container">
+
+    <div class="forms-container">
+      <a href="../index.html" class="back-btn">
+        <picture>
+          <source srcset="images/back-icon.avif" type="image/avif">
+          <source srcset="images/back-icon.webp" type="image/webp">
+          <img src="images/back-icon.png"
+            srcset="back-icon-400.png 400w, back-icon-800.png 800w, back-icon-1200.png 1200w"
+            sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px" alt="Back to Home" loading="lazy" />
+        </picture>
+      </a>
+
+      <div class="signin-signup">
+        <form action="#" class="sign-in-form" id="signInForm">
+          <h2 class="title">Sign in</h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <label for="signInUsername">Username</label>
+            <input type="text" id="signInUsername" name="username" placeholder="Username" />
+            <small class="error-message" aria-live="polite"></small>
           </div>
-          <picture>
-              <source srcset="images/logo.avif" type="image/avif">
-              <source srcset="images/logo.webp" type="image/webp">
-              <img 
-                  src="images/logo.png" 
-                  srcset="logo-400.png 400w, logo-800.png 800w, logo-1200.png 1200w" 
-                  sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px" 
-                  alt="Company Logo" 
-                  class="image"
-                  loading="lazy"
-              />
-          </picture>
-
-        </div>
-        <div class="panel right-panel">
-            <a href="../index.html" class="back-btn">
-              <picture>
-                  <source srcset="images/back-icon.avif" type="image/avif">
-                  <source srcset="images/back-icon.webp" type="image/webp">
-                  <img 
-                      src="images/back-icon.png" 
-                      srcset="back-icon-400.png 400w, back-icon-800.png 800w, back-icon-1200.png 1200w" 
-                      sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px" 
-                      alt="Back to Home" 
-                      loading="lazy"
-                  />
-              </picture>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <label for="signInPassword">Password</label>
+            <input type="password" placeholder="Password" id="signInPassword" />
+            <small class="error-message" aria-live="polite"></small>
+          </div>
+          <input type="submit" value="Login" class="btn solid" />
+          <p class="social-text">Or Sign in with social platforms</p>
+          <div class="social-media">
+            <a href="#" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
             </a>
-            <div class="content">
-                  <h3>One of us ?</h3>
-                  <p>
-              We would recognize you , just remeber your credentials. ANd you are good to go.
-
-            </p>
-            <button class="btn transparent" id="sign-in-btn">
-              Sign in
-            </button>
+            <a href="#" class="social-icon">
+              <i class='bi bi-twitter-x' style='font-size:18px'></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
           </div>
-          <picture>
-              <source srcset="images/register.avif" type="image/avif">
-              <source srcset="images/register.webp" type="image/webp">
-              <img 
-                  src="images/register.png" 
-                  srcset="register-400.png 400w, register-800.png 800w, register-1200.png 1200w" 
-                  sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px" 
-                  alt="Register Illustration" 
-                  class="image" 
-                  id="register" 
-                  loading="lazy"
-              />
-          </picture>
 
-        </div>
+        </form>
+
+        <form action="#" class="sign-up-form" id="signUpForm">
+          <h2 class="title">Sign up</h2>
+          <div class="input-field">
+            <i class="fas fa-user"></i>
+            <label for="signUpUsername">Username</label>
+            <input type="text" placeholder="Username" id="signUpUsername" />
+            <small class="error-message" aria-live="polite"></small>
+          </div>
+          <div class="input-field">
+            <i class="fas fa-envelope"></i>
+            <label for="signUpEmail">Email</label>
+            <input type="email" placeholder="Email" id="signUpEmail" />
+            <small class="error-message" aria-live="polite"></small>
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <label for="signUpPassword">Password</label>
+            <input type="password" placeholder="Password" id="signUpPassword" />
+            <small class="error-message" aria-live="polite"></small>
+          </div>
+          <div id="password-strength">Password Strength: Weak</div>
+
+          <!-- Password Requirements -->
+          <div id="password-requirements">
+            <p id="length">✅ Minimum 8 characters</p>
+            <p id="uppercase">✅ 1 uppercase letter</p>
+            <p id="number">✅ 1 number</p>
+            <p id="special">✅ 1 special character</p>
+          </div>
+
+          <input type="submit" class="btn" value="Sign up" />
+          <p class="social-text">Or Sign up with social platforms</p>
+          <div class="social-media">
+            <a href="#" class="social-icon">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class='bi bi-twitter-x' style='font-size:18px'></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="#" class="social-icon">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+          </div>
+        </form>
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    <script src="app.js"></script>
-  </body>
+
+    <div class="panels-container">
+      <div class="panel left-panel">
+        <a href="../index.html" class="back-btn">
+          <picture>
+            <source srcset="images/back-icon.avif" type="image/avif">
+            <source srcset="images/back-icon.webp" type="image/webp">
+            <img src="images/back-icon.png"
+              srcset="back-icon-400.png 400w, back-icon-800.png 800w, back-icon-1200.png 1200w"
+              sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px" alt="Back to Home" loading="lazy" />
+          </picture>
+        </a>
+        <div class="content">
+          <h3>New here ?</h3>
+          <p>
+            Welcome to our community. We are glad to have you here. Just sign up and you are good to go.
+          </p>
+          <button class="btn transparent" id="sign-up-btn">
+            Sign up
+          </button>
+        </div>
+        <picture>
+          <source srcset="images/logo.avif" type="image/avif">
+          <source srcset="images/logo.webp" type="image/webp">
+          <img src="images/logo.png" srcset="logo-400.png 400w, logo-800.png 800w, logo-1200.png 1200w"
+            sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px" alt="Company Logo" class="image"
+            loading="lazy" />
+        </picture>
+
+      </div>
+      <div class="panel right-panel">
+        <a href="../index.html" class="back-btn">
+          <picture>
+            <source srcset="images/back-icon.avif" type="image/avif">
+            <source srcset="images/back-icon.webp" type="image/webp">
+            <img src="images/back-icon.png"
+              srcset="back-icon-400.png 400w, back-icon-800.png 800w, back-icon-1200.png 1200w"
+              sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px" alt="Back to Home" loading="lazy" />
+          </picture>
+        </a>
+        <div class="content">
+          <h3>One of us ?</h3>
+          <p>
+            We would recognize you , just remeber your credentials. ANd you are good to go.
+
+          </p>
+          <button class="btn transparent" id="sign-in-btn">
+            Sign in
+          </button>
+        </div>
+        <picture>
+          <source srcset="images/register.avif" type="image/avif">
+          <source srcset="images/register.webp" type="image/webp">
+          <img src="images/register.png" srcset="register-400.png 400w, register-800.png 800w, register-1200.png 1200w"
+            sizes="(max-width: 600px) 400px, (max-width: 1200px) 800px, 1200px" alt="Register Illustration"
+            class="image" id="register" loading="lazy" />
+        </picture>
+
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+    integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+    crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+
 </html>
