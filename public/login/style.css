@@ -69,7 +69,6 @@ form.sign-in-form {
 .input-field {
   max-width: 380px;
   width: 100%;
-  background-color: #f0f0f0;
   margin: 10px 0;
   height: 55px;
   border-radius: 55px;
@@ -78,13 +77,7 @@ form.sign-in-form {
   position: relative;
 }
 
-.input-field i {
-  text-align: center;
-  line-height: 55px;
-  color: #acacac;
-  transition: 0.5s;
-  font-size: 1.1rem;
-}
+
 
 .input-field input {
   background: none;
@@ -486,3 +479,35 @@ form.sign-in-form {
   margin-top: 10px;
 }
 
+.input-field {
+  display: flex;
+  align-items: center; /* Align icon, label, and input */
+  gap: 8px; /* Adjust spacing between elements */
+  margin-bottom: 10px;
+}
+
+.input-field i {
+  font-size: 18px; /* Adjust icon size */
+  color: #555; /* Adjust icon color */
+}
+
+.input-field label {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  min-width: 80px; /* Ensure label has a fixed width */
+}
+
+.input-field input {
+  flex: 1; /* Make input take up remaining space */
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+.input-field input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
