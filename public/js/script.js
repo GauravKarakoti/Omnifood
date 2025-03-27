@@ -37,10 +37,10 @@ function removeEventListeners() {
 function toggleNav(e) {
     e.stopPropagation(); // Prevent click from bubbling to document
     if (window.innerWidth <= 944) { // Only toggle nav in mobile view
-        headerEl.classList.toggle("nav-open");
-        if (headerEl.classList.contains("nav-open")) {
+        headerEl.classList.toggle("nav-open"); // Toggle the "nav-open" class
+        if (headerEl.classList.contains("nav-open")) {  // If nav is closed
         } else {
-            closeNavbar();
+            closeNavbar(); // Close the navbar
         }
     }
 }
@@ -84,25 +84,28 @@ document.addEventListener("click", function (e) {
 
 ///////////////////////////////////////////////////
 const sectionHeroEl = document.querySelector(".section-hero");
+
+// Create an intersection observer to add/remove sticky header
 const obs = new IntersectionObserver(function (entries) {
-    const ent = entries[0];
+    const ent = entries[0];  // Get the first entry
     console.log(ent);
-    if (ent.isIntersecting === false) {
-        document.querySelector("body").classList.add("sticky");
+    if (ent.isIntersecting === false) { // If hero section is not in view
+        document.querySelector("body").classList.add("sticky"); // Add sticky class
     }
     if (ent.isIntersecting === true) {
-        document.querySelector("body").classList.remove("sticky");
+        document.querySelector("body").classList.remove("sticky");// Remove sticky class
     }
 }, {
-    root: null,
-    threshold: 0,
+    root: null, // Observe relative to viewport
+    threshold: 0,// Trigger as soon as it leaves
     rootMargin: `-${headerEl.offsetHeight}px` // Adjust dynamically
 });
-obs.observe(sectionHeroEl);
+obs.observe(sectionHeroEl); // Start observing the hero section
 
 ///////////////////////////////////////////////////
 const allLinks = document.querySelectorAll("a:link");
 
+// Loop through all links and add event listeners
 allLinks.forEach(function (link) {
     link.addEventListener("click", function (e) {
         const href = link.getAttribute("href");
@@ -133,6 +136,7 @@ allLinks.forEach(function (link) {
 });
 
 ///////////////////////////////////////////////////
+// Function to check if the browser supports flexbox gap
 function checkFlexGap() {
     var flex = document.createElement("div");
     flex.style.display = "flex";
@@ -203,7 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
     trackButtonClick("start-eating-well", "Start eating well");
 });
 
-
+// Track button clicks
 const trackClick = async (buttonName) => {
     try {
         await fetch("https://omnifood-clicks.onrender.com/track-click", {
