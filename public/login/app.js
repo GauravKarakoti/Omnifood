@@ -148,7 +148,7 @@ signInForm.addEventListener('submit', async function (e) {
       alert(`${data.message}`);
       if (data.success) {
         window.location.replace(`${window.location.origin}/index.html`);
-        localStorage.setItem('omni:username', signUpUsername.value);
+        localStorage.setItem('omni:username', signInUsername.value);
         localStorage.setItem('omni:email', data.user.email);
         localStorage.setItem('omni:authenticated', 'true');
       }
@@ -215,7 +215,7 @@ signUpForm.addEventListener('submit', async function (e) {
       alert(`${data.message}`);
       if (data.success) {
         window.location.replace(`${window.location.origin}/index.html`);
-        localStorage.setItem('omni:username', signUpUsername.value);
+        localStorage.setItem('omni:username', signInUsername.value);
         localStorage.setItem('omni:email', data.user.email);
         localStorage.setItem('omni:authenticated', 'true');
       }
