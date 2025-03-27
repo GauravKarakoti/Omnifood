@@ -1350,6 +1350,7 @@ button:focus, input:focus, select:focus, textarea:focus {
     font-weight: normal;
     font-style: normal;
     font-display: swap; /* Add this line */
+}
 
 /* Disable hover effects on touch devices */
 @media (hover: none) {
