@@ -67,25 +67,25 @@
         <a href="#" aria-label="Go to home">
             <picture>
                 <source class="logo" srcset="img/omnifood-logo.avif" type="image/avif" />
-                <img class="logo" src="img/omnifood-logo.png" alt="Omnifood Logo" loading="lazy" />
+                <img class="logo" src="img/omnifood-logo.png" alt="Omnifood Logo">
             </picture>
         </a>
+
         <nav class="navbar">
             <ul class="navbar-list">
                 <!-- Search Bar -->
                 <div class="search-box">
-                    <input type="text" class="search-field" placeholder="Type to Search..." onclick="showSuggestions()">
+                    <input type="text" class="search-field" placeholder="Type to Search...">
                     <img src="img/magnifying-glass-solid.svg" alt="Search" class="search-icon">
                 </div>
-        
+
                 <!-- Location Section -->
-                <div class="location-box" onclick="toggleLocationInput(event)">
+                <div class="location-box">
                     <img src="img/location-dot-solid.svg" alt="Location" class="location-icon">
-                    <span class="location-text">Delhi,<br>India</span>
+                    <span class="location-text">Delhi, India</span>
                     <input type="text" class="location-field" placeholder="Enter location..." id="location-input">
                 </div>
-                
-        
+
                 <li><a href="#how" class="navbar-link">How it works</a></li>
                 <li><a href="#meals" class="navbar-link">Meals</a></li>
                 <li><a href="#testimonials" class="navbar-link">Testimonials</a></li>
@@ -94,13 +94,24 @@
                 <li><a href="#cta" id="try-for-free" class="navbar-link navbar-cta">Try for free</a></li>
             </ul>
         </nav>
-        
-        </nav>
+
         <button class="btn-mobile-nav" id="mobile-menu-btn">
-            <img src="img/menu-icon.svg" alt="Menu" class="icon-mobile-nav">
+            ☰
         </button>
-        
     </header>
+
+    <!-- Mobile Navigation Menu -->
+    <nav class="mobile-nav">
+        <ul class="mobile-nav-list">
+            <li><a href="#how" class="mobile-nav-link">How it works</a></li>
+            <li><a href="#meals" class="mobile-nav-link">Meals</a></li>
+            <li><a href="#testimonials" class="mobile-nav-link">Testimonials</a></li>
+            <li><a href="#pricing" class="mobile-nav-link">Pricing</a></li>
+            <li><a href="./login/login.html" class="mobile-nav-link">Login</a></li>
+            <li><a href="#cta" class="mobile-nav-link mobile-cta">Try for free</a></li>
+        </ul>
+    </nav>
+    
     <main>
         <section class="section-hero">
             <div class="hero">

@@ -497,7 +497,31 @@ document.addEventListener("click", function (event) {
         locationInput.style.display = "none";
     }
 });
+// Toggle Mobile Navigation Menu
+// Toggle Mobile Navigation Menu
 document.getElementById("mobile-menu-btn").addEventListener("click", function () {
-    document.querySelector(".main-nav-list").classList.toggle("show");
+    document.querySelector(".mobile-nav").classList.toggle("show");
 });
 
+// Toggle Location Input on Click
+document.querySelector(".location-box").addEventListener("click", function (event) {
+    let locationInput = document.getElementById("location-input");
+    
+    // Show input and focus when clicked
+    locationInput.style.display = "block";
+    locationInput.focus();
+    
+    // Prevent event from bubbling up (so it doesn't immediately close)
+    event.stopPropagation();
+});
+
+// Hide location input when clicking outside
+document.addEventListener("click", function (event) {
+    let locationBox = document.querySelector(".location-box");
+    let locationInput = document.getElementById("location-input");
+
+    // Hide input if clicked outside the location box
+    if (!locationBox.contains(event.target)) {
+        locationInput.style.display = "none";
+    }
+});
