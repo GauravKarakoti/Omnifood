@@ -1,0 +1,66 @@
+
+/* Confirmation Modal Styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+    max-width: 500px;
+    text-align: center;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color var(--animation-duration-short) ease-in-out;
+}
+
+#confirmation-message {
+    font-size: 2rem; /* Increased font size */
+    color: #28a745; /* Green color for valid submission */
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.main-nav-link:focus {
+    outline: 2px solid #ff8000; /* Visible outline with sufficient contrast */
+    outline-offset: 4px; /* Offset to ensure the outline is visible */
+    box-shadow: none; /* Remove box-shadow */
+}
+
+.btn:focus {
+    outline: 2px solid #ff8000; /* Visible outline with sufficient contrast */
+    outline-offset: 4px; /* Offset to ensure the outline is visible */
+    box-shadow: none; /* Remove box-shadow */
+}
+
+/* Target specific elements instead */
+button:focus, input:focus, select:focus, textarea:focus {
+    transition: box-shadow var(--animation-duration-short) ease;
+}
+
