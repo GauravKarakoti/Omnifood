@@ -1198,6 +1198,82 @@
     visibility: visible;
 }
 
+<<<<<<< HEAD
+=======
+.container {
+    align-items: center;
+    gap: 15px; /* Space between search bar and location */
+}
+
+.search-container {
+    position: relative;
+    width: 200px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 20px; /* Space for the search icon */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+
+}
+
+.search-input:hover {
+    background-color: rgba(239, 232, 232, 0.906);
+}
+
+.search-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 20px; /* Adjust size */
+    height: 20px;
+    cursor: pointer;
+}
+
+.location-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between icon and text */
+    cursor: pointer;
+}
+
+.location-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.location-text {
+    font-size: 16px;
+    color: #1f1d1d;
+    font-weight: bold;
+}
+
+/* Hidden input initially */
+.location-input {
+    display: none;
+    position: absolute;
+    left: -10px;
+    top: -5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    width: 150px;
+    height: 30px;
+    margin-top: 50px;
+}
+
+/* Show input on hover */
+.location-container:hover .location-input {
+    display: block;
+}
+>>>>>>> 649df96 (Waste)
 /* Confirmation Modal Styles */
 .modal {
     display: none; /* Hidden by default */
@@ -1263,6 +1339,18 @@ button:focus, input:focus, select:focus, textarea:focus {
     transition: box-shadow 0.2s ease;
 }
 
+<<<<<<< HEAD
+=======
+@font-face {
+    font-family: 'YourFontFamily';
+    src: url('path/to/font.woff2') format('woff2'),
+         url('path/to/font.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* Add this line */
+}
+
+>>>>>>> 649df96 (Waste)
 /* Disable hover effects on touch devices */
 @media (hover: none) {
     .main-nav-link:hover, .main-nav-link:active,
