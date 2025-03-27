@@ -748,7 +748,7 @@
             </div>
         </div>
 
-        <button id="scrollBtn" onclick="scrollToTop()" aria-label="Scroll to top">
+        <button id="scrollBtn" aria-label="Scroll to top">
             <ion-icon name="arrow-up-outline"></ion-icon>
         </button>
     </main>
@@ -836,6 +836,11 @@
             scrollBtn.classList.toggle("visible", window.scrollY > 50);
         });
 
+        scrollBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            scrollToTop();
+        })
+
         function scrollToTop() {
             scrollBtn.classList.add("rotate");
 
@@ -858,10 +863,10 @@
             });
         });
 
-    // Remove hover state on touch devices
-    document.addEventListener('touchstart', function() {}, true);
-    
-</script>
+        // Remove hover state on touch devices
+        document.addEventListener('touchstart', function () { }, true);
+
+    </script>
 
 </body>
 
