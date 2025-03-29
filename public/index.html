@@ -188,62 +188,85 @@
                 </div>
             </div>
         </section>
-        <section class="section-how" id="how">
+        <style>
+            .step-img-box, .step-text-box {
+              opacity: 0;
+              transform: translateY(50px);
+              transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            }
+            .step-img-box.left, .step-text-box.right {
+              transform: translateX(-50px);
+            }
+            .step-img-box.right, .step-text-box.left {
+              transform: translateX(50px);
+            }
+            .visible {
+              opacity: 1 !important;
+              transform: translateX(0) translateY(0) !important;
+            }
+          </style>
+          
+          <section class="section-how" id="how">
             <div class="container">
-                <span class="subheading">How it works</span>
-                <h2 class="heading-secondary">
-                    Your daily dose of health in 3 simple steps
-                </h2>
+              <span class="subheading">How it works</span>
+              <h2 class="heading-secondary">
+                Your daily dose of health in 3 simple steps
+              </h2>
             </div>
             <div class="container grid grid--2-cols grid--center-v">
-                <!-- STEP 01 -->
-                <div class="step-text-box">
-                    <p class="step-number">01</p>
-                    <h3 class="heading-tertiary">
-                        Tell us what you like (and what not)
-                    </h3>
-                    <p class="step-description">
-                        Never again waste time thinking about what to eat! Omnifood AI will create a 100% personalized
-                        weekly meal plan just for you. It makes sure you get all the nutrients and vitamins you need, no
-                        matter what diest you follow!
-                    </p>
-                </div>
-                <div class="step-img-box">
-                    <img src="img/app/app-screen-1.png" srcset="img/app/app-screen-1.png" class="step-img"
-                        alt="iPhone App Preferences Selection Screen" loading="lazy" />
-                </div>
-                <!-- STEP 02 -->
-                <div class="step-img-box">
-                    <img srcset="img/app/app-screen-2.webp" src="img/app/app-screen-2.png" class="step-img"
-                        alt="iPhone App Meal Approving Plan Screen" loading="lazy" />
-                </div>
-                <div class="step-text-box">
-                    <p class="step-number">02</p>
-                    <h3 class="heading-tertiary">
-                        Approve your weekly meal plan
-                    </h3>
-                    <p class="step-description">
-                        Once per week, approve the meal plan generated for you by Omnifood AI. You can change
-                        ingredients, swap entire meals, or even add your own recipes.
-                    </p>
-                </div>
-                <!-- STEP 03 -->
-                <div class="step-text-box">
-                    <p class="step-number">03</p>
-                    <h3 class="heading-tertiary">
-                        Receive meals at convenient time
-                    </h3>
-                    <p class="step-description">
-                        Best chefs in town will cook your selected meal every day, and we will deliver it to your door
-                        whenever works best for you. You can change delivery schedule and address daily!
-                    </p>
-                </div>
-                <div class="step-img-box">
-                    <img src="img/app/app-screen-3.png" srcset="img/app/app-screen-3.webp" class="step-img"
-                        alt="iPhone App Delivery Screen" loading="lazy" />
-                </div>
+              <!-- STEP 01 -->
+              <div class="step-text-box right">
+                <p class="step-number">01</p>
+                <h3 class="heading-tertiary">Tell us what you like (and what not)</h3>
+                <p class="step-description">
+                  Never again waste time thinking about what to eat! Omnifood AI will create a 100% personalized weekly meal plan just for you. It makes sure you get all the nutrients and vitamins you need, no matter what diet you follow!
+                </p>
+              </div>
+              <div class="step-img-box left">
+                <img src="img/app/app-screen-1.png" class="step-img" alt="iPhone App Preferences Selection Screen" loading="lazy" />
+              </div>
+              <!-- STEP 02 -->
+              <div class="step-img-box right">
+                <img src="img/app/app-screen-2.png" class="step-img" alt="iPhone App Meal Approving Plan Screen" loading="lazy" />
+              </div>
+              <div class="step-text-box left">
+                <p class="step-number">02</p>
+                <h3 class="heading-tertiary">Approve your weekly meal plan</h3>
+                <p class="step-description">
+                  Once per week, approve the meal plan generated for you by Omnifood AI. You can change ingredients, swap entire meals, or even add your own recipes.
+                </p>
+              </div>
+              <!-- STEP 03 -->
+              <div class="step-text-box right">
+                <p class="step-number">03</p>
+                <h3 class="heading-tertiary">Receive meals at convenient time</h3>
+                <p class="step-description">
+                  Best chefs in town will cook your selected meal every day, and we will deliver it to your door whenever works best for you. You can change delivery schedule and address daily!
+                </p>
+              </div>
+              <div class="step-img-box left">
+                <img src="img/app/app-screen-3.png" class="step-img" alt="iPhone App Delivery Screen" loading="lazy" />
+              </div>
             </div>
-        </section>
+          </section>
+          
+          <script>
+            function handleScrollAnimations() {
+              const elements = document.querySelectorAll(".step-img-box, .step-text-box");
+              elements.forEach((el) => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.8 && rect.bottom > 0) {
+                  el.classList.add("visible");
+                } else {
+                  el.classList.remove("visible"); // Makes animation repeatable
+                }
+              });
+            }
+          
+            document.addEventListener("scroll", handleScrollAnimations);
+            document.addEventListener("DOMContentLoaded", handleScrollAnimations);
+          </script>
+        
         <section class="section-meals" id="meals">
             <div class="container center-text">
                 <span class="subheading">Meals</span>
@@ -363,52 +386,77 @@
             <div class="container all-recipes">
                 <a href="#" class="link" aria-label="See all available recipes">See all recipes &rarr;</a>
             </div>
-        </section>
+        </section>  
         <section class="section-testimonials" id="testimonials">
             <div class="testimonials-container">
-                <span class="subheading">Testimonials</span>
-                <h2 class="heading-secondary">
-                    Once you try it, you can't go back
-                </h2>
-                <div class="testimonials">
-                    <figure class="testimonial">
-                        <img class="testimonial-img" src="img/customers/jane.jpg" srcset="img/customers/dave.webp"
-                            alt="Photo of customer Dave Bryson" loading="lazy" />
-                        <blockquote class="testimonial-text">
-                            Inexpensive, healthy and great-tasting meals, without even having to order manually! It
-                            feels truly magical.
-                        </blockquote>
-                        <p class="testimonial-name">&mdash; Dave Bryson</p>
-                    </figure>
-                    <figure class="testimonial">
-                        <img class="testimonial-img" src="img/customers/ben.jpg" srcset="img/customers/ben.webp"
-                            alt="Photo of customer Ben Hadley" loading="lazy" />
-                        <blockquote class="testimonial-text">
-                            The AI algorithm is crazy good, it chooses the right meals for me every time. It's amazing
-                            not to worry about food anymore!
-                        </blockquote>
-                        <p class="testimonial-name">&mdash; Ben Hadley</p>
-                    </figure>
-                    <figure class="testimonial">
-                        <img class="testimonial-img" src="img/customers/steve.jpg" srcset="img/customers/steve.webp"
-                            loading="lazy" alt="Photo of customer Steve Miller" />
-                        <blockquote class="testimonial-text">
-                            Omnifood is a life saver! I just started a company, so there's no time for cooking. I
-                            couldn't live without my daily meals now!
-                        </blockquote>
-                        <p class="testimonial-name">&mdash; Steve Miller</p>
-                    </figure>
-                    <figure class="testimonial">
-                        <img class="testimonial-img" src="img/customers/hannah.jpg" srcset="img/customers/hannah.webp"
-                            loading="lazy" alt="Photo of customer Hannah Smith" />
-                        <blockquote class="testimonial-text">
-                            I got Omnifood for the whole family, and it frees up so much time! Plus, everything is
-                            organic and vegan and without plastic.
-                        </blockquote>
-                        <p class="testimonial-name">&mdash; Hannah Smith</p>
-                    </figure>
-                </div>
+              <span class="subheading">Testimonials</span>
+              <h2 class="heading-secondary">Once you try it, you can't go back</h2>
+              <div class="testimonials-grid">
+                <figure class="testimonial">
+                  <img class="testimonial-img" src="img/customers/dave.jpg" alt="Dave Bryson" loading="lazy" />
+                  <blockquote class="testimonial-text">Inexpensive, healthy and great-tasting meals, without even having to order manually! It feels truly magical.</blockquote>
+                  <p class="testimonial-name">&mdash; Dave Bryson</p>
+                </figure>
+                <figure class="testimonial">
+                  <img class="testimonial-img" src="img/customers/ben.jpg" alt="Ben Hadley" loading="lazy" />
+                  <blockquote class="testimonial-text">The AI algorithm is crazy good, it chooses the right meals for me every time. It's amazing not to worry about food anymore!</blockquote>
+                  <p class="testimonial-name">&mdash; Ben Hadley</p>
+                </figure>
+                <figure class="testimonial">
+                  <img class="testimonial-img" src="img/customers/steve.jpg" alt="Steve Miller" loading="lazy" />
+                  <blockquote class="testimonial-text">Omnifood is a life saver! I just started a company, so there's no time for cooking. I couldn't live without my daily meals now!</blockquote>
+                  <p class="testimonial-name">&mdash; Steve Miller</p>
+                </figure>
+                <figure class="testimonial">
+                  <img class="testimonial-img" src="img/customers/hannah.jpg" alt="Hannah Smith" loading="lazy" />
+                  <blockquote class="testimonial-text">I got Omnifood for the whole family, and it frees up so much time! Plus, everything is organic and vegan and without plastic.</blockquote>
+                  <p class="testimonial-name">&mdash; Hannah Smith</p>
+                </figure>
+              </div>
             </div>
+          </section>
+          
+          <style>
+            .testimonials-container {
+              max-width: 1100px;
+              margin: auto;
+              text-align: center;
+              padding: 4rem 2rem;
+            }
+            .testimonials-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+              gap: 20px;
+              margin-top: 2rem;
+            }
+            .testimonial {
+              background: #fff;
+              padding: 20px;
+              border-radius: 12px;
+              box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+              transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            }
+            .testimonial:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            }
+            .testimonial-img {
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              margin-bottom: 10px;
+            }
+            .testimonial-text {
+              font-size: 1.1rem;
+              color: #555;
+              margin-bottom: 10px;
+            }
+            .testimonial-name {
+              font-size: 1rem;
+              font-weight: bold;
+              color: #333;
+            }
+          </style>
             <div class="gallery">
                 <figure class="gallery-item">
 
