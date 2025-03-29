@@ -36,50 +36,51 @@ function removeEventListeners() {
 
 function toggleNav(e) {
     e.stopPropagation(); // Prevent click from bubbling to document
-    if (window.innerWidth <= 944) { // Only toggle nav in mobile view
-        headerEl.classList.toggle("nav-open"); // Toggle the "nav-open" class
-        if (headerEl.classList.contains("nav-open")) {  // If nav is closed
-        } else {
-            closeNavbar(); // Close the navbar
-        }
+    headerEl.classList.toggle("nav-open");
+    if (headerEl.classList.contains("nav-open")) {
+        openNavbar();
+    } else {
+        closeNavbar();
+    }
+}
+
+// Handle resize to reset nav and scrolling when switching to desktop view
+function handleResize() {
+    if (window.innerWidth > 944) { // Breakpoint for mobile navigation
+        headerEl.classList.remove("nav-open");
+        closeNavbar(); // Ensure scrolling is re-enabled
     }
 }
 
 // Add click handler to close mobile nav when clicking outside
-document.addEventListener("click", function (e) {
-    function closeNavOnClickOutside(e) {
-        // Close nav if clicking outside nav and nav is open
-        if (headerEl.classList.contains("nav-open") &&
-            !mainNav.contains(e.target) &&
-            !btnNavEl.contains(e.target)) {
-            headerEl.classList.remove("nav-open");
-            closeNavbar();
-        }
+function closeNavOnClickOutside(e) {
+    if (
+        headerEl.classList.contains("nav-open") &&
+        !mainNav.contains(e.target) &&
+        !btnNavEl.contains(e.target)
+    ) {
+        headerEl.classList.remove("nav-open");
+        closeNavbar();
     }
+}
 
-    function preventNavClose(e) {
-        e.stopPropagation();
+// Prevent nav close when clicking inside the nav
+function preventNavClose(e) {
+    e.stopPropagation();
+}
+
+// Attach event listeners
+btnNavEl.addEventListener("click", toggleNav);
+document.addEventListener("click", closeNavOnClickOutside);
+mainNav.addEventListener("click", preventNavClose);
+window.addEventListener("resize", handleResize);
+
+// Close nav on Escape key press
+document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && headerEl.classList.contains("nav-open")) {
+        headerEl.classList.remove("nav-open");
+        closeNavbar();
     }
-
-    // Handle resize to reset nav and scrolling when switching to desktop view
-    function handleResize() {
-        if (window.innerWidth > 944) { // Breakpoint for mobile navigation
-            headerEl.classList.remove('nav-open');
-            closeNavbar(); // Ensure scrolling is re-enabled
-        }
-    }
-
-    // Listen for window resize
-    window.addEventListener("resize", handleResize);
-
-    // Attach event listeners
-    btnNavEl.addEventListener("click", toggleNav);
-    document.addEventListener("click", closeNavOnClickOutside);
-    mainNav.addEventListener("click", preventNavClose);
-    window.addEventListener('resize', handleResize);
-
-    // Call removeEventListeners() when needed to clean up
-    // Example: removeEventListeners() when unmounting a component in a SPA
 });
 
 ///////////////////////////////////////////////////

@@ -78,11 +78,18 @@ html {
 }
 
 body {
-    font-family: "Rubik",sans-serif;
+    font-family: "Rubik", sans-serif;
     line-height: 1;
     font-weight: 400;
-    color: #555;
+    color: #333; /* Changed from #555 to #333 for better contrast */
     overflow-x: hidden;
+}
+
+/* Utility class for consistent spacing */
+:root {
+    --spacing-large: 9.6rem;
+    --spacing-medium: 4.8rem;
+    --spacing-small: 1.6rem;
 }
 
 /*******************************************/
@@ -108,7 +115,7 @@ body {
 }
 
 .heading-primary, .heading-secondary, .heading-tertiary{
-    color: #333;
+    color: #333; /* Ensure consistent contrast for headings */
     /* color: #45260a; */
     /* color: #343a40; */
     letter-spacing: -0.5px;
@@ -140,7 +147,7 @@ body {
 
 .btn--outline:link, .btn--outline:visited {
     background-color: #fff;
-    color: #555;
+    color: #333; /* Changed from #555 to #333 for better contrast */
 }
 
 .btn--outline:hover, .btn--outline:active {
@@ -154,11 +161,12 @@ body {
     color: #fdf2e9;
     align-self: end;
     padding: 1.2rem;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .btn--form:hover {
     background-color: #fff;
-    color: #555;
+    color: #333; /* Changed from #555 to #333 for better contrast */
 }
 
 .grid {
@@ -173,7 +181,7 @@ body {
 } */
 
 .grid:not(:last-child) {
-    margin-bottom: 9.6rem;
+    margin-bottom: var(--spacing-large);
 }
 
 .grid--2-cols {
@@ -251,6 +259,7 @@ body {
     align-items: center;
     gap: 1.6rem;
     line-height: 1.2;
+    color: #333; /* Changed from #555 to #333 for better contrast */
 }
 
 .no-flexbox-gap .list-item {
@@ -272,4 +281,63 @@ strong {
 
 .text-center {
     text-align: center;
+}
+
+#scrollBtn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: #e67e22;
+    color: #fff;
+    padding: 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+}
+
+#scrollBtn ion-icon {
+    font-size: 2.4rem;
+}
+
+#scrollBtn:hover {
+    background-color: #cf711f;
+    transform: scale(1.1);
+}
+
+#scrollBtn.rotate {
+    transform: rotate(360deg);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+#scrollBtn.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+#scrollBtn[aria-label]::before {
+    content: attr(aria-label);
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Define .meal-container utility class */
+.meal-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-medium);
+    justify-content: center;
+    align-items: flex-start;
 }
