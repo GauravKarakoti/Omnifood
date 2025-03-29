@@ -37,6 +37,7 @@
 @media (max-width: 75rem) {
     html {
         font-size: 56.25%;
+        color: #333; /* Ensure consistent contrast */
     }
 
     .heading-secondary {
@@ -102,6 +103,7 @@
 
     .hero-description {
         font-size: 1.6rem;
+        color: #333; /* Changed from #555 to #333 for better contrast */
     }
 
     .delivered-meals {
@@ -110,6 +112,7 @@
     }
     .delivered-text {
         font-size: 1.4rem;
+        color: #333; /* Changed from #555 to #333 for better contrast */
     }
 }
 
@@ -230,6 +233,16 @@
 }
 
 /*******************************************/
+/* BELOW 800px (Fix Pricing Section Grid) */
+/*******************************************/
+@media (max-width: 50rem) {
+    .pricing-plan {
+        width: 100%; /* Ensure full width for pricing plans */
+        margin-bottom: 2.4rem; /* Add spacing between plans */
+    }
+}
+
+/*******************************************/
 /* BELOW 768px (Tablets) */
 /*******************************************/
 
@@ -300,6 +313,12 @@
     }
     .cta-text-box {
         padding: 3.2rem;
+    }
+
+    .meal-container {
+        gap: var(--spacing-small);
+        justify-content: center;
+        align-items: center;
     }
 }
 /* Responsive Form */
@@ -409,6 +428,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        
         align-items: center;
     }
     
@@ -435,6 +455,7 @@
 
     .testimonial-text{
         font-size: 5vw;
+        color: #333; /* Changed from #555 to #333 for better contrast */
     }
 
     .testimonial-name{
@@ -524,7 +545,6 @@
         }
     }
 
-
 @media (max-width: 944px) {
     .main-nav {
         position: fixed;
@@ -544,6 +564,34 @@
     .header.nav-open .main-nav {
         right: 0;
         transform: translateX(0);
+    }
+}
+
+@media (orientation: landscape) and (max-width: 48rem) {
+    .hero {
+        grid-template-columns: 1fr 1fr; /* Adjust for landscape */
+    }
+}
+
+/* Tablet Landscape Orientation (768x1024) */
+@media (max-width: 48rem) and (orientation: landscape) {
+    .hero {
+        grid-template-columns: 1fr 1fr; /* Two-column layout for landscape */
+        gap: 3.2rem; /* Adjust gap for better spacing */
+    }
+
+    .cta {
+        grid-template-columns: 1fr; /* Single column layout for CTA */
+        text-align: center; /* Center-align text */
+    }
+
+    .cta-img-box {
+        height: 28rem; /* Adjust height for better fit */
+    }
+
+    .pricing-plan {
+        width: 90%; /* Reduce width for better fit */
+        margin: 0 auto; /* Center-align pricing plans */
     }
 }
 

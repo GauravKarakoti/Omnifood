@@ -1,117 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Omnifood is an AI-powered food subscription that will make you eat healthy again, 365 days per year. It's tailored to your personal tastes and nutritional needs.">
+        <link rel="icon" href="img/favicon.webp" />
+        <link rel="apple-touch-icon" href="img/apple-touch-icon.webp" />
+        <link rel="manifest" href="manifest.webmanifest" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/general.css" />
+        <!-- ================================================== -->
+        <link rel="stylesheet" href="css/addtional.css" />
+        <link rel="stylesheet" href="css/CTA.css" />
+        <link rel="stylesheet" href="css/feature_how.css" />
+        <link rel="stylesheet" href="css/fontqueries.css" />
+        <link rel="stylesheet" href="css/footer.css" />
+        <link rel="stylesheet" href="css/herosection.css" />
+        <link rel="stylesheet" href="css/location_navbar.css" />
+        <link rel="stylesheet" href="css/meals.css" />
+        <link rel="stylesheet" href="css/navigation.css" />
+        <link rel="stylesheet" href="css/pricing.css" />
+        <link rel="stylesheet" href="css/scrollbtn.css" />
+        <link rel="stylesheet" href="css/testimonials.css" />
+        <!-- ===================== -->
+        <link rel="stylesheet" href="css/queries.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <script defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <script defer src="js/script.js"></script>
+        <script defer src="js/service-worker.js"></script>
+        <title>OmniFood &mdash; Never cook again</title>
+        
+        <!-- Open Graph Meta Tags (for Facebook, LinkedIn, etc.) -->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Omnifood - Never Cook Again!" />
+        <meta property="og:description" content="AI-powered meal plans that ensure healthy, hassle-free eating. Subscribe today and let Omnifood handle your nutrition!" />
+        <meta property="og:image" content="https://omnifood-meal-available.netlify.app/omnifood-logo.avif" />
+        <meta property="og:url" content="https://omnifood-meal-available.netlify.app/" />
+        <meta property="og:site_name" content="Omnifood" />
+        
+        <!-- Instagram Meta Tags (Optional) -->
+        <meta property="ig:app_id" content="gaurav._.karakoti" />
+        
+        <!-- Twitter Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Omnifood - Never Cook Again!" />
+        <meta name="twitter:description" content="AI-powered meal plans that ensure healthy, hassle-free eating. Subscribe today and let Omnifood handle your nutrition!" />
+        <meta name="twitter:image" content="https://omnifood-meal-available.netlify.app/omnifood-logo.avif" />
+        <meta name="twitter:site" content="@GauravKara_Koti" />
+        <meta name="twitter:creator" content="@GauravKara_Koti" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Omnifood is an AI-powered food subscription that will make you eat healthy again, 365 days per year. It's tailored to your personal tastes and nutritional needs.">
-    <link rel="icon" href="img/favicon.webp" />
-    <link rel="apple-touch-icon" href="img/apple-touch-icon.webp" />
-    <link rel="manifest" href="/manifest.webmanifest" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="css/general.css" />
-    <link rel="stylesheet" href="css/queries.css" />
-    <!-- ================================================== -->
-    <link rel="stylesheet" href="css/addtional.css" />
-    <link rel="stylesheet" href="css/CTA.css" />
-    <link rel="stylesheet" href="css/feature_how.css" />
-    <link rel="stylesheet" href="css/fontqueries.css" />
-    <link rel="stylesheet" href="css/footer.css" />
-    <link rel="stylesheet" href="css/herosection.css" />
-    <link rel="stylesheet" href="css/location_navbar.css" />
-    <link rel="stylesheet" href="css/meals.css" />
-    <link rel="stylesheet" href="css/navigation.css" />
-    <link rel="stylesheet" href="css/pricing.css" />
-    <link rel="stylesheet" href="css/scrollbtn.css" />
-    <link rel="stylesheet" href="css/testimonials.css" />
-    <!-- ===================== -->
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-    <script defer src="js/script.js"></script>
-    <script defer src="/serviceworker.js"></script>
-    <title>OmniFood &mdash; Never cook again</title>
-
-    <!-- Open Graph Meta Tags (for Facebook, LinkedIn, etc.) -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Omnifood - Never Cook Again!" />
-    <meta property="og:description"
-        content="AI-powered meal plans that ensure healthy, hassle-free eating. Subscribe today and let Omnifood handle your nutrition!" />
-    <meta property="og:image" content="https://omnifood-meal-available.netlify.app/omnifood-logo.avif" />
-    <meta property="og:url" content="https://omnifood-meal-available.netlify.app/" />
-    <meta property="og:site_name" content="Omnifood" />
-
-    <!-- Instagram Meta Tags (Optional) -->
-    <meta property="ig:app_id" content="gaurav._.karakoti" />
-
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Omnifood - Never Cook Again!" />
-    <meta name="twitter:description"
-        content="AI-powered meal plans that ensure healthy, hassle-free eating. Subscribe today and let Omnifood handle your nutrition!" />
-    <meta name="twitter:image" content="https://omnifood-meal-available.netlify.app/omnifood-logo.avif" />
-    <meta name="twitter:site" content="@GauravKara_Koti" />
-    <meta name="twitter:creator" content="@GauravKara_Koti" />
-
-</head>
-
-<body>
-    <header class="header">
-        <a href="#" aria-label="Go to home">
-            <picture>
-                <source class="logo" srcset="img/omnifood-logo.avif" type="image/avif" />
-                <img class="logo" src="img/omnifood-logo.png" alt="Omnifood Logo">
-            </picture>
-        </a>
-
-        <nav class="navbar">
-            <ul class="navbar-list">
-                <!-- Search Bar -->
-                <div class="search-box">
-                    <input type="text" class="search-field" placeholder="Type to Search...">
-                    <img src="img/magnifying-glass-solid.svg" alt="Search" class="search-icon">
-                </div>
-
-                <!-- Location Section -->
-                <div class="location-box">
-                    <img src="img/location-dot-solid.svg" alt="Location" class="location-icon">
-                    <span class="location-text">Delhi, India</span>
-                    <input type="text" class="location-field" placeholder="Enter location..." id="location-input">
-                </div>
-
-                <li><a href="#how" class="navbar-link">How it works</a></li>
-                <li><a href="#meals" class="navbar-link">Meals</a></li>
-                <li><a href="#testimonials" class="navbar-link">Testimonials</a></li>
-                <li><a href="#pricing" class="navbar-link">Pricing</a></li>
-                <li><a href="./login/login.html" class="navbar-link auth">Login</a></li>
-                <li><a href="#cta" id="try-for-free" class="navbar-link navbar-cta">Try for free</a></li>
-            </ul>
-        </nav>
-
-        <button class="btn-mobile-nav" id="mobile-menu-btn">
+        <style>
+            /* Critical CSS for above-the-fold content */
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background-color: #fdf2e9;
+                height: 8rem;
+                padding: 0 4.8rem;
+            }
+            .btn {
+                display: inline-block;
+                padding: 1rem 2rem;
+                font-size: 1.6rem;
+                border-radius: 25px;
+                transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            }
+            .btn:hover {
+                transform: scale(1.05);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            }
+        </style>
+    </head>
+    <body>
+        <header class="header">
+            <a href="#">
+                <picture>
+                    <source class="logo" srcset="img/omnifood-logo.avif" type="image/avif" />
+                    <img class="logo" alt="Omnifood Logo" src="img/omnifood-logo.png" />
+                </picture>
+            </a>
+            <nav class="main-nav">
+                <ul class="main-nav-list">
+                    <li><a href="#how" class="main-nav-link">How it works</a></li>
+                    <li><a href="#meals" class="main-nav-link">Meals</a></li>
+                    <li><a href="#testimonials" class="main-nav-link">Testimonials</a></li>
+                    <li><a href="#pricing" class="main-nav-link">Pricing</a></li>
+                    <li><a href="./login/login.html" class="main-nav-link auth">Login</a></li>
+                    <li><a href="#cta" id="try-for-free" class="main-nav-link nav-cta">Try for free</a></li>
+                </ul>
+            </nav>
+            <button class="btn-mobile-nav" id="mobile-menu-btn">
             ☰
-        </button>
-    </header>
-
-    <!-- Mobile Navigation Menu -->
-    <nav class="mobile-nav">
-        <ul class="mobile-nav-list">
-            <li><a href="#how" class="mobile-nav-link">How it works</a></li>
-            <li><a href="#meals" class="mobile-nav-link">Meals</a></li>
-            <li><a href="#testimonials" class="mobile-nav-link">Testimonials</a></li>
-            <li><a href="#pricing" class="mobile-nav-link">Pricing</a></li>
-            <li><a href="./login/login.html" class="mobile-nav-link">Login</a></li>
-            <li><a href="#cta" class="mobile-nav-link mobile-cta">Try for free</a></li>
-        </ul>
-    </nav>
-    
+            </button>
+        </header>
     <main>
         <section class="section-hero">
             <div class="hero">
@@ -155,20 +140,21 @@
                                     alt="Customer with a neutral expression and relaxed posture" loading="lazy" />
                             </picture>
                         </div>
-                        <p class="delivered-text">
-                            <span>250,000+</span> meals delivered last year!
-                        </p>
                     </div>
                 </div>
                 <div class="hero-image-box">
                     <picture>
                         <source srcset="img/hero-min.webp" type="image/webp">
-                        <img src="img/hero-min.jpg" class="hero img"
-                            alt="Woman enjoying food, a bowl of healthy meal and fresh fruits" loading="lazy" />
+                        <img 
+                            src="img/hero-min.webp" 
+                            class="hero img"
+                            alt="Woman enjoying food, a bowl of healthy meal and Fresh fruits"
+                        />
                     </picture>
                 </div>
             </div>
         </section>
+            
         <section class="section-featured">
             <div class="container">
                 <h2 class="heading-featured-in">As featured in</h2>
@@ -863,10 +849,40 @@
             scrollBtn.classList.toggle("visible", window.scrollY > 50);
         });
 
-        scrollBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            scrollToTop();
-        })
+
+    const mobileNav = document.querySelector('.main-nav');
+    const btnMobileNav = document.querySelector('.btn-mobile-nav');
+    const focusableElements = 'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    let firstFocusableElement, lastFocusableElement;
+
+    btnMobileNav.addEventListener('click', () => {
+        mobileNav.classList.toggle('nav-open');
+        document.body.classList.toggle('no-scroll');
+
+        if (mobileNav.classList.contains('nav-open')) {
+            const focusable = mobileNav.querySelectorAll(focusableElements);
+            firstFocusableElement = focusable[0];
+            lastFocusableElement = focusable[focusable.length - 1];
+
+            firstFocusableElement.focus();
+
+            mobileNav.addEventListener('keydown', trapFocus);
+        } else {
+            mobileNav.removeEventListener('keydown', trapFocus);
+        }
+    });
+
+    function trapFocus(e) {
+        if (e.key === 'Tab') {
+            if (e.shiftKey && document.activeElement === firstFocusableElement) {
+                e.preventDefault();
+                lastFocusableElement.focus();
+            } else if (!e.shiftKey && document.activeElement === lastFocusableElement) {
+                e.preventDefault();
+                firstFocusableElement.focus();
+            }
+        }
+    }
 
         function scrollToTop() {
             scrollBtn.classList.add("rotate");
