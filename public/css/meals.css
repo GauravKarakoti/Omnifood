@@ -1,158 +1,71 @@
-/*******************************************/
-/* MEALS SECTION */
-/*******************************************/
+.meal {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
 
-.section-meals {
-    padding: 9.6rem 0;
+.meal:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .meal-img {
     width: 100%;
-    height: 60%;
+    display: block;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.meal-content {
+    padding: 20px;
+    text-align: center;
 }
 
 .meal-title {
-    font-size: 2.4rem;
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 10px;
     color: #333;
-    font-weight: 600;
-    margin-bottom: 3.2rem;
-}
-
-.meal-attribute {
-    font-size: 1.8rem;
-    display: flex;
-    align-items: center;
-    gap: 1.6rem;
-}
-
-.no-flexbox-gap .meal-attribute {
-    margin-inline: 1.6rem;
 }
 
 .meal-attributes {
     list-style: none;
+    padding: 0;
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    justify-content: center;
+    gap: 15px;
 }
 
-.no-flexbox-gap .meal-attributes {
-    margin-inline: 2rem;
+.meal-attribute {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.2rem;
+    color: #555;
 }
 
 .meal-icon {
-    height: 2.4rem;
-    color: #e67e22;
+    font-size: 1.5rem;
+    color: #ff8c00;
 }
 
-.tag {
+
+.meal-tag .tag {
     display: inline-block;
-    padding: 0.4rem 0.8rem;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    color: #333;
-    border-radius: 100px;
-    font-weight: 600;
+    background: #ff8c00;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-.tag--vegetarian {
-    background-color: #51cf66;
-}
 
-.tag--vegan {
-    background-color: #94d82d;
-}
-
-.tag--paleo {
-    background-color: #ffd43b;
-}
-
-.meal-tag {
-    margin-bottom: 1.2rem;
-    display: flex;
-    gap: 0.4rem;
-}
-
-.no-flexbox-gap .meal-tag {
-    margin-inline: 0.4rem;
-}
-
-.meal {
-    box-shadow: 0 2.4rem 4.8rem rgba(0,0,0,0.075);
-    border-radius: 11px;
-    overflow: hidden;
-    transition: all var(--animation-duration-short) ease-in-out;
-}
-
-.meal:hover {
-    transform: translateY(-1.2rem);
-    box-shadow: 0 3.2rem 6.4rem rgba(0,0,0,0.06);
-}
-
-.meal-content {
-    padding: 3.2rem 4.8rem 4.8rem 4.8rem;
-}
-
-.all-recipes {
-    text-align: center;
-    font-size: 1.8rem;
-}
-
-.meal-img {
-    width: 100%;
-    height: 60%;
-    aspect-ratio: 4/3; /* Changed from 16/9 for taller images */
-    object-fit: cover;
-    height: 250px; /* Fixed height for consistency */
-}
-
-.meal-title {
-/* @@ -485,6 +488,7 @@ */
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-top: auto; /* Push attributes to bottom */
-}
-
-.no-flexbox-gap .meal-title {
-    margin-inline: 2rem;
-}
-
-.meal-icon { 
-/* @@ -520,7 +524,11 @@ */ 
-    gap: 0.4rem;
-}
-
-.no-flexbox-gap .meal-tag {
-    margin-inline: 0.4rem;
-}
-
-/* Ensure meal card layout remains flexible */
-.meal {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    box-shadow: 0 2.4rem 4.8rem rgba(0,0,0,0.075);
-    border-radius: 11px;
-    overflow: hidden;}
-/* @@ -534,13 +542,24 @@ */
-
-.meal-content {
-    padding: 3.2rem 4.8rem 4.8rem 4.8rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.all-recipes {
-    text-align: center;
-    font-size: 1.8rem;
-}
-
-/* Update meals grid container if needed */
-.grid--3-cols {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4.8rem;
-    align-items: stretch; /* Stretch items to same height */
+.meal:hover .meal-tag .tag {
+    background: white; 
+    color: #ff8c00; 
+    border: 1px solid #ff8c00; 
 }
