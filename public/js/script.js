@@ -490,3 +490,32 @@ document.addEventListener("DOMContentLoaded", function () {
     updateHeroHeight();
     window.addEventListener('resize', updateHeroHeight);
 });
+document.addEventListener("click", function (event) {
+    const locationBox = document.querySelector(".location-box");
+    const locationInput = document.querySelector("#location-input");
+
+    if (locationBox.contains(event.target)) {
+        // Show input field when clicking inside the location-box
+        locationInput.style.display = "block";
+    } else {
+        // Hide input field when clicking outside
+        locationInput.style.display = "none";
+    }
+});
+// Toggle Mobile Navigation Menu
+// Toggle Mobile Navigation Menu
+document.getElementById("mobile-menu-btn").addEventListener("click", function () {
+    document.querySelector(".mobile-nav").classList.toggle("show");
+});
+
+// Toggle Location Input on Click
+document.querySelector(".location-box").addEventListener("click", function (event) {
+    let locationInput = document.getElementById("location-input");
+    
+    // Show input and focus when clicked
+    locationInput.style.display = "block";
+    locationInput.focus();
+    
+    // Prevent event from bubbling up (so it doesn't immediately close)
+    event.stopPropagation();
+});
