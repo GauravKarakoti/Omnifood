@@ -112,6 +112,49 @@ async function aggregateClicks(interval) {
 cron.schedule("0 * * * *", () => aggregateClicks("hourly"));   // Every hour
 cron.schedule("0 0 * * *", () => aggregateClicks("daily"));    // Every day at midnight
 
+// Periodic flush every 10 seconds
+setInterval(async () => {
+  if (bulkOps.length > 0) {
+    try {
+      await Click.bulkWrite(bulkOps);
+      console.log(`✅ Periodic flush executed with ${bulkOps.length} operations`);
+      bulkOps = [];
+    } catch (error) {
+      console.error("❌ Periodic flush error:", error);
+    }
+  }
+}, 60000); // Runs every 60 seconds
+
+// Flush remaining clicks before shutdown
+async function flushBeforeExit() {
+  if (bulkOps.length > 0) {
+    try {
+      await Click.bulkWrite(bulkOps);
+      console.log(`✅ Final flush executed with ${bulkOps.length} operations before exit`);
+    } catch (error) {
+      console.error("❌ Final flush error:", error);
+    }
+  }
+}
+
+// Graceful shutdown
+process.on("SIGINT", async () => {
+  console.log("\n🚨 SIGINT received. Flushing remaining clicks...");
+  await flushBeforeExit();
+  process.exit(0);
+});
+
+process.on("SIGTERM", async () => {
+  console.log("\n🚨 SIGTERM received. Flushing remaining clicks...");
+  await flushBeforeExit();
+  process.exit(0);
+});
+
+process.on("exit", async () => {
+  console.log("\n🔄 Process exiting. Flushing remaining clicks...");
+  await flushBeforeExit();
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
