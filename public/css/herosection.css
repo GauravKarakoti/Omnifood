@@ -33,7 +33,9 @@
 /* ================= HERO IMAGE ================= */
 .hero img {
     width: 100%;
-    max-width: 500px; /* Add max-width constraint */
+    height: auto;
+    aspect-ratio: 3 / 2; /* Maintain aspect ratio */
+    object-fit: cover;
 }
 
 /* ================= TEXT AND BUTTONS ================= */

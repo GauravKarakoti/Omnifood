@@ -1,11 +1,16 @@
 /*******************************************/
 /* HEADER */
 /*******************************************/
-remove 
 :root {
     --animation-duration-short: 0.3s;
     --animation-duration-medium: 0.4s;
     --animation-duration-long: 1s;
+    --nav-bg-color: rgba(255, 255, 255, 0.97);
+    --nav-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+    --nav-link-color: #333; /* Ensure sufficient contrast */
+    --nav-link-hover-color: #cf711f;
+    --focus-outline: 2px solid #ff8000;
+    --focus-outline-offset: 4px;
 }
 
 .logo {
@@ -83,7 +88,7 @@ remove
 /* Basic styles */
 .main-nav-link:link, .main-nav-link:visited {
     text-decoration: none;
-    color: #333;
+    color: var(--nav-link-color);
     font-weight: 500;
     font-size: 1.8rem;
     transition: all var(--animation-duration-short) ease-in-out;
@@ -111,34 +116,45 @@ remove
 
 /* Scaling and color transition */
 .main-nav-link:hover, .main-nav-link:active {
-    color: #cf711f;
+    color: var(--nav-link-hover-color);
     transform: scale(1.1);
     transition: all var(--animation-duration-short) ease-in-out;
 }
 
+.main-nav-link:focus {
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
+    box-shadow: none;
+}
+
 /* Call-to-action (CTA) button */
-.main-nav-link.nav-cta:link, .main-nav-link.nav-cta:visited {
+.nav-cta {
     padding: 1.2rem 2.4rem;
     border-radius: 9px;
     color: #fff;
     background-color: #e67e22;
     transition: all var(--animation-duration-short) ease-in-out;
+    -webkit-transition: all var(--animation-duration-short) ease-in-out;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 /* Hover effect for CTA */
-.main-nav-link.nav-cta:hover, .main-nav-link.nav-cta:active {
+.nav-cta:hover {
     background-color: #cf711f;
     transform: translateY(-2px);
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    -webkit-transform: translateY(-2px);
     transition: all var(--animation-duration-short) ease-in-out;
+    -webkit-transition: all var(--animation-duration-short) ease-in-out;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Click effect */
-.main-nav-link.nav-cta:active {
+.nav-cta:active {
     transform: translateY(1px);
+    -webkit-transform: translateY(1px);
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
     transition: all var(--animation-duration-short) ease-in-out;
+    -webkit-transition: all var(--animation-duration-short) ease-in-out;
 }
 
 /* MOBILE */
@@ -165,16 +181,17 @@ remove
 }
 
 .btn-mobile-nav:focus {
-    outline: 2px solid #ff8000; 
-    outline-offset: 2px;
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
+    box-shadow: none;
     transition: outline 0.3s ease-in-out;
 }
 
 .btn:focus {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
-    outline: 2px solid #ff8000;
-    outline-offset: 2px;
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, outline 0.3s ease-in-out;
 }
 
@@ -199,36 +216,11 @@ remove
     background-color: rgba(255, 255, 255, 0.97);
     z-index: 998;
     border-radius: 9px 0 0 9px; /* Rounded corners on left side */
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: all var(--animation-duration-medium) ease-in-out;
-}
-
-/* Ensure mobile nav overlay covers full screen */
-.header.nav-open .main-nav {
-    position: fixed;
-    top: 8rem; /* Height of header */
-    left: 20%; /* Leave space on left */
-    width: 80%; /* Take up 80% of screen width */
-    height: calc(100vh - 8rem); /* Full height minus header */
-    background-color: rgba(255, 255, 255, 0.97);
-    z-index: 998;
-    border-radius: 9px 0 0 9px; /* Rounded corners on left side */
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: all var(--animation-duration-medium) ease-in-out;
-}
-
-/* Update mobile navigation styles */
-.header.nav-open .main-nav {
-    position: fixed;
-    top: 8rem;
-    left: 100%; /* Start from outside the viewport */
-    width: 80%;
-    height: calc(100vh - 8rem);
-    background-color: rgba(255, 255, 255, 0.95); /* More translucent */
-    z-index: 998;
-    border-radius: 9px 0 0 9px;
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: all var(--animation-duration-medium) ease-in-out;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transform: translateX(0);
+    -webkit-transform: translateX(0);
+    transition: transform var(--animation-duration-medium) ease-in-out;
+    -webkit-transition: -webkit-transform var(--animation-duration-medium) ease-in-out;
     backdrop-filter: blur(10px); /* Add blur effect */
     -webkit-backdrop-filter: blur(10px);
 }
@@ -237,6 +229,7 @@ remove
 .header.nav-open .main-nav {
     left: 20%; /* Slide in from right */
     transform: translateX(0);
+    -webkit-transform: translateX(0);
 }
 
 /* Optional: Add a semi-transparent background */
@@ -271,6 +264,27 @@ remove
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+}
+
+/* Ensure responsive design for mobile navigation */
+@media (max-width: 944px) {
+    .main-nav {
+        position: fixed;
+        top: 8rem;
+        right: -100%;
+        width: 80%;
+        height: calc(100vh - 8rem);
+        background-color: var(--nav-bg-color);
+        box-shadow: var(--nav-shadow);
+        transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+    }
+
+    .header.nav-open .main-nav {
+        right: 0;
+        transform: translateX(0);
+        -webkit-transform: translateX(0);
+    }
 }
 
 /* STICKY NAVIGATION */

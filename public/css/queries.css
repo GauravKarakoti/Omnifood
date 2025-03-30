@@ -248,15 +248,38 @@
 
 @media (max-width: 48rem) {
     .hero {
+        grid-template-columns: 1fr;
         padding: 2.5rem 1.5rem;
+        text-align: center;
     }
 
     .hero img {
-        max-width: 20rem;
+        max-width: 80%;
+        height: auto;
     }
 
-    .hero-description {
-        font-size: 1.4rem;
+    .main-nav-list {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 1.2rem;
+    }
+
+    .cta {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .cta-img-box {
+        height: auto;
+    }
+
+    .pricing-plan {
+        width: 100%;
+        margin-bottom: 2rem;
     }
 
     .logos{
@@ -277,10 +300,6 @@
         padding: 0px 14px;
     }
 
-    .btn {
-        width: 100%;
-    }
-
     .delivered-imgs img {
         height: 3.5rem;
         width: 3.5rem;
@@ -290,27 +309,12 @@
         font-size: 1.2rem; 
     }
 
-    .main-nav-list {
-        flex-direction: column;
-    }
-
     .pricing-plan--complete::after {
         font-size: 1.3rem;
         top: 6%;
         right: -26%;
     }
 
-    .cta {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .cta-img-box {
-        height: 32rem;
-        grid-row: 1;
-    }
-    .cta-form {
-        grid-template-columns: 1fr;
-    }
     .cta-text-box {
         padding: 3.2rem;
     }
@@ -320,12 +324,50 @@
         justify-content: center;
         align-items: center;
     }
+
+    .btn:focus {
+        outline: 2px solid #ff8000;
+        outline-offset: 4px;
+        box-shadow: none;
+    }
+
+    .main-nav-link:focus {
+        outline: 2px solid #ff8000;
+        outline-offset: 4px;
+        box-shadow: none;
+    }
+
+    .hero-description {
+        color: #333; /* Ensure sufficient contrast */
+    }
+
+    .delivered-text {
+        color: #333; /* Ensure sufficient contrast */
+    }
+
+    .btn:hover {
+        transform: scale(1.05);
+        -webkit-transform: scale(1.05);
+        transition: transform 0.3s ease-in-out;
+        -webkit-transition: -webkit-transform 0.3s ease-in-out;
+    }
+
+    .main-nav {
+        transform: translateX(100%);
+        -webkit-transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        -webkit-transition: -webkit-transform 0.5s ease-in;
+    }
+
+    .nav-open .main-nav {
+        transform: translateX(0);
+        -webkit-transform: translateX(0);
+    }
 }
+
 /* Responsive Form */
 @media screen and (prefers-contrast: high) {
-    .cta,
-    .cta-form input,
-    .cta-form select {
+    .btn, .main-nav-link {
         border: 2px solid #000;
     }
 }
@@ -606,4 +648,5 @@
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
         box-shadow: none;
-    }}
+    }
+}
