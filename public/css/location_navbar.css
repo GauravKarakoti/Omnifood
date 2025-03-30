@@ -32,9 +32,11 @@
     width: 150px;
     height: 30px;
     margin-top: 50px;
+    transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 /* Show input on hover */
 .location-container:hover .location-input {
     display: block;
+    transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }

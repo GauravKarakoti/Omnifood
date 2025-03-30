@@ -47,7 +47,7 @@
 .pricing-plan {
     border-radius: 11px;
     width: 75%;
-    transition: transform var(--animation-duration-short) ease-in-out, box-shadow var(--animation-duration-short) ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 .pricing-plan--starter {
@@ -107,7 +107,7 @@
 
 /* Basic styles for the pricing plan */
 .pricing-plan {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 /* Hover effect for the pricing plan */
@@ -119,23 +119,23 @@
 /* Hover effect for the plan header text */
 .pricing-plan:hover .plan-header p {
     color: #00aaff; /* Change color when hovered */
-    transition: color var(--animation-duration-short) ease-in-out;
+    transition: color 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 /* Hover effect for the plan list items */
 .pricing-plan:hover .list-item {
     color: #333; /* Change text color on hover */
-    transition: color var(--animation-duration-short) ease-in-out;
+    transition: color 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 .pricing-plan:hover .list-icon {
     color: #00aaff; /* Change icon color on hover */
-    transition: color var(--animation-duration-short) ease-in-out;
+    transition: color 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 /* Change background color of the button on hover */
 .pricing-plan:hover .btn--full {
     background-color: #00aaff; /* Change button background color */
     color: #fff; /* Change button text color */
-    transition: background-color var(--animation-duration-short) ease-in-out, color var(--animation-duration-short) ease-in-out;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }

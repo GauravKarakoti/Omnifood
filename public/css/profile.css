@@ -40,6 +40,11 @@
     margin-bottom: 1rem;
     object-fit: cover;
     cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
 }
 
 .profile-info h2 {
@@ -90,7 +95,7 @@
     padding: 10px 20px;
     border-radius: 20px;
     font-size: 2rem;
-    transition: 0.3s;
+    transition: background-color 0.3s ease-in-out;
     cursor: pointer;
 }
 
@@ -106,12 +111,13 @@
     border-radius: 10px;
     margin-bottom: 1.5rem;
     overflow: hidden;
-    transition: 0.3s;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     cursor: pointer;
 }
 
 .order:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .order img {
