@@ -186,13 +186,16 @@ signUpForm.addEventListener('submit', async function (e) {
   const password = signUpPassword.value.trim();
 
   if (
-    !(password.length >= passwordConfig.minLength) &&
-    !(/[A-Z]/.test(password)) &&
-    !(/\d/.test(password)) &&
-    !(/[@$!%*?&]/.test(password))
-  ) {
-    showError(signUpPassword, 'Password must meet the requirements');
-  } else {
+    !(password.length >= passwordConfig.minLength)
+  )
+    showError(signUpPassword, 'Password must contain at least 8 characters');
+  else if (!(/[A-Z]/.test(password)))
+    showError(signUpPassword, 'Password must contain an alphabate');
+  else if (!(/\d/.test(password)))
+    showError(signUpPassword, 'Password must contain a digit');
+  else if (!(/[@$!%*?&]/.test(password)))
+    showError(signUpPassword, 'Password must contain a sepical charchater');
+  else {
     signUpPassword.classList.add('valid');
   }
 
