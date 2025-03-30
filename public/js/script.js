@@ -490,3 +490,25 @@ document.addEventListener("DOMContentLoaded", function () {
     updateHeroHeight();
     window.addEventListener('resize', updateHeroHeight);
 });
+
+function setupServiceWorker() {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/serviceworker.js')
+            .then((registration) => {
+                console.log('Service Worker registered with scope:', registration.scope);
+
+                // Listen for updates
+                registration.onupdatefound = () => {
+                    const newSW = registration.installing;
+                    newSW.onstatechange = () => {
+                        if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
+                            console.log('New content is available, please refresh.');
+                        }
+                    };
+                };
+            })
+            .catch((error) => console.error('Service Worker registration failed:', error));
+    });
+}
+
+setupServiceWorker();
