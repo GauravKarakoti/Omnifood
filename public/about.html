@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Omnifood</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="hero">
+        <div class="overlay">
+            <h1>Welcome to Omnifood</h1>
+            <p>Delivering Healthy & Delicious Meals Right to Your Doorstep</p>
+        </div>
+    </header>
+    <section class="about">
+        <div class="container">
+            <div class="text">
+                <h2>Our Story</h2>
+                <p>Omnifood is a revolutionary food delivery service focused on providing nutritious, delicious, and high-quality meals using sustainable ingredients.</p>
+            </div>
+            <div class="image">
+                <img src="food.jpg" alt="Delicious Food">
+            </div>
+        </div>
+    </section>
+    <section class="values">
+        <div class="container">
+            <h2>Our Values</h2>
+            <div class="boxes">
+                <div class="box">Quality Ingredients</div>
+                <div class="box">Sustainable Sourcing</div>
+                <div class="box">Customer Satisfaction</div>
+                <div class="box">Innovative Recipes</div>
+            </div>
+        </div>
+    </section>
+    <section class="mission">
+        <div class="container">
+            <h2>Our Mission</h2>
+            <p>To ensure every meal is crafted with passion, using only the freshest ingredients, while keeping sustainability at the core of our values.</p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Omnifood. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    body {
+        background-color: #f8f9fa;
+        color: #333;
+        text-align: center;
+    }
+    .hero {
+        background: url('hero.jpg') no-repeat center center/cover;
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+    }
+    .hero .overlay {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 50px;
+        color: white;
+        border-radius: 10px;
+    }
+    .hero h1 {
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+    .hero p {
+        font-size: 20px;
+    }
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        padding: 50px 20px;
+    }
+    .about, .mission, .values {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    .text, .image {
+        flex: 1;
+        min-width: 300px;
+        margin: 20px;
+    }
+    .image img {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    .values .boxes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+    }
+    .box {
+        background: #ff4d00;
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: 600;
+        transition: transform 0.3s ease, background 0.3s ease;
+    }
+    .box:hover {
+        background: #ff2d00;
+        transform: scale(1.05);
+    }
+    .mission {
+        background: #ff4d00;
+        color: white;
+        padding: 60px 20px;
+    }
+    footer {
+        background: #222;
+        color: white;
+        padding: 15px;
+    }
+</style>
