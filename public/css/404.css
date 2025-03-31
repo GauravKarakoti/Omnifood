@@ -2,9 +2,9 @@
   :root {
     --primary-color: #ff005d;
     --secondary-color: #12000a;
-    --animation-duration: 2.5s;
-    --flicker-duration: 4s;
-    --hue-rotate-duration: 6s;
+    --animation-duration: 2s;
+    --flicker-duration: 3s;
+    --hue-rotate-duration: 4s;
   }
 
   .main {
@@ -21,7 +21,7 @@
     animation: hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
     -webkit-animation: hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
     -moz-animation: hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
-    will-change: filter;
+    will-change: transform, filter;
   }
   
   .wrap {
@@ -61,12 +61,12 @@
     animation: hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
     -webkit-animation: hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
     -moz-animation: hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
-    will-change: filter;
+    will-change: transform, filter;
   }
   
   .svgPath {
     stroke: var(--primary-color);
-    stroke-width: 3px;
+    stroke-width: 2px;
     fill: transparent;
     filter: url(#glow);
   }
@@ -147,24 +147,13 @@
   }
   
   @keyframes flicker1 {
-    0%  {stroke: var(--primary-color);}
-    1%  {stroke: transparent;}
-    3%  {stroke: transparent;}
-    4%  {stroke: var(--primary-color);}
-    6%  {stroke: var(--primary-color);}
-    7%  {stroke: transparent;}
-    13% {stroke: transparent;}
-    14% {stroke: var(--primary-color);}
-    100%{stroke: var(--primary-color);}
+    0%, 100% {stroke: var(--primary-color);}
+    50% {stroke: transparent;}
   }
   
   @keyframes flicker2 {
-    0%  {stroke: var(--primary-color);}
-    50% {stroke: var(--primary-color);}
-    51% {stroke: transparent;}
-    61% {stroke: transparent;}
-    62% {stroke: var(--primary-color);}
-    100%{stroke: var(--primary-color);}
+    0%, 50%, 62%, 100% {stroke: var(--primary-color);}
+    51%, 61% {stroke: transparent;}
   }
   
   @keyframes flicker3 {
@@ -203,8 +192,7 @@
   
   @keyframes hueRotate {
     0%  {filter: hue-rotate(0deg);}
-    50% {filter: hue-rotate(-120deg);}
-    100%{filter: hue-rotate(0deg);}
+    100%{filter: hue-rotate(120deg);}
   }
 
   @-webkit-keyframes drawLine1 {
@@ -223,24 +211,13 @@
   }
   
   @-webkit-keyframes flicker1 {
-    0%  {stroke: var(--primary-color);}
-    1%  {stroke: transparent;}
-    3%  {stroke: transparent;}
-    4%  {stroke: var(--primary-color);}
-    6%  {stroke: var(--primary-color);}
-    7%  {stroke: transparent;}
-    13% {stroke: transparent;}
-    14% {stroke: var(--primary-color);}
-    100%{stroke: var(--primary-color);}
+    0%, 100% {stroke: var(--primary-color);}
+    50% {stroke: transparent;}
   }
   
   @-webkit-keyframes flicker2 {
-    0%  {stroke: var(--primary-color);}
-    50% {stroke: var(--primary-color);}
-    51% {stroke: transparent;}
-    61% {stroke: transparent;}
-    62% {stroke: var(--primary-color);}
-    100%{stroke: var(--primary-color);}
+    0%, 50%, 62%, 100% {stroke: var(--primary-color);}
+    51%, 61% {stroke: transparent;}
   }
   
   @-webkit-keyframes flicker3 {
@@ -279,8 +256,7 @@
   
   @-webkit-keyframes hueRotate {
     0%  {filter: hue-rotate(0deg);}
-    50% {filter: hue-rotate(-120deg);}
-    100%{filter: hue-rotate(0deg);}
+    100%{filter: hue-rotate(120deg);}
   }
 
   @media only screen and (max-width: 500px) {
