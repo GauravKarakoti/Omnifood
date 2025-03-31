@@ -54,7 +54,7 @@
 .social-links {
     list-style: none;
     display: flex;
-    gap: 2.4rem;
+    gap: 1.2rem;
 }
 
 .no-flexbox-gap .social-links {
