@@ -121,7 +121,7 @@ function saveBulkOpsToDisk() {
 }
 
 // Periodically save bulk operations to disk
-setInterval(saveBulkOpsToDisk, 60000); // Save every 30 seconds
+setInterval(saveBulkOpsToDisk, 60000); // Save every 60 seconds
 
 // Periodic flush every 10 seconds
 setInterval(async () => {
