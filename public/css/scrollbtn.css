@@ -15,6 +15,12 @@
     z-index: 999;
     opacity: 0;
     visibility: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#scrollBtn:focus {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
 }
 
 #scrollBtn ion-icon {
@@ -24,6 +30,7 @@
 #scrollBtn:hover {
     background-color: #cf711f;
     transform: scale(1.1);
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 #scrollBtn.rotate {
