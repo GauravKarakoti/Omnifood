@@ -1,4 +1,3 @@
-
 /* Confirmation Modal Styles */
 .modal {
     display: none; /* Hidden by default */
@@ -14,10 +13,10 @@
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background-color: #ffffff; /* Increased contrast for better readability */
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #666; /* Darker border for better contrast */
     width: 80%; /* Could be more or less, depending on screen size */
     max-width: 500px;
     text-align: center;
@@ -26,7 +25,7 @@
 }
 
 .close-btn {
-    color: #aaa;
+    color: #555; /* Darker color for better contrast */
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -34,7 +33,7 @@
 
 .close-btn:hover,
 .close-btn:focus {
-    color: black;
+    color: #222; /* Further improved contrast on hover/focus */
     text-decoration: none;
     cursor: pointer;
     transition: color var(--animation-duration-short) ease-in-out;
@@ -42,19 +41,19 @@
 
 #confirmation-message {
     font-size: 2rem; /* Increased font size */
-    color: #28a745; /* Green color for valid submission */
+    color: #218838; /* Adjusted green for better contrast */
     font-weight: bold;
     margin-top: 20px;
 }
 
 .main-nav-link:focus {
-    outline: 2px solid #ff8000; /* Visible outline with sufficient contrast */
+    outline: 2px solid #cc6600; /* Adjusted orange for better contrast */
     outline-offset: 4px; /* Offset to ensure the outline is visible */
     box-shadow: none; /* Remove box-shadow */
 }
 
 .btn:focus {
-    outline: 2px solid #ff8000; /* Visible outline with sufficient contrast */
+    outline: 2px solid #cc6600; /* Adjusted orange for better contrast */
     outline-offset: 4px; /* Offset to ensure the outline is visible */
     box-shadow: none; /* Remove box-shadow */
 }
@@ -62,5 +61,6 @@
 /* Target specific elements instead */
 button:focus, input:focus, select:focus, textarea:focus {
     transition: box-shadow var(--animation-duration-short) ease;
+    box-shadow: 0 0 4px #cc6600; /* Added subtle shadow for better focus visibility */
 }
 
