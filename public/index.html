@@ -35,7 +35,6 @@
     <script defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script defer src="js/script.js"></script>
-    <script defer src="js/service-worker.js"></script>
     <title>OmniFood &mdash; Never cook again</title>
 
     <!-- Open Graph Meta Tags (for Facebook, LinkedIn, etc.) -->
@@ -196,8 +195,8 @@
             </ul>
         </nav>
         <button class="btn-mobile-nav" aria-label="Toggle navigation">
-            <ion-icon class="icon-mobile-nav" name="menu-outline"></ion-icon>
-            <ion-icon class="icon-mobile-nav" name="close-outline"></ion-icon>
+            <i class="bi bi-list icon-mobile-nav" name="menu-outline"></i>
+            <i class="bi bi-x-lg icon-mobile-nav" name="close-outline"></i>
         </button>
     </header>
     <main>
@@ -368,15 +367,15 @@
                         <p class="meal-title">Japanese Gyozas</p>
                         <ul class="meal-attributes">
                             <li class="meal-attribute">
-                                <ion-icon class="meal-icon" name="flame-outline"></ion-icon>
+                                <i class="bi bi-fire meal-icon" name="flame-outline" style="color: black;"></i>
                                 <span><strong>650</strong> calories</span>
                             </li>
                             <li class="meal-attribute">
-                                <ion-icon class="meal-icon" name="restaurant-outline"></ion-icon>
+                                <i class="bi bi-cart4 meal-icon" name="restaurant-outline" style="color: black;"></i>
                                 <span>Nutriscore &reg; <strong>74</strong></span>
                             </li>
                             <li class="meal-attribute">
-                                <ion-icon class="meal-icon" name="star-outline"></ion-icon>
+                                <i class="bi bi-star meal-icon" name="star-outline" style="color: black;"></i>
                                 <span><strong>4.9</strong> rating (537)</span>
                             </li>
                         </ul>
@@ -401,15 +400,17 @@
                         <p class="meal-title">Avocado Salad</p>
                         <ul class="meal-attributes">
                             <li class="meal-attribute">
-                                <ion-icon class="meal-icon" name="flame-outline" aria-label="Calories"></ion-icon>
+                                <i class="bi bi-fire meal-icon" name="flame-outline" aria-label="Calories"
+                                    style="color: black;""></i>
                                 <span><strong>400</strong> calories</span>
                             </li>
-                            <li class="meal-attribute">
-                                <ion-icon class="meal-icon" name="restaurant-outline" aria-label="Calories"></ion-icon>
-                                <span>Nutriscore &reg; <strong>92</strong></span>
+                            <li class=" meal-attribute">
+                                    <i class="bi bi-cart4 meal-icon" name="restaurant-outline"
+                                        style="color: black;"></i>
+                                    <span>Nutriscore &reg; <strong>92</strong></span>
                             </li>
                             <li class="meal-attribute">
-                                <ion-icon class="meal-icon" name="star-outline" aria-label="Calories"></ion-icon>
+                                <i class="bi bi-star meal-icon" name="star-outline" style="color: black;"></i>
                                 <span><strong>4.8</strong> rating (441)</span>
                             </li>
                         </ul>
@@ -421,39 +422,39 @@
                     </h3>
                     <ul class="list">
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="checkmark-outline"></i>
                             <span>Vegetarian</span>
                         </li>
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="checkmark-outline"></i>
                             <span>Vegan</span>
                         </li>
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="checkmark-outline"></i>
                             <span>Pescatarian</span>
                         </li>
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="checkmark-outline"></i>
                             <span>Gluten-free</span>
                         </li>
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="checkmark-outline"></i>
                             <span>Lactose-free</span>
                         </li>
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="checkmark-outline"></i>
                             <span>Keto</span>
                         </li>
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="checkmark-outline"></i>
                             <span>Paleo</span>
                         </li>
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="checkmark-outline"></i>
                             <span>Low FODMAP</span>
                         </li>
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="checkmark-outline"></i>
                             <span>Kid-friendly</span>
                         </li>
                     </ul>
@@ -691,25 +692,25 @@
                     </header>
                     <ul class="list">
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="checkmark-outline"></i>
                             <span>
                                 1 meal per day
                             </span>
                         </li>
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="checkmark-outline"></i>
                             <span>
                                 Order from 11am and 9pm
                             </span>
                         </li>
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="checkmark-outline"></i>
                             <span>
                                 Delivery is free
                             </span>
                         </li>
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="close-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="close-outline"></i>
                             <span>
                                 Get access to the latest recipes
                             </span>
@@ -729,25 +730,25 @@
                     </header>
                     <ul class="list">
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="checkmark-outline"></i>
                             <span>
                                 <strong>2 meals</strong> per day
                             </span>
                         </li>
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="checkmark-outline"></i>
                             <span>
                                 Order <strong>24/7</strong>
                             </span>
                         </li>
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="checkmark-outline"></i>
                             <span>
                                 Delivery is free
                             </span>
                         </li>
                         <li class="list-item">
-                            <ion-icon class="list-icon" name="checkmark-outline"></ion-icon>
+                            <i class="bi bi-check2-circle list-icon" name="checkmark-outline"></i>
                             <span>
                                 Get access to the latest recipes
                             </span>
@@ -766,28 +767,28 @@
             </div>
             <div class="container grid grid--4-cols">
                 <div class="feature">
-                    <ion-icon class="feature-icon" name="infinite-outline"></ion-icon>
+                    <i class="bi bi-infinity feature-icon" name="infinite-outline"></i>
                     <p class="feature-title">Never cook again!</p>
                     <p class="feature-text">
                         Our subscriptions cover 365 days per year, even including major holidays.
                     </p>
                 </div>
                 <div class="feature">
-                    <ion-icon class="feature-icon" name="nutrition-outline"></ion-icon>
+                    <i class="bi bi-basket2 feature-icon" name="nutrition-outline"></i>
                     <p class="feature-title">Local and organic</p>
                     <p class="feature-text">
                         Our cooks only use local, fresh, and organic products to prepare your meals.
                     </p>
                 </div>
                 <div class="feature">
-                    <ion-icon class="feature-icon" name="leaf-outline"></ion-icon>
+                    <i class="bi bi-recycle feature-icon" name="leaf-outline"></i>
                     <p class="feature-title">No waste</p>
                     <p class="feature-text">
                         All our partners only use local, fresh, and organic products to prepare your meals.
                     </p>
                 </div>
                 <div class="feature">
-                    <ion-icon class="feature-icon" name="pause-outline"></ion-icon>
+                    <i class="bi bi-pause-circle feature-icon" name="pause-outline"></i>
                     <p class="feature-title">Pause anytime</p>
                     <p class="feature-text">
                         Going on vacation? Just pause your subscription, and we refund unused days.
@@ -900,7 +901,7 @@
                     <li>
                         <a class="footer-link" href="https://instagram.com/gaurav._.karakoti" target="_blank"
                             rel="noopener noreferrer" aria-label="Follow on Instagram">
-                            <ion-icon class="social-icon" name="logo-instagram"></ion-icon>
+                            <i class="bi bi-instagram social-icon" name="logo-instagram" style='font-size:18px'></i>
                         </a>
                     </li>
                     <li>

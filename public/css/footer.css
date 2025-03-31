@@ -12,6 +12,7 @@
     font-weight: 500;
     margin-bottom: 4rem;
 }
+
 .footer {
     background-color: #333;
     color: white;
@@ -19,7 +20,7 @@
 
 .footer-link {
     color: #feb47b;
-    transition: color 0.3s;
+    transition: color 0.3s; /* Replaced --animation-duration-short */
 }
 
 .footer-nav {
@@ -37,7 +38,7 @@
     text-decoration: none;
     color: #767676;
     font-size: 1.6rem;
-    transition: all 0.3s;
+    transition: all 0.3s; /* Replaced --animation-duration-short */
 }
 
 .footer-link:hover, .footer-link:active {
@@ -51,10 +52,11 @@
     background-color: rgba(255, 126, 95, 0.1); 
     border-radius: 5px;
 }
+
 .social-links {
     list-style: none;
     display: flex;
-    gap: 2.4rem;
+    gap: 1.2rem;
 }
 
 .no-flexbox-gap .social-links {
@@ -69,6 +71,11 @@
 .social-icon {
     height: 2.4rem;
     width: 2.4rem;
+    transition: transform 0.3s ease-in-out; /* Replaced --animation-duration-short */
+}
+
+.social-icon:hover {
+    transform: scale(1.1);
 }
 
 .copyright {

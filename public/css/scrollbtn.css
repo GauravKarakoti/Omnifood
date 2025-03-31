@@ -11,7 +11,7 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Replaced --animation-duration-short */
     z-index: 999;
     opacity: 0;
     visibility: hidden;
@@ -35,13 +35,14 @@
 
 #scrollBtn.rotate {
     transform: rotate(360deg);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 #scrollBtn.visible {
     opacity: 1;
     visibility: visible;
 }
+
 #scrollBtn[aria-label]::before {
     content: attr(aria-label);
     position: absolute;

@@ -4,7 +4,7 @@
 .feature {
     text-align: center;
     padding: 20px;
-    transition: transform var(--animation-duration-short) ease-in-out;
+    transition: transform 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 .feature:hover {
@@ -31,6 +31,7 @@
     margin-bottom: 2.4rem;
     color: #555; /* Improved contrast for better readability */
 }
+
 .heading-primary {
     font-weight: 700;
     letter-spacing: 1px;

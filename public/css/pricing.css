@@ -47,7 +47,7 @@
 .pricing-plan {
     border-radius: 11px;
     width: 75%;
-    transition: transform var(--animation-duration-short) ease-in-out, box-shadow var(--animation-duration-short) ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 .pricing-plan--starter {
@@ -81,6 +81,7 @@
     color: #cc6600; /* Adjusted for better contrast */
     height: 3.2rem;
     width: 3.2rem;
+    font-size: 3rem;
     margin-bottom: 3.2rem;
     background-color: #fdf2e9;
     padding: 1.6rem;
@@ -109,7 +110,7 @@
 
 /* Basic styles for the pricing plan */
 .pricing-plan {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 /* Hover effect for the pricing plan */
