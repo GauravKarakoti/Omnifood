@@ -34,9 +34,11 @@
     margin-top: 50px;
     background-color: #ffffff; /* Ensure good contrast with text */
     color: #000000; /* Improved text contrast */
+    transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 /* Show input on hover */
 .location-container:hover .location-input {
     display: block;
+    transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }

@@ -21,7 +21,7 @@
     max-width: 500px;
     text-align: center;
     border-radius: 8px;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 .close-btn {
@@ -36,7 +36,7 @@
     color: #222; /* Further improved contrast on hover/focus */
     text-decoration: none;
     cursor: pointer;
-    transition: color var(--animation-duration-short) ease-in-out;
+    transition: color 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 #confirmation-message {

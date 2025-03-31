@@ -6,6 +6,7 @@
     font-style: normal;
     font-display: swap; /* Add this line */
 }
+
 /* Disable hover effects on touch devices */
 @media (hover: none) {
     .main-nav-link:hover, .main-nav-link:active,
@@ -45,7 +46,7 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         background-color: #e67e22;
         color: #fff;
+        transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
     }
-
 }
 
