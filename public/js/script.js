@@ -490,3 +490,44 @@ document.addEventListener("DOMContentLoaded", function () {
     updateHeroHeight();
     window.addEventListener('resize', updateHeroHeight);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const currentPath = window.location.pathname;
+
+    // Dynamically load JavaScript based on the route
+    if (currentPath === "/home" || currentPath === "/") {
+        import("./routes/home.js")
+            .then((module) => module.initHome())
+            .catch((err) => console.error("Error loading home.js:", err));
+    } else if (currentPath === "/about") {
+        import("./routes/about.js")
+            .then((module) => module.initAbout())
+            .catch((err) => console.error("Error loading about.js:", err));
+    } else if (currentPath === "/contact") {
+        import("./routes/contact.js")
+            .then((module) => module.initContact())
+            .catch((err) => console.error("Error loading contact.js:", err));
+    }
+});
+
+function setupServiceWorker() {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/serviceworker.js')
+            .then((registration) => {
+                console.log('Service Worker registered with scope:', registration.scope);
+
+                // Listen for updates
+                registration.onupdatefound = () => {
+                    const newSW = registration.installing;
+                    newSW.onstatechange = () => {
+                        if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
+                            console.log('New content is available, please refresh.');
+                        }
+                    };
+                };
+            })
+            .catch((error) => console.error('Service Worker registration failed:', error));
+    });
+}
+
+setupServiceWorker();
