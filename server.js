@@ -112,6 +112,17 @@ async function aggregateClicks(interval) {
 cron.schedule("0 * * * *", () => aggregateClicks("hourly"));   // Every hour
 cron.schedule("0 0 * * *", () => aggregateClicks("daily"));    // Every day at midnight
 
+// Save bulkOps to disk periodically
+function saveBulkOpsToDisk() {
+  if (bulkOps.length > 0) {
+    fs.writeFileSync(path.join(__dirname, 'bulkOps.json'), JSON.stringify(bulkOps));
+    console.log(`✅ Bulk operations saved to disk.`);
+  }
+}
+
+// Periodically save bulk operations to disk
+setInterval(saveBulkOpsToDisk, 60000); // Save every 30 seconds
+
 // Periodic flush every 10 seconds
 setInterval(async () => {
   if (bulkOps.length > 0) {
@@ -154,6 +165,28 @@ process.on("exit", async () => {
   console.log("\n🔄 Process exiting. Flushing remaining clicks...");
   await flushBeforeExit();
 });
+
+// Handle uncaught exceptions
+process.on('uncaughtException', async (err) => {
+  console.error('❌ Uncaught Exception:', err);
+  await flushBeforeExit();
+  process.exit(1); // Exit after handling the exception
+});
+
+// Handle unhandled promise rejections
+process.on('unhandledRejection', async (err) => {
+  console.error('❌ Unhandled Rejection:', err);
+  await flushBeforeExit();
+  process.exit(1); // Exit after handling the rejection
+});
+
+// Handle Out-Of-Memory issues
+process.on('SIGUSR2', async () => {
+  console.log('⚠️ Received SIGUSR2. Attempting to flush remaining clicks before exit...');
+  await flushBeforeExit();
+  process.exit(1); // Exit after flushing
+});
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
