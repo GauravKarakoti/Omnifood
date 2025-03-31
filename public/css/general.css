@@ -291,3 +291,56 @@ strong {
     justify-content: center;
     align-items: flex-start;
 }
+
+/* Newsletter signup component styles */
+.section-newsletter {
+    padding: 4rem 2rem;
+    background-color: #fdf2e9;
+    text-align: center;
+}
+
+.section-newsletter .heading-secondary {
+    font-size: 2.8rem; /* Increased font size for better visibility */
+    margin-bottom: 2rem; /* Adjusted spacing for better layout */
+    color: #333; /* Ensures good contrast */
+    font-weight: 700; /* Makes the heading more prominent */
+    text-transform: uppercase; /* Adds emphasis */
+    letter-spacing: 0.5px; /* Slightly spaced letters for readability */
+}
+
+.newsletter-description {
+    font-size: 1.6rem;
+    margin-bottom: 2.4rem;
+    color: #555;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.newsletter-form input[type="email"] {
+    padding: 1rem;
+    font-size: 1.6rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    max-width: 300px;
+}
+
+.newsletter-form button {
+    padding: 1rem 2rem;
+    font-size: 1.6rem;
+    background-color: #ff6f61;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: #e65c50;
+}
