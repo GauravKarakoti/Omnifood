@@ -1,5 +1,4 @@
-
-  :root {
+:root {
     --primary-color: #ff005d;
     --secondary-color: #12000a;
     --animation-duration: 2s;
@@ -29,9 +28,9 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-  }
-  
-  #text {
+}
+
+#text {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -40,17 +39,17 @@
     text-transform: uppercase;
     transform: translate(-50%, -50%);
     display: block;
-    color: var(--primary-color);
+    color: #ff005d;
     font-weight: 300;
     font-family: Audiowide;
-    text-shadow: 0px 0px 4px var(--secondary-color);
-    animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
-    -webkit-animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
-    -moz-animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
+    text-shadow: 0px 0px 4px #12000a;
+    animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate 6s ease-in-out 3s infinite;
+    -webkit-animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate 6s ease-in-out 3s infinite;
+    -moz-animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate 6s ease-in-out 3s infinite;
     will-change: color, text-shadow;
-  }
-  
-  #svgWrap {
+}
+
+#svgWrap {
     position: absolute;
     height: auto;
     width: 600px;
@@ -69,40 +68,40 @@
     stroke-width: 2px;
     fill: transparent;
     filter: url(#glow);
-  }
-  
-  .svgPathSecondary {
-    stroke: var(--secondary-color);
+}
+
+.svgPathSecondary {
+    stroke: #12000a;
     stroke-width: 3px;
     fill: transparent;
     filter: url(#glow);
-  }
-  
-  #id3_1 {
+}
+
+#id3_1 {
     stroke-dasharray: 940px;
     stroke-dashoffset: -940px;
-    animation: drawLine3 var(--animation-duration) ease-in-out 0s forwards, flicker3 var(--flicker-duration) linear 4s infinite;
-    -webkit-animation: drawLine3 var(--animation-duration) ease-in-out 0s forwards, flicker3 var(--flicker-duration) linear 4s infinite;
-    -moz-animation: drawLine3 var(--animation-duration) ease-in-out 0s forwards, flicker3 var(--flicker-duration) linear 4s infinite;
-  }
-  
-  #id2_1 {
+    animation: drawLine3 2.5s ease-in-out 0s forwards, flicker3 4s linear 4s infinite;
+    -webkit-animation: drawLine3 2.5s ease-in-out 0s forwards, flicker3 4s linear 4s infinite;
+    -moz-animation: drawLine3 2.5s ease-in-out 0s forwards, flicker3 4s linear 4s infinite;
+}
+
+#id2_1 {
     stroke-dasharray: 735px;
     stroke-dashoffset: -735px;
-    animation: drawLine2 var(--animation-duration) ease-in-out 0.5s forwards, flicker2 var(--flicker-duration) linear 4.5s infinite;
-    -webkit-animation: drawLine2 var(--animation-duration) ease-in-out 0.5s forwards, flicker2 var(--flicker-duration) linear 4.5s infinite;
-    -moz-animation: drawLine2 var(--animation-duration) ease-in-out 0.5s forwards, flicker2 var(--flicker-duration) linear 4.5s infinite;
-  }
-  
-  #id1_1 {
+    animation: drawLine2 2.5s ease-in-out 0.5s forwards, flicker2 4s linear 4.5s infinite;
+    -webkit-animation: drawLine2 2.5s ease-in-out 0.5s forwards, flicker2 4s linear 4.5s infinite;
+    -moz-animation: drawLine2 2.5s ease-in-out 0.5s forwards, flicker2 4s linear 4.5s infinite;
+}
+
+#id1_1 {
     stroke-dasharray: 940px;
     stroke-dashoffset: -940px;
-    animation: drawLine1 var(--animation-duration) ease-in-out 1s forwards, flicker1 var(--flicker-duration) linear 5s infinite;
-    -webkit-animation: drawLine1 var(--animation-duration) ease-in-out 1s forwards, flicker1 var(--flicker-duration) linear 5s infinite;
-    -moz-animation: drawLine1 var(--animation-duration) ease-in-out 1s forwards, flicker1 var(--flicker-duration) linear 5s infinite;
-  }
+    animation: drawLine1 2.5s ease-in-out 1s forwards, flicker1 4s linear 5s infinite;
+    -webkit-animation: drawLine1 2.5s ease-in-out 1s forwards, flicker1 4s linear 5s infinite;
+    -moz-animation: drawLine1 2.5s ease-in-out 1s forwards, flicker1 4s linear 5s infinite;
+}
 
-  #homeButton {
+#homeButton {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -111,7 +110,7 @@
     font-size: 18px;
     text-transform: uppercase;
     font-family: Audiowide;
-    background: var(--primary-color);
+    background: #ff005d;
     color: #ffffff;
     border: none;
     border-radius: 5px;
@@ -119,147 +118,171 @@
     transform: translate(-50%, -50%);
     transition: all 0.3s ease;
     outline: none;
-  }
+}
 
-  #homeButton:hover {
-    background: var(--secondary-color);
-    box-shadow: 0 0 10px var(--primary-color);
-  }
+#homeButton:hover {
+    background: #12000a;
+    box-shadow: 0 0 10px #ff005d;
+}
 
-  #homeButton:focus {
-    outline: 2px solid var(--primary-color);
-    box-shadow: 0 0 10px var(--primary-color);
-  }
-  
-  @keyframes drawLine1 {
+#homeButton:focus {
+    outline: 2px solid #ff005d;
+    box-shadow: 0 0 10px #ff005d;
+}
+
+@keyframes drawLine1 {
     0%  {stroke-dashoffset: -940px;}
     100%{stroke-dashoffset: 0px;}
-  }
-  
-  @keyframes drawLine2 {
+}
+
+@keyframes drawLine2 {
     0%  {stroke-dashoffset: -735px;}
     100%{stroke-dashoffset: 0px;}
-  }
-  
-  @keyframes drawLine3 {
+}
+
+@keyframes drawLine3 {
     0%  {stroke-dashoffset: -940px;}
     100%{stroke-dashoffset: 0px;}
-  }
-  
-  @keyframes flicker1 {
-    0%, 100% {stroke: var(--primary-color);}
-    50% {stroke: transparent;}
-  }
-  
-  @keyframes flicker2 {
-    0%, 50%, 62%, 100% {stroke: var(--primary-color);}
-    51%, 61% {stroke: transparent;}
-  }
-  
-  @keyframes flicker3 {
-    0%  {stroke: var(--primary-color);}
+}
+
+@keyframes flicker1 {
+    0%  {stroke: #ff005d;}
+    1%  {stroke: transparent;}
+    3%  {stroke: transparent;}
+    4%  {stroke: #ff005d;}
+    6%  {stroke: #ff005d;}
+    7%  {stroke: transparent;}
+    13% {stroke: transparent;}
+    14% {stroke: #ff005d;}
+    100%{stroke: #ff005d;}
+}
+
+@keyframes flicker2 {
+    0%  {stroke: #ff005d;}
+    50% {stroke: #ff005d;}
+    51% {stroke: transparent;}
+    61% {stroke: transparent;}
+    62% {stroke: #ff005d;}
+    100%{stroke: #ff005d;}
+}
+
+@keyframes flicker3 {
+    0%  {stroke: #ff005d;}
     1%  {stroke: transparent;}
     10% {stroke: transparent;}
-    11% {stroke: var(--primary-color);}
-    40% {stroke: var(--primary-color);}
+    11% {stroke: #ff005d;}
+    40% {stroke: #ff005d;}
     41% {stroke: transparent;}
     45% {stroke: transparent;}
-    46% {stroke: var(--primary-color);}
-    100%{stroke: var(--primary-color);}
-  }
-  
-  @keyframes flicker4 {
-    0%  {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    30% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    31% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    32% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    36% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    37% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    41% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    42% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    85% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    86% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    95% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    96% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    100%{color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-  }
-  
-  @keyframes fadeInText {
-    1%  {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    70% {color: var(--primary-color); text-shadow: 0px 0px 14px var(--primary-color);}
-    100%{color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-  }
-  
-  @keyframes hueRotate {
-    0%  {filter: hue-rotate(0deg);}
-    100%{filter: hue-rotate(120deg);}
-  }
+    46% {stroke: #ff005d;}
+    100%{stroke: #ff005d;}
+}
 
-  @-webkit-keyframes drawLine1 {
+@keyframes flicker4 {
+    0%  {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    30% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    31% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
+    32% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    36% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    37% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
+    41% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
+    42% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    85% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    86% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
+    95% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
+    96% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    100%{color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+}
+
+@keyframes fadeInText {
+    1%  {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
+    70% {color: #ff005d; text-shadow: 0px 0px 14px #ff005d;}
+    100%{color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+}
+
+@keyframes hueRotate {
+    0%  {filter: hue-rotate(0deg);}
+    50% {filter: hue-rotate(-120deg);}
+    100%{filter: hue-rotate(0deg);}
+}
+
+@-webkit-keyframes drawLine1 {
     0%  {stroke-dashoffset: -940px;}
     100%{stroke-dashoffset: 0px;}
-  }
-  
-  @-webkit-keyframes drawLine2 {
+}
+
+@-webkit-keyframes drawLine2 {
     0%  {stroke-dashoffset: -735px;}
     100%{stroke-dashoffset: 0px;}
-  }
-  
-  @-webkit-keyframes drawLine3 {
+}
+
+@-webkit-keyframes drawLine3 {
     0%  {stroke-dashoffset: -940px;}
     100%{stroke-dashoffset: 0px;}
-  }
-  
-  @-webkit-keyframes flicker1 {
-    0%, 100% {stroke: var(--primary-color);}
-    50% {stroke: transparent;}
-  }
-  
-  @-webkit-keyframes flicker2 {
-    0%, 50%, 62%, 100% {stroke: var(--primary-color);}
-    51%, 61% {stroke: transparent;}
-  }
-  
-  @-webkit-keyframes flicker3 {
-    0%  {stroke: var(--primary-color);}
+}
+
+@-webkit-keyframes flicker1 {
+    0%  {stroke: #ff005d;}
+    1%  {stroke: transparent;}
+    3%  {stroke: transparent;}
+    4%  {stroke: #ff005d;}
+    6%  {stroke: #ff005d;}
+    7%  {stroke: transparent;}
+    13% {stroke: transparent;}
+    14% {stroke: #ff005d;}
+    100%{stroke: #ff005d;}
+}
+
+@-webkit-keyframes flicker2 {
+    0%  {stroke: #ff005d;}
+    50% {stroke: #ff005d;}
+    51% {stroke: transparent;}
+    61% {stroke: transparent;}
+    62% {stroke: #ff005d;}
+    100%{stroke: #ff005d;}
+}
+
+@-webkit-keyframes flicker3 {
+    0%  {stroke: #ff005d;}
     1%  {stroke: transparent;}
     10% {stroke: transparent;}
-    11% {stroke: var(--primary-color);}
-    40% {stroke: var(--primary-color);}
+    11% {stroke: #ff005d;}
+    40% {stroke: #ff005d;}
     41% {stroke: transparent;}
     45% {stroke: transparent;}
-    46% {stroke: var(--primary-color);}
-    100%{stroke: var(--primary-color);}
-  }
-  
-  @-webkit-keyframes flicker4 {
-    0%  {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    30% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    31% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    32% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    36% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    37% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    41% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    42% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    85% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    86% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    95% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    96% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    100%{color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-  }
-  
-  @-webkit-keyframes fadeInText {
-    1%  {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    70% {color: var(--primary-color); text-shadow: 0px 0px 14px var(--primary-color);}
-    100%{color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-  }
-  
-  @-webkit-keyframes hueRotate {
-    0%  {filter: hue-rotate(0deg);}
-    100%{filter: hue-rotate(120deg);}
-  }
+    46% {stroke: #ff005d;}
+    100%{stroke: #ff005d;}
+}
 
-  @media only screen and (max-width: 500px) {
+@-webkit-keyframes flicker4 {
+    0%  {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    30% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    31% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
+    32% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    36% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    37% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
+    41% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
+    42% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    85% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    86% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
+    95% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
+    96% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    100%{color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+}
+
+@-webkit-keyframes fadeInText {
+    1%  {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
+    70% {color: #ff005d; text-shadow: 0px 0px 14px #ff005d;}
+    100%{color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+}
+
+@-webkit-keyframes hueRotate {
+    0%  {filter: hue-rotate(0deg);}
+    50% {filter: hue-rotate(-120deg);}
+    100%{filter: hue-rotate(0deg);}
+}
+
+@media only screen and (max-width: 500px) {
     #svgWrap {
         width: 90% !important;
         margin-top: -100px;
@@ -275,9 +298,9 @@
         font-size: 16px;
         padding: 8px 16px;
     }
-  }
+}
 
-  @media only screen and (max-width: 320px) {
+@media only screen and (max-width: 320px) {
     #svgWrap {
         width: 100% !important;
         margin-top: -80px;
@@ -291,9 +314,9 @@
         font-size: 14px;
         padding: 6px 12px;
     }
-  }
+}
 
-  .loading-overlay {
+.loading-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -304,15 +327,15 @@
     align-items: center;
     justify-content: center;
     z-index: 9999;
-  }
+}
 
-  .loading-text {
-    color: var(--primary-color);
+.loading-text {
+    color: #ff005d;
     font-family: Audiowide;
     font-size: 24px;
     text-transform: uppercase;
-  }
+}
 
-  .hidden {
+.hidden {
     display: none;
-  }
+}

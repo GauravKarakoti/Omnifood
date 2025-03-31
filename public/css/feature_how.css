@@ -4,7 +4,7 @@
 .feature {
     text-align: center;
     padding: 20px;
-    transition: transform var(--animation-duration-short) ease-in-out;
+    transition: transform 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 .feature:hover {
@@ -15,11 +15,11 @@
     font-size: 1.5rem;
     font-weight: bold;
     color: #333;
-    transition: color var(--animation-duration-short) ease-in-out;
+    transition: color 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 .feature:hover .feature-title {
-    color: #ff5733; /* Attractive color change on hover #ff5733*/
+    color: #ff5733; /* Attractive color change on hover #ff5733 */
 }
 
 .heading-featured-in {
@@ -31,6 +31,7 @@
     margin-bottom: 2.4rem;
     color: #888;
 }
+
 .heading-primary {
     font-weight: 700;
     letter-spacing: 1px;
