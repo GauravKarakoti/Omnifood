@@ -248,7 +248,14 @@ document.addEventListener("DOMContentLoaded", function () {
     errorLiveRegion.style.left = "-9999px"; // Visually hidden
     document.body.appendChild(errorLiveRegion);
 
+    let isSubmitting = false; // Flag to prevent multiple submissions
+
     form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent default form submission
+
+        if (isSubmitting) return; // Exit if already submitting
+        isSubmitting = true; // Set flag to true
+
         let isValid = true;
         let errorMessage = "";
 
@@ -292,14 +299,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (!isValid) {
-            e.preventDefault(); // Prevent form submission if there's an error
             errorLiveRegion.textContent = errorMessage; // Update ARIA live region
+            isSubmitting = false; // Reset flag if validation fails
         } else {
             // Simulate form submission (replace this with actual form submission logic)
             setTimeout(() => {
                 // Show success message
                 confirmationMessage.textContent = "Thank you! Your submission has been received.";
                 modal.style.display = "block";
+                isSubmitting = false; // Reset flag after submission
             }, 1000);
         }
     });
@@ -307,12 +315,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Close the modal when the user clicks on <span> (x)
     closeBtn.addEventListener("click", function () {
         modal.style.display = "none";
+        isSubmitting = false; // Reset flag when modal is closed
     });
 
     // Close the modal when the user clicks anywhere outside of the modal
     window.addEventListener("click", function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            isSubmitting = false; // Reset flag when modal is closed
         }
     });
 
@@ -383,27 +393,34 @@ document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("confirmation-modal");
     const closeBtn = document.querySelector(".close-btn");
     const confirmationMessage = document.getElementById("confirmation-message");
+    let isSubmitting = false; // Flag to prevent multiple submissions
 
     form.addEventListener("submit", function (e) {
         e.preventDefault(); // Prevent default form submission
+
+        if (isSubmitting) return; // Exit if already submitting
+        isSubmitting = true; // Set flag to true
 
         // Simulate form submission (replace this with actual form submission logic)
         setTimeout(() => {
             // Show success message
             confirmationMessage.textContent = "Thank you! Your submission has been received.";
             modal.style.display = "block";
+            isSubmitting = false; // Reset flag after submission
         }, 1000);
     });
 
     // Close the modal when the user clicks on <span> (x)
     closeBtn.addEventListener("click", function () {
         modal.style.display = "none";
+        isSubmitting = false; // Reset flag when modal is closed
     });
 
     // Close the modal when the user clicks anywhere outside of the modal
     window.addEventListener("click", function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            isSubmitting = false; // Reset flag when modal is closed
         }
     });
 });
