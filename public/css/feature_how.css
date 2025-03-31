@@ -92,7 +92,6 @@
 
 .step-img-box::before {
     width: 60%;
-    /* height: 60%; */
     padding-bottom: 60%;
     background-color: #fdf2e9;
     z-index: -2;
