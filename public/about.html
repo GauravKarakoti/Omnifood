@@ -6,45 +6,107 @@
     <title>About Omnifood</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            About Us
+            
+            <div class="navbar-menu">
+                <a href="index.html" class="navbar-link">Back to Home</a>
+            </div>
+        </div>
+    </nav>
     <header class="hero">
         <div class="overlay">
-            <h1>Welcome to Omnifood</h1>
-            <p>Delivering Healthy & Delicious Meals Right to Your Doorstep</p>
+            <div class="logo-card animate__animated animate__fadeInDown">
+            </div>
+            
+            <h1 class="animate__animated animate__fadeIn">Welcome to Omnifood</h1>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">Delivering Healthy & Delicious Meals Right to Your Doorstep</p>
         </div>
+       
     </header>
     <section class="about">
+        <div class="about-bg"></div>
         <div class="container">
-            <div class="text">
+            <div class="text animate__animated animate__fadeInLeft">
                 <h2>Our Story</h2>
-                <p>Omnifood is a revolutionary food delivery service focused on providing nutritious, delicious, and high-quality meals using sustainable ingredients.</p>
-            </div>
-            <div class="image">
-                <img src="img/meals/meal-1.jpg" alt="Delicious Food">
+                <p class="textdes">Omnifood is a revolutionary food delivery service focused on providing nutritious, delicious, and high-quality meals using sustainable ingredients. Founded in 2015, we've grown from a small kitchen to serving thousands of happy customers daily.</p>
             </div>
         </div>
     </section>
     <section class="values">
         <div class="container">
-            <h2>Our Values</h2>
+            <h2 class="animate__animated animate__fadeIn">Our Values</h2>
             <div class="boxes">
-                <div class="box">Quality Ingredients</div>
-                <div class="box">Sustainable Sourcing</div>
-                <div class="box">Customer Satisfaction</div>
-                <div class="box">Innovative Recipes</div>
+                <div class="box animate__animated">
+                    <div class="box-icon">🥗</div>
+                    <h3>Quality Ingredients</h3>
+                    <p class="box-desc">Locally sourced, organic produce for maximum freshness</p>
+                </div>
+                <div class="box animate__animated">
+                    <div class="box-icon">🌱</div>
+                    <h3>Sustainable Sourcing</h3>
+                    <p class="box-desc">Ethical partnerships with eco-conscious suppliers</p>
+                </div>
+                <div class="box animate__animated">
+                    <div class="box-icon">😊</div>
+                    <h3>Customer Satisfaction</h3>
+                    <p class="box-desc">Your happiness is our top priority</p>
+                </div>
+                <div class="box animate__animated">
+                    <div class="box-icon">👨‍🍳</div>
+                    <h3>Innovative Recipes</h3>
+                    <p class="box-desc">Creative dishes crafted by top chefs</p>
+                </div>
             </div>
         </div>
     </section>
     <section class="mission">
         <div class="container">
-            <h2>Our Mission</h2>
-            <p>To ensure every meal is crafted with passion, using only the freshest ingredients, while keeping sustainability at the core of our values.</p>
+            <h2 class="animate__animated animate__fadeIn">Our Mission</h2>
+            <p class="animate__animated animate__fadeIn animate__delay-1s">To ensure every meal is crafted with passion, using only the freshest ingredients, while keeping sustainability at the core of our values.</p>
         </div>
     </section>
     <footer>
         <p>&copy; 2025 Omnifood. All Rights Reserved.</p>
     </footer>
+
+    <script>
+        // Animation for value boxes on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const boxes = document.querySelectorAll('.box');
+            
+            // Add animation classes when boxes come into view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate__fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            boxes.forEach(box => {
+                observer.observe(box);
+            });
+            
+            // Add hover effects
+            boxes.forEach(box => {
+                box.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                    this.style.boxShadow = '0 15px 30px rgba(0,0,0,0.2)';
+                });
+                
+                box.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+                });
+            });
+        });
+    </script>
 </body>
 </html>
 
@@ -55,83 +117,367 @@
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
     }
+    
     body {
         background-color: #f8f9fa;
         color: #333;
         text-align: center;
     }
+/* Navbar Styles (unchanged) */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px 0;
+    font-size: 2vw;
+    color:#ff4d00;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar-link {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1vw;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.navbar-link:hover {
+    color: #e67e22;
+}
+
+.navbar-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #e67e22;
+    transition: width 0.3s ease;
+}
+
+.navbar-link:hover::after {
+    width: 100%;
+}
+
     .hero {
-        background: url('hero.jpg') no-repeat center center/cover;
-        height: 60vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+    position: relative;
+    height: 30vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+    padding: 20px;
+}
+
+.overlay {
+    position: relative;
+    padding: 3rem 2rem 2rem;
+    width: 100%;
+    max-width: 800px;
+    margin-top: 80px;
+    background: rgba(0, 0, 0, 0.7); /* semi-transparent overlay */
+    border-radius: 15px;
+}
+
+.logo-card {
+    position: absolute;
+    top: -15vh;
+    left: 40%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    background-image: url("img/omnifood-logo.png");
+    background-size: cover;
+}
+
+.logo {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+}
+
+/* Rest of your existing styles */
+    /* About section with fixed background */
+    .about {
         position: relative;
+        padding: 80px 20px;
+        overflow: hidden;
     }
-    .hero .overlay {
-        background: rgba(0, 0, 0, 0.6);
-        padding: 50px;
-        color: white;
-        border-radius: 10px;
+    
+    .about-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('img/meals/meal-1.jpg') no-repeat center center/cover fixed;
+        z-index: -1;
+        opacity: 1;
     }
-    .hero h1 {
-        font-size: 40px;
-        margin-bottom: 10px;
-    }
-    .hero p {
-        font-size: 20px;
-    }
+    
     .container {
-        max-width: 1000px;
+        max-width: 1200px;
         margin: auto;
-        padding: 50px 20px;
+        padding: 40px;
+        width: 90%;
     }
-    .about, .mission, .values {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
+    
+    .about .container {
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 15px;
+        box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+    }
+    .textdes{
+        font-size: 3vw;
+        font-style: italic;
     }
     .text, .image {
         flex: 1;
         min-width: 300px;
         margin: 20px;
+        padding: 20px;
     }
-    .image img {
-        width: 100%;
-        max-width: 500px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    
+    .text h2 {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        margin-bottom: 20px;
+        color: #ff4d00;
     }
-    .values .boxes {
+    
+    .text p {
+        font-size: clamp(1rem, 2vw, 1.1rem);
+        line-height: 1.6;
+        text-align: left;
+    }
+    
+    /* Values section */
+    .values {
+        padding: 60px 20px;
+        background: #f1f1f1;
+    }
+    
+    .values h2 {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        margin-bottom: 40px;
+        color: #ff4d00;
+    }
+    
+    .boxes {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         gap: 20px;
         margin-top: 20px;
     }
+    
     .box {
+        background: white;
+        color: #333;
+        padding: 25px 20px;
+        border-radius: 15px;
+        font-size: 16px;
+        font-weight: 600;
+        width: 100%;
+        max-width: 280px;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        cursor: pointer;
+    }
+    
+    .box-icon {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+    }
+    
+    .box h3 {
+        color: #ff4d00;
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+    }
+    
+    .box-desc {
+        font-weight: normal;
+        font-size: 0.9rem;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .box:hover {
         background: #ff4d00;
         color: white;
-        padding: 20px;
-        border-radius: 10px;
-        font-size: 18px;
-        font-weight: 600;
-        transition: transform 0.3s ease, background 0.3s ease;
     }
-    .box:hover {
-        background: #ff2d00;
-        transform: scale(1.05);
+    
+    .box:hover h3 {
+        color: white;
     }
+    
+    .box:hover .box-desc {
+        opacity: 1;
+        max-height: 100px;
+    }
+    
+    /* Mission section */
     .mission {
         background: #ff4d00;
         color: white;
-        padding: 60px 20px;
+        padding: 80px 20px;
+        position: relative;
     }
+    
+    .mission h2 {
+        font-size: clamp(1.8rem, 4vw, 2.5rem);
+        margin-bottom: 30px;
+    }
+    
+    .mission p {
+        font-size: clamp(1rem, 2vw, 1.2rem);
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+        padding: 0 20px;
+    }
+    
     footer {
         background: #222;
         color: white;
-        padding: 15px;
+        padding: 30px 20px;
+        font-size: 1rem;
+    }
+    
+    @media (max-width: 768px) {
+        .hero {
+            height: 50vh;
+            min-height: 350px;
+        }
+        
+        .hero .overlay {
+            padding: 30px 15px;
+            margin-top: 80px;
+        }
+        
+        .container {
+            padding: 30px 20px;
+        }
+        
+        .box {
+            max-width: 100%;
+            padding: 20px 15px;
+        }
+        
+        .boxes {
+            gap: 15px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .hero {
+            height: 45vh;
+            min-height: 300px;
+        }
+        
+        .hero .overlay {
+            margin-top: 100px;
+        }
+        
+        .logo-card {
+            padding: 15px;
+            max-width: 160px;
+        }
+        
+        .container {
+            padding: 25px 15px;
+        }
+        
+        .text p {
+            text-align: center;
+        }
+
+    }
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .overlay {
+        max-width: 90%;
+        margin-top: 60px;
+        padding: 2.5rem 1.5rem 1.5rem;
+    }
+    
+    .logo-card {
+        width: 100px;
+        height: 100px;
+        top: -50px;
+    }
+    
+    .logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar,.navbar-link{
+        font-size:3vw;
+        
+    }
+    .overlay {
+        margin-top: 50px;
+        padding: 2rem 1rem 1rem;
+    }
+    
+    .logo-card {
+        width: 80px;
+        height: 80px;
+        top: -40px;
+    }
+    
+    .logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    p {
+        font-size: 0.9rem;
+    }
+}
     }
 </style>
