@@ -31,6 +31,7 @@
     <!-- ===================== -->
     <link rel="stylesheet" href="css/queries.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script defer src="js/script.js"></script>
@@ -79,6 +80,98 @@
 
         .btn:hover {
             transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Consolidated .header.nav-open .main-nav styles */
+        .header.nav-open .main-nav {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            z-index: 1000;
+        }
+
+        /* Responsive design for hero section */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text-box {
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Responsive design for pricing cards */
+        @media (max-width: 768px) {
+            .pricing-plan {
+                grid-template-columns: 1fr;
+                margin-bottom: 2rem;
+            }
+        }
+
+        /* Improved color contrast for CTA button */
+        .btn--full {
+            background-color: #d35400;
+            color: #fff;
+        }
+
+        /* Consistent focus states */
+        .btn:focus {
+            outline: 2px solid #4caf50;
+            outline-offset: 2px;
+        }
+
+        /* Fix for hidden error messages */
+        .error-message {
+            font-size: 1.2rem;
+            color: red;
+        }
+
+        /* Sticky header height fix */
+        .sticky .header {
+            height: 8rem;
+        }
+
+        /* Fix for pricing banner cutoff */
+        .pricing-plan--complete::after {
+            right: -10%;
+        }
+
+        /* Fix animation inconsistency for #scrollBtn */
+        #scrollBtn.rotate {
+            transform: rotate(360deg);
+        }
+
+        /* Use absolute paths for images */
+        .hero img {
+            src: "/img/hero-min.webp";
+        }
+
+        /* Scroll button styles */
+        #scrollBtn ion-icon {
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        #scrollBtn {
+            background-color: #d35400;
+            border-radius: 50%;
+            width: 4rem;
+            height: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            cursor: pointer;
+            z-index: 1000;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
     </style>
@@ -785,7 +878,7 @@
         </section>
 
         <button id="scrollBtn" aria-label="Scroll to top">
-            <ion-icon name="arrow-up-outline"></ion-icon>
+            <i class="fas fa-arrow-up" style="font-size: 2rem; color: #fff;"></i>
         </button>
     </main>
 
@@ -936,6 +1029,13 @@
         // Remove hover state on touch devices
         document.addEventListener('touchstart', function () { }, true);
 
+        // Ensure Ionicons library is loaded
+        document.addEventListener("DOMContentLoaded", () => {
+            const ionIcon = document.querySelector("ion-icon[name='arrow-up-outline']");
+            if (!ionIcon) {
+                console.error("Ionicons library failed to load or icon name is incorrect.");
+            }
+        });
     </script>
 
 </body>
