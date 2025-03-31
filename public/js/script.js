@@ -69,19 +69,33 @@ function preventNavClose(e) {
     e.stopPropagation();
 }
 
-// Attach event listeners
-btnNavEl.addEventListener("click", toggleNav);
-document.addEventListener("click", closeNavOnClickOutside);
-mainNav.addEventListener("click", preventNavClose);
-window.addEventListener("resize", handleResize);
+// Refactor: Ensure event listeners are registered only once
+function initializeNavListeners() {
+    btnNavEl.addEventListener("click", toggleNav);
+    document.addEventListener("click", closeNavOnClickOutside);
+    mainNav.addEventListener("click", preventNavClose);
+    window.addEventListener("resize", handleResize);
 
-// Close nav on Escape key press
-document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && headerEl.classList.contains("nav-open")) {
-        headerEl.classList.remove("nav-open");
-        closeNavbar();
-    }
-});
+    // Close nav on Escape key press
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && headerEl.classList.contains("nav-open")) {
+            headerEl.classList.remove("nav-open");
+            closeNavbar();
+        }
+    });
+}
+
+// Cleanup function to remove all navigation-related listeners
+function cleanupNavListeners() {
+    btnNavEl.removeEventListener("click", toggleNav);
+    document.removeEventListener("click", closeNavOnClickOutside);
+    mainNav.removeEventListener("click", preventNavClose);
+    window.removeEventListener("resize", handleResize);
+    document.removeEventListener("keydown", closeNavbarOnEscape);
+}
+
+// Ensure listeners are initialized only once
+initializeNavListeners();
 
 ///////////////////////////////////////////////////
 const sectionHeroEl = document.querySelector(".section-hero");
