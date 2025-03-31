@@ -32,8 +32,6 @@
     <link rel="stylesheet" href="css/queries.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script defer src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script defer src="js/script.js"></script>
     <title>OmniFood &mdash; Never cook again</title>
 
@@ -871,7 +869,8 @@
                 <form class="newsletter-form">
                     <div>
                         <label for="newsletter-email" class="visually-hidden"></label>
-                        <input type="email" id="newsletter-email" name="newsletter-email" placeholder="Your email address" required aria-required="true" />
+                        <input type="email" id="newsletter-email" name="newsletter-email"
+                            placeholder="Your email address" required aria-required="true" />
                     </div>
                     <button type="submit" class="btn btn--form">Subscribe</button>
                 </form>
@@ -966,10 +965,18 @@
             scrollBtn.classList.toggle("visible", window.scrollY > 50);
         });
 
-        scrollBtn.addEventListener('click', () => {
-            scrollToTop();
-        })
+        scrollBtn.addEventListener("click", () => {
+            scrollBtn.classList.add("rotate");
 
+            window.scrollTo({ top: 0, behavior: "smooth" });
+
+            const checkScroll = setInterval(() => {
+                if (window.scrollY === 0) {
+                    scrollBtn.classList.remove("rotate");
+                    clearInterval(checkScroll);
+                }
+            }, 100);
+        });
 
         const mobileNav = document.querySelector('.main-nav');
         const btnMobileNav = document.querySelector('.btn-mobile-nav');
@@ -1003,14 +1010,6 @@
                     firstFocusableElement.focus();
                 }
             }
-        }
-
-        function scrollToTop() {
-            scrollBtn.classList.add("rotate");
-
-            window.scrollTo({ top: 0, behavior: "smooth" });
-
-            setTimeout(() => scrollBtn.classList.remove("rotate"), 400);
         }
 
         document.getElementById("year").textContent = new Date().getFullYear();
