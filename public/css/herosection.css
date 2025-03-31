@@ -88,10 +88,10 @@
 .delivered-text {
     font-size: 1.6rem; /* Slightly smaller for better fit */
     font-weight: 600;
-    color: #333;
+    color: #222; /* Darker color for better contrast */
 }
 
 .delivered-text span {
-    color: #cf711f;
+    color: #b35900; /* Adjusted to improve contrast */
     font-weight: 700;
 }

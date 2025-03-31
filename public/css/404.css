@@ -1,12 +1,12 @@
 :root {
-    --primary-color: #ff005d;
-    --secondary-color: #12000a;
-    --animation-duration: 2s;
-    --flicker-duration: 3s;
-    --hue-rotate-duration: 4s;
-  }
+    --primary-color: #ff3366; /* Adjusted for better contrast */
+    --secondary-color: #1a0014; /* Adjusted for better contrast */
+    --animation-duration: 2.5s;
+    --flicker-duration: 4s;
+    --hue-rotate-duration: 6s;
+}
 
-  .main {
+.main {
     position: absolute;
     top: 0%;
     left: 0%;
@@ -42,10 +42,10 @@
     color: #ff005d;
     font-weight: 300;
     font-family: Audiowide;
-    text-shadow: 0px 0px 4px #12000a;
-    animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate 6s ease-in-out 3s infinite;
-    -webkit-animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate 6s ease-in-out 3s infinite;
-    -moz-animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate 6s ease-in-out 3s infinite;
+    text-shadow: 0px 0px 6px var(--secondary-color); /* Enhanced shadow for better visibility */
+    animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
+    -webkit-animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
+    -moz-animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
     will-change: color, text-shadow;
 }
 
@@ -71,7 +71,7 @@
 }
 
 .svgPathSecondary {
-    stroke: #12000a;
+    stroke: var(--secondary-color);
     stroke-width: 3px;
     fill: transparent;
     filter: url(#glow);
@@ -80,25 +80,25 @@
 #id3_1 {
     stroke-dasharray: 940px;
     stroke-dashoffset: -940px;
-    animation: drawLine3 2.5s ease-in-out 0s forwards, flicker3 4s linear 4s infinite;
-    -webkit-animation: drawLine3 2.5s ease-in-out 0s forwards, flicker3 4s linear 4s infinite;
-    -moz-animation: drawLine3 2.5s ease-in-out 0s forwards, flicker3 4s linear 4s infinite;
+    animation: drawLine3 var(--animation-duration) ease-in-out 0s forwards, flicker3 var(--flicker-duration) linear 4s infinite;
+    -webkit-animation: drawLine3 var(--animation-duration) ease-in-out 0s forwards, flicker3 var(--flicker-duration) linear 4s infinite;
+    -moz-animation: drawLine3 var(--animation-duration) ease-in-out 0s forwards, flicker3 var(--flicker-duration) linear 4s infinite;
 }
 
 #id2_1 {
     stroke-dasharray: 735px;
     stroke-dashoffset: -735px;
-    animation: drawLine2 2.5s ease-in-out 0.5s forwards, flicker2 4s linear 4.5s infinite;
-    -webkit-animation: drawLine2 2.5s ease-in-out 0.5s forwards, flicker2 4s linear 4.5s infinite;
-    -moz-animation: drawLine2 2.5s ease-in-out 0.5s forwards, flicker2 4s linear 4.5s infinite;
+    animation: drawLine2 var(--animation-duration) ease-in-out 0.5s forwards, flicker2 var(--flicker-duration) linear 4.5s infinite;
+    -webkit-animation: drawLine2 var(--animation-duration) ease-in-out 0.5s forwards, flicker2 var(--flicker-duration) linear 4.5s infinite;
+    -moz-animation: drawLine2 var(--animation-duration) ease-in-out 0.5s forwards, flicker2 var(--flicker-duration) linear 4.5s infinite;
 }
 
 #id1_1 {
     stroke-dasharray: 940px;
     stroke-dashoffset: -940px;
-    animation: drawLine1 2.5s ease-in-out 1s forwards, flicker1 4s linear 5s infinite;
-    -webkit-animation: drawLine1 2.5s ease-in-out 1s forwards, flicker1 4s linear 5s infinite;
-    -moz-animation: drawLine1 2.5s ease-in-out 1s forwards, flicker1 4s linear 5s infinite;
+    animation: drawLine1 var(--animation-duration) ease-in-out 1s forwards, flicker1 var(--flicker-duration) linear 5s infinite;
+    -webkit-animation: drawLine1 var(--animation-duration) ease-in-out 1s forwards, flicker1 var(--flicker-duration) linear 5s infinite;
+    -moz-animation: drawLine1 var(--animation-duration) ease-in-out 1s forwards, flicker1 var(--flicker-duration) linear 5s infinite;
 }
 
 #homeButton {
@@ -110,8 +110,8 @@
     font-size: 18px;
     text-transform: uppercase;
     font-family: Audiowide;
-    background: #ff005d;
-    color: #ffffff;
+    background: var(--primary-color);
+    color: #ffffff; /* Ensure sufficient contrast with the background */
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -121,13 +121,13 @@
 }
 
 #homeButton:hover {
-    background: #12000a;
-    box-shadow: 0 0 10px #ff005d;
+    background: var(--secondary-color);
+    box-shadow: 0 0 12px var(--primary-color); /* Enhanced hover effect for better visibility */
 }
 
 #homeButton:focus {
-    outline: 2px solid #ff005d;
-    box-shadow: 0 0 10px #ff005d;
+    outline: 2px solid var(--primary-color);
+    box-shadow: 0 0 10px var(--primary-color);
 }
 
 @keyframes drawLine1 {
@@ -146,58 +146,58 @@
 }
 
 @keyframes flicker1 {
-    0%  {stroke: #ff005d;}
+    0%  {stroke: var(--primary-color);}
     1%  {stroke: transparent;}
     3%  {stroke: transparent;}
     4%  {stroke: #ff005d;}
     6%  {stroke: #ff005d;}
     7%  {stroke: transparent;}
     13% {stroke: transparent;}
-    14% {stroke: #ff005d;}
-    100%{stroke: #ff005d;}
+    14% {stroke: var(--primary-color);}
+    100%{stroke: var(--primary-color);}
 }
 
 @keyframes flicker2 {
-    0%  {stroke: #ff005d;}
-    50% {stroke: #ff005d;}
+    0%  {stroke: var(--primary-color);}
+    50% {stroke: var(--primary-color);}
     51% {stroke: transparent;}
     61% {stroke: transparent;}
-    62% {stroke: #ff005d;}
-    100%{stroke: #ff005d;}
+    62% {stroke: var(--primary-color);}
+    100%{stroke: var(--primary-color);}
 }
 
 @keyframes flicker3 {
-    0%  {stroke: #ff005d;}
+    0%  {stroke: var(--primary-color);}
     1%  {stroke: transparent;}
     10% {stroke: transparent;}
     11% {stroke: #ff005d;}
     40% {stroke: #ff005d;}
     41% {stroke: transparent;}
     45% {stroke: transparent;}
-    46% {stroke: #ff005d;}
-    100%{stroke: #ff005d;}
+    46% {stroke: var(--primary-color);}
+    100%{stroke: var(--primary-color);}
 }
 
 @keyframes flicker4 {
-    0%  {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
-    30% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
-    31% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
-    32% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
-    36% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
-    37% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
-    41% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
-    42% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
-    85% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
-    86% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
-    95% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
-    96% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
-    100%{color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    0%  {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
+    30% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
+    31% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
+    32% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
+    36% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
+    37% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
+    41% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
+    42% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
+    85% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
+    86% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
+    95% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
+    96% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
+    100%{color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
 }
 
 @keyframes fadeInText {
-    1%  {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
-    70% {color: #ff005d; text-shadow: 0px 0px 14px #ff005d;}
-    100%{color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    1%  {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
+    70% {color: var(--primary-color); text-shadow: 0px 0px 14px var(--primary-color);}
+    100%{color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
 }
 
 @keyframes hueRotate {
@@ -222,58 +222,58 @@
 }
 
 @-webkit-keyframes flicker1 {
-    0%  {stroke: #ff005d;}
+    0%  {stroke: var(--primary-color);}
     1%  {stroke: transparent;}
     3%  {stroke: transparent;}
     4%  {stroke: #ff005d;}
     6%  {stroke: #ff005d;}
     7%  {stroke: transparent;}
     13% {stroke: transparent;}
-    14% {stroke: #ff005d;}
-    100%{stroke: #ff005d;}
+    14% {stroke: var(--primary-color);}
+    100%{stroke: var(--primary-color);}
 }
 
 @-webkit-keyframes flicker2 {
-    0%  {stroke: #ff005d;}
-    50% {stroke: #ff005d;}
+    0%  {stroke: var(--primary-color);}
+    50% {stroke: var(--primary-color);}
     51% {stroke: transparent;}
     61% {stroke: transparent;}
-    62% {stroke: #ff005d;}
-    100%{stroke: #ff005d;}
+    62% {stroke: var(--primary-color);}
+    100%{stroke: var(--primary-color);}
 }
 
 @-webkit-keyframes flicker3 {
-    0%  {stroke: #ff005d;}
+    0%  {stroke: var(--primary-color);}
     1%  {stroke: transparent;}
     10% {stroke: transparent;}
     11% {stroke: #ff005d;}
     40% {stroke: #ff005d;}
     41% {stroke: transparent;}
     45% {stroke: transparent;}
-    46% {stroke: #ff005d;}
-    100%{stroke: #ff005d;}
+    46% {stroke: var(--primary-color);}
+    100%{stroke: var(--primary-color);}
 }
 
 @-webkit-keyframes flicker4 {
-    0%  {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
-    30% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
-    31% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
-    32% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
-    36% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
-    37% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
-    41% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
-    42% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
-    85% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
-    86% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
-    95% {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
-    96% {color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
-    100%{color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    0%  {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
+    30% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
+    31% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
+    32% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
+    36% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
+    37% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
+    41% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
+    42% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
+    85% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
+    86% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
+    95% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
+    96% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
+    100%{color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
 }
 
 @-webkit-keyframes fadeInText {
-    1%  {color: #12000a; text-shadow: 0px 0px 4px #12000a;}
-    70% {color: #ff005d; text-shadow: 0px 0px 14px #ff005d;}
-    100%{color: #ff005d; text-shadow: 0px 0px 4px #ff005d;}
+    1%  {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
+    70% {color: var(--primary-color); text-shadow: 0px 0px 14px var(--primary-color);}
+    100%{color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
 }
 
 @-webkit-keyframes hueRotate {
@@ -330,7 +330,7 @@
 }
 
 .loading-text {
-    color: #ff005d;
+    color: var(--primary-color); /* Ensure sufficient contrast with the background */
     font-family: Audiowide;
     font-size: 24px;
     text-transform: uppercase;

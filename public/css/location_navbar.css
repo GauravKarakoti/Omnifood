@@ -14,7 +14,7 @@
 
 .location-text {
     font-size: 16px;
-    color: #1f1d1d;
+    color: #000000; /* Improved contrast */
     font-weight: bold;
 }
 
@@ -25,13 +25,15 @@
     left: -10px;
     top: -5px;
     padding: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #888888; /* Improved contrast for border */
     border-radius: 5px;
     font-size: 14px;
     outline: none;
     width: 150px;
     height: 30px;
     margin-top: 50px;
+    background-color: #ffffff; /* Ensure good contrast with text */
+    color: #000000; /* Improved text contrast */
     transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
