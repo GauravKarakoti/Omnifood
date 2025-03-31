@@ -191,6 +191,7 @@
 .btn--form:hover {
     background-color: #222; /* Darker background for better contrast */
     color: #fff; /* White text */
+    transform: scale(1.05); 
 }
 
 /* Animation */
