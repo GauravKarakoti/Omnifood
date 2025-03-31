@@ -160,10 +160,56 @@
 .cta-form input:invalid + .error-message,
 .cta-form select:invalid + .error-message {
     display: block;
-    color: #a10d1e; /* Darker red for better contrast */
+    color: #a10d1e; /* Improved contrast */
     font-weight: 500;
-    font-size: 1.7rem;
+    font-size: 2rem;
     margin-top: 0.5rem;
+}
+
+/* Visually Hidden ARIA Live Region */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* First and Last Name Styling */
+.cta-form .first-name,
+.cta-form .last-name {
+    grid-column: span 1; /* Each occupies one column */
+}
+
+.cta-form .first-name label,
+.cta-form .last-name label {
+    display: block;
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1.2rem;
+}
+
+.cta-form .first-name input,
+.cta-form .last-name input {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 2rem;
+    font-family: inherit;
+    border: 2px solid transparent;
+    background-color: #fdf2e9;
+    border-radius: 9px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    color: inherit;
+    transition: border 0.3s ease, background-color 0.3s ease;
+}
+
+.cta-form .first-name input:focus,
+.cta-form .last-name input:focus {
+    border-color: #ff8c00;
+    background-color: #fff3e0;
 }
 
 /* CTA Button */

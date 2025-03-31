@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Add ARIA live region for error messages
     const errorLiveRegion = document.createElement("div");
-    errorLiveRegion.setAttribute("aria-live", "polite");
+    errorLiveRegion.setAttribute("aria-live", "assertive");
     errorLiveRegion.setAttribute("role", "alert");
     errorLiveRegion.style.position = "absolute";
     errorLiveRegion.style.left = "-9999px"; // Visually hidden
@@ -264,66 +264,97 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let isSubmitting = false; // Flag to prevent multiple submissions
 
+    // Helper function to show error messages
+    function showError(input, errorElement, message) {
+        input.classList.add("error");
+        input.setAttribute("aria-invalid", "true");
+        errorElement.textContent = message;
+        errorElement.style.display = "block";
+        errorLiveRegion.textContent = message; // Update ARIA live region
+    }
+
+    // Helper function to clear error messages
+    function clearError(input, errorElement) {
+        input.classList.remove("error");
+        input.setAttribute("aria-invalid", "false");
+        errorElement.style.display = "none";
+    }
+
+    // Validate full name field
+    function validateFullName() {
+        const value = fullNameInput.value.trim();
+        if (!/^\w+\s+\w+/.test(value)) {
+            showError(fullNameInput, errorName, "Full name must include first and last name.");
+            return false;
+        }
+        clearError(fullNameInput, errorName);
+        return true;
+    }
+
+    // Validate email field
+    function validateEmail() {
+        const value = emailInput.value.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+            showError(emailInput, errorEmail, "Please enter a valid email address.");
+            return false;
+        }
+        clearError(emailInput, errorEmail);
+        return true;
+    }
+
+    // Validate select field
+    function validateSelect() {
+        if (selectWhere.value === "") {
+            showError(selectWhere, errorSelect, "Please select an option.");
+            return false;
+        }
+        clearError(selectWhere, errorSelect);
+        return true;
+    }
+
+    // Trap focus inside the modal
+    function trapFocusInModal() {
+        const focusableElements = modal.querySelectorAll("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])");
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        modal.addEventListener("keydown", function (e) {
+            if (e.key === "Tab") {
+                if (e.shiftKey && document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement.focus();
+                } else if (!e.shiftKey && document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
+            }
+        });
+    }
+
     form.addEventListener("submit", function (e) {
         e.preventDefault(); // Prevent default form submission
 
         if (isSubmitting) return; // Exit if already submitting
         isSubmitting = true; // Set flag to true
 
-        let isValid = true;
-        let errorMessage = "";
+        const isFullNameValid = validateFullName();
+        const isEmailValid = validateEmail();
+        const isSelectValid = validateSelect();
 
-        // Full Name validation: Must contain at least two words
-        if (!/^\w+\s+\w+/.test(fullNameInput.value.trim())) {
-            fullNameInput.classList.add("error");
-            fullNameInput.setAttribute("aria-invalid", "true");
-            errorName.style.display = "block";
-            errorMessage += "Please enter your full name. ";
-            isValid = false;
-        } else {
-            fullNameInput.classList.remove("error");
-            fullNameInput.setAttribute("aria-invalid", "false");
-            errorName.style.display = "none";
-        }
-
-        // Email validation: Must be a valid email format
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
-            emailInput.classList.add("error");
-            emailInput.setAttribute("aria-invalid", "true");
-            errorEmail.style.display = "block";
-            errorMessage += "Please enter a valid email address. ";
-            isValid = false;
-        } else {
-            emailInput.classList.remove("error");
-            emailInput.setAttribute("aria-invalid", "false");
-            errorEmail.style.display = "none";
-        }
-
-        // Select validation: Must select an option
-        if (selectWhere.value === "") {
-            selectWhere.classList.add("error");
-            selectWhere.setAttribute("aria-invalid", "true");
-            errorSelect.style.display = "block";
-            errorMessage += "Please select an option. ";
-            isValid = false;
-        } else {
-            selectWhere.classList.remove("error");
-            selectWhere.setAttribute("aria-invalid", "false");
-            errorSelect.style.display = "none";
-        }
-
-        if (!isValid) {
-            errorLiveRegion.textContent = errorMessage; // Update ARIA live region
+        if (!isFullNameValid || !isEmailValid || !isSelectValid) {
             isSubmitting = false; // Reset flag if validation fails
-        } else {
-            // Simulate form submission (replace this with actual form submission logic)
-            setTimeout(() => {
-                // Show success message
-                confirmationMessage.textContent = "Thank you! Your submission has been received.";
-                modal.style.display = "block";
-                isSubmitting = false; // Reset flag after submission
-            }, 1000);
+            return;
         }
+
+        // Simulate form submission (replace this with actual form submission logic)
+        setTimeout(() => {
+            // Show success message
+            confirmationMessage.textContent = "Thank you! Your submission has been received.";
+            modal.style.display = "block";
+            trapFocusInModal(); // Trap focus inside the modal
+            modal.querySelector("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])").focus();
+            isSubmitting = false; // Reset flag after submission
+        }, 1000);
     });
 
     // Close the modal when the user clicks on <span> (x)
@@ -340,34 +371,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Validate full name field on blur (when the user leaves the field)
-    fullNameInput.addEventListener("blur", function () {
-        if (/^\w+\s+\w+/.test(fullNameInput.value.trim())) {
-            fullNameInput.classList.remove("error");
-            fullNameInput.setAttribute("aria-invalid", "false");
-            errorName.style.display = "none";
-        }
-    });
-
-    // Validate email field on blur (when the user leaves the field)
-    emailInput.addEventListener("blur", function () {
-        if (/^[^\s@]+\@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
-            emailInput.classList.remove("error");
-            emailInput.setAttribute("aria-invalid", "false");
-            errorEmail.style.display = "none";
-        }
-    });
-
-    // Validate select field on change
-    selectWhere.addEventListener("change", function () {
-        if (selectWhere.value !== "") {
-            selectWhere.classList.remove("error");
-            selectWhere.setAttribute("aria-invalid", "false");
-            errorSelect.style.display = "none";
-        }
-    });
+    // Validate fields on blur or change
+    fullNameInput.addEventListener("blur", validateFullName);
+    emailInput.addEventListener("blur", validateEmail);
+    selectWhere.addEventListener("change", validateSelect);
 });
-
 
 document.querySelector("#try-for-free").addEventListener("click", () => trackClick("Try for free"));
 document.querySelector("#start-eating-well").addEventListener("click", () => trackClick("Start eating well"));
@@ -562,3 +570,93 @@ function setupServiceWorker() {
 }
 
 setupServiceWorker();
+
+// Enhanced Form Validation
+const enhancedForm = document.querySelector('.cta-form');
+const firstNameInput = enhancedForm.querySelector('.first-name input');
+const lastNameInput = enhancedForm.querySelector('.last-name input');
+const errorMessages = enhancedForm.querySelectorAll('.error-message');
+const modal = document.querySelector('.modal'); // Assuming modal exists
+const modalCloseButton = modal.querySelector('.modal-close'); // Assuming close button exists
+
+// Add ARIA live region for error messages
+const ariaLiveRegion = document.createElement('div');
+ariaLiveRegion.setAttribute('aria-live', 'polite');
+ariaLiveRegion.classList.add('visually-hidden');
+document.body.appendChild(ariaLiveRegion);
+
+// Real-time Validation
+function validateInput(input, errorMessage) {
+    const value = input.value.trim();
+    if (!value) {
+        input.setAttribute('aria-invalid', 'true');
+        errorMessage.textContent = 'This field is required.';
+        errorMessage.style.display = 'block';
+        ariaLiveRegion.textContent = 'This field is required.';
+        return false;
+    } else if (input === firstNameInput || input === lastNameInput) {
+        if (!/^[a-zA-Z]+$/.test(value)) {
+            input.setAttribute('aria-invalid', 'true');
+            errorMessage.textContent = 'Must include only letters.';
+            errorMessage.style.display = 'block';
+            ariaLiveRegion.textContent = 'Must include only letters.';
+            return false;
+        }
+    }
+    input.setAttribute('aria-invalid', 'false');
+    errorMessage.style.display = 'none';
+    return true;
+}
+
+[firstNameInput, lastNameInput].forEach((input, index) => {
+    const errorMessage = errorMessages[index];
+    input.addEventListener('input', () => validateInput(input, errorMessage));
+});
+
+// Form Submission Validation
+enhancedForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let isValid = true;
+
+    [firstNameInput, lastNameInput].forEach((input, index) => {
+        const errorMessage = errorMessages[index];
+        if (!validateInput(input, errorMessage)) {
+            isValid = false;
+        }
+    });
+
+    if (isValid) {
+        // Show modal and trap focus
+        modal.style.display = 'block';
+        modalCloseButton.focus();
+        trapFocus(modal);
+    }
+});
+
+// Focus Trap for Modal
+function trapFocus(element) {
+    const focusableElements = element.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    element.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            if (e.shiftKey) {
+                if (document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement.focus();
+                }
+            } else {
+                if (document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
+            }
+        }
+    });
+}
+
+// Close Modal
+modalCloseButton.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
