@@ -4,12 +4,22 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const path = require("path");
 const cron = require("node-cron");
+const rateLimit = require('express-rate-limit');
 
 const app = express();
 app.use(express.json());
 
 // Define allowed origins
 const allowedOrigins = ["http://localhost:3000", "https://omnifood-meal-available.netlify.app"];
+
+// Create a rate limiter that allows 100 requests per IP per hour
+const clickRateLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour window
+  max: 100, // Limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again after an hour',
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -53,7 +63,7 @@ app.get("/", (req, res) => {
 })
 
 // API to Track Clicks
-app.post("/track-click", async (req, res, next) => {
+app.post("/track-click", clickRateLimiter, async (req, res, next) => {
   const { buttonName } = req.body;
   if (!buttonName) return res.status(400).json({ error: "Button name is required!" });
 
@@ -66,7 +76,7 @@ app.post("/track-click", async (req, res, next) => {
     }
   });
 
-  if (bulkOps.length >= 100) {
+  if (bulkOps.length >= 50) {
     try {
       await Click.bulkWrite(bulkOps);
       console.log(`✅ Bulk write executed with ${bulkOps.length} operations`);
