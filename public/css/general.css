@@ -158,8 +158,8 @@ body {
 }
 
 .btn--full:link, .btn--full:visited {
-    background-color: var(--primary-color);
-    color: #fff;
+    background-color: #e67e22;
+    color: #222;
 }
 
 .btn--full:hover, .btn--full:active {
