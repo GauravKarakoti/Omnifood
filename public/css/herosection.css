@@ -8,11 +8,11 @@
     height: fit-content !important;
 }
 
-.section-hero a:active
-{
+.section-hero a:active {
     font-weight: 500; 
     color: inherit;
 }
+
 .hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -52,11 +52,13 @@
     padding: 1rem 2rem; /* Smaller buttons */
     font-size: 1.6rem;
     min-height: 48px; /* Ensure minimum touch target size */
+    transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 .btn--large {
     padding: 2rem 4rem;
     font-size: 2.4rem;
+    transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 /* ================= DELIVERED MEALS ================= */
@@ -76,6 +78,11 @@
     width: 4rem;
     border-radius: 50%;
     margin-right: -1rem;
+    transition: transform 0.3s ease-in-out; /* Replaced --animation-duration-short */
+}
+
+.delivered-imgs img:hover {
+    transform: scale(1.1);
 }
 
 .delivered-imgs img:last-child {
@@ -85,10 +92,10 @@
 .delivered-text {
     font-size: 1.6rem; /* Slightly smaller for better fit */
     font-weight: 600;
-    color: #333;
+    color: #222; /* Darker color for better contrast */
 }
 
 .delivered-text span {
-    color: #cf711f;
+    color: #b35900; /* Adjusted to improve contrast */
     font-weight: 700;
 }

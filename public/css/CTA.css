@@ -1,4 +1,3 @@
-
 /*******************************************/
 /* CTA SECTION */
 /*******************************************/
@@ -23,10 +22,8 @@
     transition: all 0.3s ease-in-out;
 }
 
-
-
 .cta *:focus {
-    outline: 2px solid #ff8000; /* Visible outline with sufficient contrast */
+    outline: 2px solid #cc7000; /* Adjusted for better contrast */
     outline-offset: 4px; /* Offset to ensure the outline is visible */
     box-shadow: none; /* Remove box-shadow */
 }
@@ -74,7 +71,7 @@
     url('../img/eating.jpg');
     background-size: cover;
     background-position: center;
-    transition: transform var(--animation-duration-short) ease-in-out;
+    transition: transform 0.3s ease-in-out;
 }
 
 .cta-img-box:hover {
@@ -93,8 +90,6 @@
     column-gap: 3.2rem;
     row-gap: 2.4rem;
 }
-
-
 
 .cta-form label {
     display: block;
@@ -165,7 +160,7 @@
 .cta-form input:invalid + .error-message,
 .cta-form select:invalid + .error-message {
     display: block;
-    color: #c71224;
+    color: #a10d1e; /* Darker red for better contrast */
     font-weight: 500;
     font-size: 1.7rem;
     margin-top: 0.5rem;
@@ -179,22 +174,22 @@
     font-weight: bold;
     text-transform: uppercase;
     color: white;
-    background-color: #e67e22;
+    background-color: #d9771e; /* Adjusted for better contrast */
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: all var(--animation-duration-short) ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 .cta-btn:hover {
-    background-color: #cf711f;
+    background-color: #b5651a; /* Adjusted for better contrast */
     transform: scale(1.05);
-    transition: all var(--animation-duration-short) ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 /* Ensure sufficient contrast for .btn--form:hover */
 .btn--form:hover {
-    background-color: #333; /* Darker background */
+    background-color: #222; /* Darker background for better contrast */
     color: #fff; /* White text */
 }
 
@@ -211,10 +206,8 @@
 }
 
 .cta {
-    animation: fadeIn var(--animation-duration-long) ease-in-out;
+    animation: fadeIn 1s ease-in-out;
 }
-
-
 
 /* Hide error messages by default */
 .error-message {

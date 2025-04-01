@@ -18,7 +18,7 @@
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 .testimonial:hover {
@@ -68,7 +68,7 @@
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.6rem;
     padding: 1.6rem;
     height: 54%;

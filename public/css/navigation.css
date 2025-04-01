@@ -28,7 +28,6 @@
     position: relative;
 }
 
-
 /*******************************************/
 /* NAVIGATION */
 /*******************************************/
@@ -36,8 +35,8 @@
     position: fixed;
     width: 100%;
     overflow: hidden;
-  }
-  
+}
+
 .main-nav-list {
     list-style: none;
     display: flex;
@@ -49,12 +48,12 @@
     margin-inline: 4.8rem;
 }
 
-
 /* ========================navigation_container====================== */
 .container {
     align-items: center;
     gap: 15px; /* Space between search bar and location */
 }
+
 /* ==========================navigation_searchbar============================ */
 .search-container {
     position: relative;
@@ -68,12 +67,12 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     outline: none;
-
 }
 
-.search-input:hover{
+.search-input:hover {
     background-color: rgba(239, 232, 232, 0.906);
 }
+
 .search-icon {
     position: absolute;
     top: 50%;
@@ -82,7 +81,6 @@
     width: 20px; /* Adjust size */
     height: 20px;
     cursor: pointer;
-
 }
 
 /* Basic styles */
@@ -91,7 +89,7 @@
     color: var(--nav-link-color);
     font-weight: 500;
     font-size: 1.8rem;
-    transition: all var(--animation-duration-short) ease-in-out;
+    transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
     display: inline-block;
     position: relative;
     padding-bottom: 0.5rem;
@@ -105,7 +103,7 @@
     bottom: 0;
     width: 0;
     height: 3px;
-    background-color: #cf711f;
+    background-color: #b35900; /* Darker shade for better contrast */
     transition: all var(--animation-duration-short) ease-in-out;
     transform: translateX(-50%);
 }
@@ -118,7 +116,7 @@
 .main-nav-link:hover, .main-nav-link:active {
     color: var(--nav-link-hover-color);
     transform: scale(1.1);
-    transition: all var(--animation-duration-short) ease-in-out;
+    transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 .main-nav-link:focus {
@@ -132,7 +130,7 @@
     padding: 1.2rem 2.4rem;
     border-radius: 9px;
     color: #fff;
-    background-color: #e67e22;
+    background-color: #cc6b19; /* Slightly darker for better contrast */
     transition: all var(--animation-duration-short) ease-in-out;
     -webkit-transition: all var(--animation-duration-short) ease-in-out;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -166,9 +164,11 @@
     z-index: 999;
     position: relative;
 }
-.btn-mobile-nav:active{
+
+.btn-mobile-nav:active {
     color: black;
 }
+
 .btn {
     border-radius: 25px;
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -196,11 +196,9 @@
 }
 
 .icon-mobile-nav {
-    /* height: 4.8rem;
-    width: 4.8rem; */
     color: #333;
     font-size: 4rem;
-} 
+}
 
 .icon-mobile-nav[name="close-outline"] {
     display: none;
@@ -216,20 +214,13 @@
     background-color: rgba(255, 255, 255, 0.97);
     z-index: 998;
     border-radius: 9px 0 0 9px; /* Rounded corners on left side */
-        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
     transform: translateX(0);
     -webkit-transform: translateX(0);
     transition: transform var(--animation-duration-medium) ease-in-out;
     -webkit-transition: -webkit-transform var(--animation-duration-medium) ease-in-out;
     backdrop-filter: blur(10px); /* Add blur effect */
     -webkit-backdrop-filter: blur(10px);
-}
-
-/* Animation for sliding in */
-.header.nav-open .main-nav {
-    left: 20%; /* Slide in from right */
-    transform: translateX(0);
-    -webkit-transform: translateX(0);
 }
 
 /* Optional: Add a semi-transparent background */
@@ -240,30 +231,10 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5); /* Darkens background when nav is open */
-    z-index: 997; /* Below the nav but above other content */
-    opacity: 1;
-    transition: opacity var(--animation-duration-short) ease-in-out;
-}
-
-/* Background overlay with improved animation */
-.header.nav-open::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0);
-    z-index: 997;
-    transition: background-color var(--animation-duration-medium) ease-in-out;
-}
-
-/* Fade in overlay when nav is open */
-.header.nav-open::before {
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
 /* Ensure responsive design for mobile navigation */
@@ -292,11 +263,11 @@
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.97);
+    background-color: rgba(255, 255, 255, 0.98); /* Slightly darker for better contrast */
     z-index: 999; /* Ensure no conflict with other elements */
     height: 7rem; /* Reduced height */
     padding: 4rem 2rem; /* Adjust padding */
-    box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+    box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.05); /* Slightly darker shadow for better visibility */
     transition: height var(--animation-duration-short) ease-in-out, padding var(--animation-duration-short) ease-in-out; /* Specify exact properties */
 }
 

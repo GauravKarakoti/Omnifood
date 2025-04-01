@@ -69,19 +69,33 @@ function preventNavClose(e) {
     e.stopPropagation();
 }
 
-// Attach event listeners
-btnNavEl.addEventListener("click", toggleNav);
-document.addEventListener("click", closeNavOnClickOutside);
-mainNav.addEventListener("click", preventNavClose);
-window.addEventListener("resize", handleResize);
+// Refactor: Ensure event listeners are registered only once
+function initializeNavListeners() {
+    btnNavEl.addEventListener("click", toggleNav);
+    document.addEventListener("click", closeNavOnClickOutside);
+    mainNav.addEventListener("click", preventNavClose);
+    window.addEventListener("resize", handleResize);
 
-// Close nav on Escape key press
-document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && headerEl.classList.contains("nav-open")) {
-        headerEl.classList.remove("nav-open");
-        closeNavbar();
-    }
-});
+    // Close nav on Escape key press
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && headerEl.classList.contains("nav-open")) {
+            headerEl.classList.remove("nav-open");
+            closeNavbar();
+        }
+    });
+}
+
+// Cleanup function to remove all navigation-related listeners
+function cleanupNavListeners() {
+    btnNavEl.removeEventListener("click", toggleNav);
+    document.removeEventListener("click", closeNavOnClickOutside);
+    mainNav.removeEventListener("click", preventNavClose);
+    window.removeEventListener("resize", handleResize);
+    document.removeEventListener("keydown", closeNavbarOnEscape);
+}
+
+// Ensure listeners are initialized only once
+initializeNavListeners();
 
 ///////////////////////////////////////////////////
 const sectionHeroEl = document.querySelector(".section-hero");
@@ -248,7 +262,14 @@ document.addEventListener("DOMContentLoaded", function () {
     errorLiveRegion.style.left = "-9999px"; // Visually hidden
     document.body.appendChild(errorLiveRegion);
 
+    let isSubmitting = false; // Flag to prevent multiple submissions
+
     form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent default form submission
+
+        if (isSubmitting) return; // Exit if already submitting
+        isSubmitting = true; // Set flag to true
+
         let isValid = true;
         let errorMessage = "";
 
@@ -292,14 +313,15 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (!isValid) {
-            e.preventDefault(); // Prevent form submission if there's an error
             errorLiveRegion.textContent = errorMessage; // Update ARIA live region
+            isSubmitting = false; // Reset flag if validation fails
         } else {
             // Simulate form submission (replace this with actual form submission logic)
             setTimeout(() => {
                 // Show success message
                 confirmationMessage.textContent = "Thank you! Your submission has been received.";
                 modal.style.display = "block";
+                isSubmitting = false; // Reset flag after submission
             }, 1000);
         }
     });
@@ -307,12 +329,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // Close the modal when the user clicks on <span> (x)
     closeBtn.addEventListener("click", function () {
         modal.style.display = "none";
+        isSubmitting = false; // Reset flag when modal is closed
     });
 
     // Close the modal when the user clicks anywhere outside of the modal
     window.addEventListener("click", function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            isSubmitting = false; // Reset flag when modal is closed
         }
     });
 
@@ -383,27 +407,34 @@ document.addEventListener("DOMContentLoaded", function () {
     const modal = document.getElementById("confirmation-modal");
     const closeBtn = document.querySelector(".close-btn");
     const confirmationMessage = document.getElementById("confirmation-message");
+    let isSubmitting = false; // Flag to prevent multiple submissions
 
     form.addEventListener("submit", function (e) {
         e.preventDefault(); // Prevent default form submission
+
+        if (isSubmitting) return; // Exit if already submitting
+        isSubmitting = true; // Set flag to true
 
         // Simulate form submission (replace this with actual form submission logic)
         setTimeout(() => {
             // Show success message
             confirmationMessage.textContent = "Thank you! Your submission has been received.";
             modal.style.display = "block";
+            isSubmitting = false; // Reset flag after submission
         }, 1000);
     });
 
     // Close the modal when the user clicks on <span> (x)
     closeBtn.addEventListener("click", function () {
         modal.style.display = "none";
+        isSubmitting = false; // Reset flag when modal is closed
     });
 
     // Close the modal when the user clicks anywhere outside of the modal
     window.addEventListener("click", function (event) {
         if (event.target == modal) {
             modal.style.display = "none";
+            isSubmitting = false; // Reset flag when modal is closed
         }
     });
 });
@@ -490,3 +521,44 @@ document.addEventListener("DOMContentLoaded", function () {
     updateHeroHeight();
     window.addEventListener('resize', updateHeroHeight);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const currentPath = window.location.pathname;
+
+    // Dynamically load JavaScript based on the route
+    if (currentPath === "/home" || currentPath === "/") {
+        import("./routes/home.js")
+            .then((module) => module.initHome())
+            .catch((err) => console.error("Error loading home.js:", err));
+    } else if (currentPath === "/about") {
+        import("./routes/about.js")
+            .then((module) => module.initAbout())
+            .catch((err) => console.error("Error loading about.js:", err));
+    } else if (currentPath === "/contact") {
+        import("./routes/contact.js")
+            .then((module) => module.initContact())
+            .catch((err) => console.error("Error loading contact.js:", err));
+    }
+});
+
+function setupServiceWorker() {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/serviceworker.js')
+            .then((registration) => {
+                console.log('Service Worker registered with scope:', registration.scope);
+
+                // Listen for updates
+                registration.onupdatefound = () => {
+                    const newSW = registration.installing;
+                    newSW.onstatechange = () => {
+                        if (newSW.state === 'installed' && navigator.serviceWorker.controller) {
+                            console.log('New content is available, please refresh.');
+                        }
+                    };
+                };
+            })
+            .catch((error) => console.error('Service Worker registration failed:', error));
+    });
+}
+
+setupServiceWorker();

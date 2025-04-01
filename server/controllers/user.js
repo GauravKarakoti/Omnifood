@@ -4,6 +4,7 @@ const { sendToken, cookieOptions } = require("../utils/features.js");
 const { asyncError } = require("../middlewares/error.js");
 const ErrorHandler = require("../utils/error.js");
 const { sendVerificationEmail } = require("../utils/sendMail.js");
+const crypto = require("crypto")
 
 const signup = asyncError(async (req, res, next) => {
     const { username, email, password } = req.body;
@@ -18,7 +19,7 @@ const signup = asyncError(async (req, res, next) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const verifyToken = bcrypt.hashSync(email, 10).replace(/\//g, "");
+    const verifyToken = crypto.randomBytes(32).toString("hex");
     const verifyExpire = Date.now() + 10 * 60 * 1000;
 
     const user = await User.create({

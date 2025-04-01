@@ -1,6 +1,6 @@
 .profile-header {
     text-align: center;
-    color: #fff;
+    color: #ffffff; /* Ensure high contrast with background */
     background-image: url('../img/eating.jpg');
     background-size: cover;
     background-position: center;
@@ -21,7 +21,8 @@
 
 .profile-info {
     text-align: center;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.85); /* Increase opacity for better contrast */
+    color: #f0f0f0; /* Ensure text is readable */
     padding: 50px;
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
@@ -40,6 +41,11 @@
     margin-bottom: 1rem;
     object-fit: cover;
     cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.avatar:hover {
+    transform: scale(1.1);
 }
 
 .profile-info h2 {
@@ -48,7 +54,7 @@
 }
 
 .email {
-    color: #f0f0f0;
+    color: #e0e0e0; /* Slightly lighter for better contrast */
     font-size: 2rem;
 }
 
@@ -66,13 +72,13 @@
 
 .user-info h3, .recent-orders h3 {
     font-size: 3rem;
-    color: #444;
+    color: #222; /* Darker text for better contrast */
     margin-bottom: 1.4rem;
 }
 
 .user-info p {
     font-size: 1.9rem;
-    color: #666;
+    color: #444; /* Improve readability */
     margin: 1.5rem 0;
 }
 
@@ -85,17 +91,17 @@
 }
 
 .tag {
-    background: #e67e22;
-    color: #fff;
+    background: #d35400; /* Slightly darker for better contrast */
+    color: #ffffff;
     padding: 10px 20px;
     border-radius: 20px;
     font-size: 2rem;
-    transition: 0.3s;
+    transition: background-color 0.3s ease-in-out;
     cursor: pointer;
 }
 
 .tag:hover {
-    background: #b0570a;
+    background: #a84300; /* Adjust hover state for consistency */
 }
 
 .order {
@@ -106,12 +112,13 @@
     border-radius: 10px;
     margin-bottom: 1.5rem;
     overflow: hidden;
-    transition: 0.3s;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     cursor: pointer;
 }
 
 .order:hover {
     transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
 .order img {
@@ -127,12 +134,12 @@
 
 .order-info h4 {
     font-size: 2rem;
-    color: #333;
+    color: #222; /* Darker text for better contrast */
     margin: 0;
 }
 
 .order-info p {
-    color: #888;
+    color: #555; /* Improve readability */
     margin: 0.5rem 0;
     font-size: 1.5rem;
 }
@@ -141,20 +148,20 @@
     font-size: 1.5rem;
     padding: 5px 10px;
     border-radius: 20px;
-    color: #fff;
+    color: #ffffff; /* Ensure text is readable */
     display: inline-block;
 }
 
 .delivered {
-    background: #2ecc71;
+    background: #27ae60; /* Slightly darker green for better contrast */
 }
 
 .pending {
-    background: #f39c12;
+    background: #e67e22; /* Slightly darker orange for better contrast */
 }
 
 .cancelled {
-    background: #e74c3c;
+    background: #c0392b; /* Slightly darker red for better contrast */
 }
 
 @media (max-width: 768px) {
