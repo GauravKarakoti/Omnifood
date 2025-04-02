@@ -144,7 +144,11 @@
 }
 
 /* 🔴 Error State: When input is invalid */
-.cta-form input:invalid,
+.cta-form input:invalid {
+    border-color: #e63946; /* Red border for invalid input */
+    background-color: #ffe5e5; /* Light red background */
+}
+
 .cta-form select:invalid {
     border-color: #e63946; /* Red border */
     background-color: #ffe5e5; /* Light red background */
@@ -157,7 +161,18 @@
 }
 
 /* 🔥 Adding Error Message Below Inputs */
-.cta-form input:invalid + .error-message,
+.cta-form .error-message {
+    display: none; /* Default hidden */
+    color: #a10d1e;
+    font-weight: 500;
+    font-size: 1.7rem;
+    margin-top: 0.5rem;
+}
+
+.cta-form input:invalid ~ .error-message {
+    display: block; /* Show error message for invalid inputs */
+}
+
 .cta-form select:invalid + .error-message {
     display: block;
     color: #a10d1e; /* Darker red for better contrast */
