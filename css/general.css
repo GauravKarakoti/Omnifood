@@ -149,15 +149,16 @@ body {
 }
 
 .btn--form {
-    background-color: #45260a;
+    background-color: #440510;
     color: #fdf2e9;
     align-self: end;
     padding: 1.2rem;
 }
 
 .btn--form:hover {
-    background-color: #fff;
-    color: #555;
+    background-color: #119116;
+    color: #000;
+    box-shadow: 2px 2px #000;
 }
 
 .grid {
