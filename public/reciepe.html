@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Directory</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Recipe Directory</h1>
+        <input type="text" id="search" placeholder="Search recipes...">
+    </header>
+    <section class="recipe-container">
+        <div class="recipe-card">
+            <img src="recipe1.jpg" alt="Recipe 1">
+            <h3>Spaghetti Carbonara</h3>
+            <p>Classic Italian pasta dish with creamy sauce.</p>
+            <a href="#">View Recipe</a>
+        </div>
+        <div class="recipe-card">
+            <img src="recipe2.jpg" alt="Recipe 2">
+            <h3>Grilled Chicken</h3>
+            <p>Juicy grilled chicken with herbs and spices.</p>
+            <a href="#">View Recipe</a>
+        </div>
+        <div class="recipe-card">
+            <img src="recipe3.jpg" alt="Recipe 3">
+            <h3>Vegan Salad</h3>
+            <p>Fresh vegetables with tangy dressing.</p>
+            <a href="#">View Recipe</a>
+        </div>
+    </section>
+    <script>
+        document.getElementById('search').addEventListener('keyup', function() {
+            let filter = this.value.toLowerCase();
+            let recipes = document.querySelectorAll('.recipe-card');
+            
+            recipes.forEach(recipe => {
+                let title = recipe.querySelector('h3').innerText.toLowerCase();
+                if (title.includes(filter)) {
+                    recipe.style.display = "block";
+                } else {
+                    recipe.style.display = "none";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        background: #f8f9fa;
+    }
+    header {
+        background: #ff5722;
+        color: white;
+        padding: 20px;
+    }
+    input {
+        padding: 10px;
+        width: 50%;
+        margin-top: 10px;
+        border: none;
+        border-radius: 5px;
+    }
+    .recipe-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+    .recipe-card {
+        background: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        width: 300px;
+        margin: 20px;
+        overflow: hidden;
+        transition: transform 0.3s;
+    }
+    .recipe-card:hover {
+        transform: scale(1.05);
+    }
+    .recipe-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .recipe-card h3 {
+        margin: 15px 0 5px;
+    }
+    .recipe-card p {
+        color: #777;
+        padding: 0 10px;
+    }
+    .recipe-card a {
+        display: block;
+        background: #ff5722;
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+        margin: 10px;
+        border-radius: 5px;
+    }
+    .recipe-card a:hover {
+        background: #e64a19;
+    }
+</style>
