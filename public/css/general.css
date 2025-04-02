@@ -143,6 +143,15 @@ body {
     font-family: inherit;
 }
 
+.header {
+    background-color: #2c3e50; /* Darker header color */
+    color: white; /* White text for contrast */
+}
+
+.footer {
+    background-color: #34495e; 
+    color: white; 
+}
 .btn:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);

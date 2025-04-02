@@ -46,7 +46,7 @@
 .meal-icon {
     height: 2.4rem;
     font-size: 2.2rem;
-    color: #e67e22;
+    color: #87e3f1;
 }
 
 .tag {
@@ -86,11 +86,14 @@
     border-radius: 11px;
     overflow: hidden;
     transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
+    color: #ffffff;
+    padding: 1rem;
 }
 
 .meal:hover {
     transform: translateY(-1.2rem);
     box-shadow: 0 3.2rem 6.4rem rgba(0, 0, 0, 0.06);
+    background-color: #de9a3b;
 }
 
 .meal-content {
@@ -98,6 +101,16 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+}
+.menu-item {
+    color: #ffffff; /* White text for menu items */
+    padding: 0.5rem 1rem; /* Padding for menu items */
+    transition: background 0.3s ease; /* Smooth background transition */
+}
+
+.menu-item:hover {
+    background-color: #e74c3c; /* Highlight color on hover */
+    color: #ffffff; /* Keep text white on hover */
 }
 
 .all-recipes {
