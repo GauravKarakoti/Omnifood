@@ -68,6 +68,9 @@ Medium: 11px
     --spacing-medium: 4.8rem;
     --spacing-small: 1.6rem;
     --link-hover-color: #cf711f; /* Adjusted for better contrast */
+    --btn-hover-scale: 1.05; /* Custom property for button scaling */
+    --breakpoint-mobile: 34rem; /* 544px */
+    --breakpoint-desktop: 59rem; /* 944px */
 }
 
 * {
@@ -84,9 +87,15 @@ Medium: 11px
 }
 
 html {
-    font-size: 62.5%;
+    font-size: 62.5%; /* Default root font size */
     overflow-x: hidden;
     scroll-behavior: smooth;
+}
+
+@media (max-width: var(--breakpoint-mobile)) {
+    html {
+        font-size: 56.25%; /* Adjusted for better readability on small screens */
+    }
 }
 
 body {
@@ -144,11 +153,10 @@ body {
 }
 
 .btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    transition: transform var(--transition-duration) ease-in-out, box-shadow var(--transition-duration) ease-in-out;
-    -webkit-transform: scale(1.05);
-    -webkit-transition: -webkit-transform var(--transition-duration) ease-in-out, box-shadow var(--transition-duration) ease-in-out;
+    transform: scale(var(--btn-hover-scale));
+    transition: transform var(--transition-duration) ease-in-out;
+    will-change: transform;
+    margin: 0 auto; /* Prevent layout shifts by centering */
 }
 
 .btn:focus {
