@@ -6,6 +6,38 @@
     padding: 9.6rem 0;
 }
 
+.menu {
+    background-color: var(--primary-color); 
+    padding: 1rem; 
+    border-radius: 9px; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.menu-item {
+    color: #fff; 
+    padding: 1rem 2rem; 
+    transition: background-color 0.3s ease; 
+    font-size: 1.8rem; 
+    font-weight: 600; 
+    letter-spacing: 0.5px; 
+}
+
+.menu-item:hover {
+    background-color: var(--primary-color-dark); /* Darker shade on hover */
+    cursor: pointer; 
+}
+
+.menu-item-icon {
+    margin-right: 0.5rem; 
+    color: #fff; 
+}
+
+.menu-item.active {
+    background-color: var(--secondary-color); 
+    color: var(--primary-color-dark); 
+    font-weight: 700;
+}
+
 .meal-img {
     width: 100%;
     height: 60%;
@@ -110,5 +142,15 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 4.8rem;
-    align-items: stretch; /* Stretch items to same height */
+    align-items: stretch; 
+}
+
+@media (max-width: 768px) {
+    .menu {
+        flex-direction: column; 
+    }
+
+    .menu-item {
+        text-align: center;
+    }
 }
