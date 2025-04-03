@@ -14,103 +14,196 @@
         <input type="text" id="search" placeholder="Search recipes...">
     </header>
     <section class="recipe-container">
+        <!-- Recipe 1 -->
         <div class="recipe-card">
-            <img src="recipe1.jpg" alt="Recipe 1">
+            <img src="reciepe1.jpg" alt="Recipe 1">
             <h3>Spaghetti Carbonara</h3>
             <p>Classic Italian pasta dish with creamy sauce.</p>
-            <a href="#">View Recipe</a>
+            <button class="view-recipe">View Recipe</button>
+            <div class="recipe-details">
+                <h4>Ingredients:</h4>
+                <ul>
+                    <li>200g spaghetti</li>
+                    <li>100g pancetta</li>
+                    <li>2 eggs</li>
+                    <li>50g Parmesan cheese</li>
+                    <li>Black pepper</li>
+                </ul>
+                <h4>Instructions:</h4>
+                <ol>
+                    <li>Boil spaghetti in salted water.</li>
+                    <li>Cook pancetta until crispy.</li>
+                    <li>Mix eggs with Parmesan and pepper.</li>
+                    <li>Combine everything and serve warm.</li>
+                </ol>
+            </div>
         </div>
+
+        <!-- Recipe 2 -->
         <div class="recipe-card">
-            <img src="recipe2.jpg" alt="Recipe 2">
+            <img src="reciepe2.jpg" alt="Recipe 2">
             <h3>Grilled Chicken</h3>
             <p>Juicy grilled chicken with herbs and spices.</p>
-            <a href="#">View Recipe</a>
+            <button class="view-recipe">View Recipe</button>
+            <div class="recipe-details">
+                <h4>Ingredients:</h4>
+                <ul>
+                    <li>2 chicken breasts</li>
+                    <li>1 tbsp olive oil</li>
+                    <li>1 tsp garlic powder</li>
+                    <li>1 tsp paprika</li>
+                    <li>Salt and pepper to taste</li>
+                </ul>
+                <h4>Instructions:</h4>
+                <ol>
+                    <li>Marinate chicken with spices.</li>
+                    <li>Heat grill to medium-high.</li>
+                    <li>Grill chicken for 6-7 mins per side.</li>
+                    <li>Let it rest, then serve.</li>
+                </ol>
+            </div>
         </div>
+
+        <!-- Recipe 3 -->
         <div class="recipe-card">
-            <img src="recipe3.jpg" alt="Recipe 3">
+            <img src="reciepe3.jpg" alt="Recipe 3">
             <h3>Vegan Salad</h3>
             <p>Fresh vegetables with tangy dressing.</p>
-            <a href="#">View Recipe</a>
+            <button class="view-recipe">View Recipe</button>
+            <div class="recipe-details">
+                <h4>Ingredients:</h4>
+                <ul>
+                    <li>1 cucumber</li>
+                    <li>1 tomato</li>
+                    <li>1/2 onion</li>
+                    <li>2 tbsp olive oil</li>
+                    <li>1 tbsp vinegar</li>
+                </ul>
+                <h4>Instructions:</h4>
+                <ol>
+                    <li>Chop all vegetables.</li>
+                    <li>Mix olive oil and vinegar.</li>
+                    <li>Toss everything together.</li>
+                    <li>Serve fresh.</li>
+                </ol>
+            </div>
         </div>
     </section>
+
     <script>
+        // Search filter
         document.getElementById('search').addEventListener('keyup', function() {
             let filter = this.value.toLowerCase();
             let recipes = document.querySelectorAll('.recipe-card');
-            
+
             recipes.forEach(recipe => {
                 let title = recipe.querySelector('h3').innerText.toLowerCase();
-                if (title.includes(filter)) {
-                    recipe.style.display = "block";
+                recipe.style.display = title.includes(filter) ? "block" : "none";
+            });
+        });
+
+        // Expand recipe details
+        document.querySelectorAll('.view-recipe').forEach(button => {
+            button.addEventListener('click', function() {
+                let details = this.nextElementSibling;
+                if (details.style.display === "block") {
+                    details.style.display = "none";
+                    this.innerText = "View Recipe";
                 } else {
-                    recipe.style.display = "none";
+                    details.style.display = "block";
+                    this.innerText = "Hide Recipe";
                 }
             });
         });
     </script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: #f8f9fa;
+        }
+        header {
+            background: #ff5722;
+            color: white;
+            padding: 20px;
+        }
+        input {
+            padding: 10px;
+            width: 50%;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        .recipe-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .recipe-card {
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 300px;
+            margin: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            text-align: left;
+            padding: 10px;
+        }
+        .recipe-card:hover {
+            transform: scale(1.05);
+        }
+        .recipe-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .recipe-card h3 {
+            margin: 15px 0 5px;
+            text-align: center;
+        }
+        .recipe-card p {
+            color: #777;
+            padding: 0 10px;
+            text-align: center;
+        }
+        .recipe-card button {
+            display: block;
+            background: #ff5722;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .recipe-card button:hover {
+            background: #e64a19;
+        }
+        .recipe-details {
+            display: none;
+            padding: 10px;
+            background: #fff3e0;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        .recipe-details h4 {
+            margin: 10px 0 5px;
+            color: #d84315;
+        }
+        .recipe-details ul, .recipe-details ol {
+            padding-left: 20px;
+        }
+        .recipe-details li {
+            margin-bottom: 5px;
+        }
+    </style>
 </body>
 </html>
-
-<style>
-    body {
-        font-family: 'Poppins', sans-serif;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        background: #f8f9fa;
-    }
-    header {
-        background: #ff5722;
-        color: white;
-        padding: 20px;
-    }
-    input {
-        padding: 10px;
-        width: 50%;
-        margin-top: 10px;
-        border: none;
-        border-radius: 5px;
-    }
-    .recipe-container {
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        padding: 20px;
-    }
-    .recipe-card {
-        background: white;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border-radius: 10px;
-        width: 300px;
-        margin: 20px;
-        overflow: hidden;
-        transition: transform 0.3s;
-    }
-    .recipe-card:hover {
-        transform: scale(1.05);
-    }
-    .recipe-card img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-    }
-    .recipe-card h3 {
-        margin: 15px 0 5px;
-    }
-    .recipe-card p {
-        color: #777;
-        padding: 0 10px;
-    }
-    .recipe-card a {
-        display: block;
-        background: #ff5722;
-        color: white;
-        padding: 10px;
-        text-decoration: none;
-        margin: 10px;
-        border-radius: 5px;
-    }
-    .recipe-card a:hover {
-        background: #e64a19;
-    }
-</style>
