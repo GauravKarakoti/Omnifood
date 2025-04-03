@@ -48,5 +48,11 @@
         color: #fff;
         transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
     }
+    .main-nav-link:hover{
+        background-color: transparent;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+
+
+    }
 }
 
