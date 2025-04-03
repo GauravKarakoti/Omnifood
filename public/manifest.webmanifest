@@ -1,21 +1,23 @@
 {
     "name": "Omnifood",
     "short_name": "Omnifood",
+    "description": "Healthy, tasty, and hassle-free meal delivery service.",
     "theme_color": "#e67e22",
     "background_color": "#fdf2e9",
     "display": "standalone",
     "start_url": "/index.html",
     "scope": "/",
-    "icons" : [
+    "orientation": "portrait",
+    "icons": [
         {
-            "src" : "img/favicon-192.webp" ,
-            "type" : "image/webp" ,
-            "sizes" : "192x192"
+            "src": "img/favicon-192.webp",
+            "type": "image/webp",
+            "sizes": "192x192"
         },
         {
-            "src" : "img/favicon-512.webp" ,
-            "type" : "image/webp" ,
-            "sizes" : "512x512"
+            "src": "img/favicon-512.webp",
+            "type": "image/webp",
+            "sizes": "512x512"
         }
     ]
 }

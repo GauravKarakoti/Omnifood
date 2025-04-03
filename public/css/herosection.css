@@ -5,6 +5,7 @@
 .section-hero {
     background-color: #fdf2e9;
     padding: 4rem 0; /* Reduced padding */
+    height: fit-content !important;
 }
 
 .section-hero a:active {
@@ -19,6 +20,7 @@
     margin: 0 auto;
     align-items: center;
     gap: 4rem;
+    height: fit-content;
     /* padding: 4rem 2rem; Less padding for better spacing */
 }
 
@@ -33,7 +35,9 @@
 /* ================= HERO IMAGE ================= */
 .hero img {
     width: 100%;
-    max-width: 500px; /* Add max-width constraint */
+    height: auto;
+    aspect-ratio: 3 / 2; /* Maintain aspect ratio */
+    object-fit: contain;
 }
 
 /* ================= TEXT AND BUTTONS ================= */

@@ -169,7 +169,7 @@ checkFlexGap();
 
 // hero section dynamic height calculator
 
-document.addEventListener("DOMContentLoaded", function () {
+function initializeSection() {
     const header = document.querySelector(".header");
     const heroSection = document.querySelector(".section-hero");
 
@@ -207,11 +207,11 @@ document.addEventListener("DOMContentLoaded", function () {
     );
 
     observer.observe(heroSection);
-});
+};
 
 //track button clicks tracking
 
-document.addEventListener("DOMContentLoaded", function () {
+function initializeButtonClick() {
     function trackButtonClick(buttonId, action) {
         document.getElementById(buttonId).addEventListener("click", function () {
             console.log(`User clicked on: ${action}`);
@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     trackButtonClick("try-for-free", "Try for free");
     trackButtonClick("start-eating-well", "Start eating well");
-});
+};
 
 // Track button clicks
 const trackClick = async (buttonName) => {
@@ -242,7 +242,7 @@ document.querySelector("#try-for-free").addEventListener("click", () => trackCli
 document.querySelector("#start-eating-well").addEventListener("click", () => trackClick("Start eating well"));
 
 
-document.addEventListener("DOMContentLoaded", function () {
+function initializeAria() {
     const form = document.querySelector(".cta-form");
     const fullNameInput = document.getElementById("full-name");
     const emailInput = document.getElementById("email");
@@ -366,7 +366,7 @@ document.addEventListener("DOMContentLoaded", function () {
             errorSelect.style.display = "none";
         }
     });
-});
+};
 
 
 document.querySelector("#try-for-free").addEventListener("click", () => trackClick("Try for free"));
@@ -379,7 +379,7 @@ if ("serviceWorker" in navigator) {
         .then(() => console.log("✅ Service Worker Registered"))
         .catch((err) => console.log("❌ Service Worker Registration Failed:", err));
 }
-document.addEventListener("DOMContentLoaded", function () {
+function initializeLocationInput() {
     const locationText = document.querySelector(".location-text");
     const locationInput = document.querySelector(".location-input");
 
@@ -401,8 +401,8 @@ document.addEventListener("DOMContentLoaded", function () {
         locationInput.style.display = "block"; // Show input on click
         locationInput.focus();
     });
-});
-document.addEventListener("DOMContentLoaded", function () {
+};
+function initializeCTA() {
     const form = document.querySelector(".cta-form");
     const modal = document.getElementById("confirmation-modal");
     const closeBtn = document.querySelector(".close-btn");
@@ -437,9 +437,9 @@ document.addEventListener("DOMContentLoaded", function () {
             isSubmitting = false; // Reset flag when modal is closed
         }
     });
-});
+};
 
-document.addEventListener("DOMContentLoaded", function () {
+function initializeAuth() {
     const isAuthenticated = localStorage.getItem("omni:authenticated");
     const authLink = document.querySelector(".auth");
 
@@ -447,7 +447,7 @@ document.addEventListener("DOMContentLoaded", function () {
         authLink.textContent = 'Profile';
         authLink.href = "/profile.html";
     }
-});
+};
 
 // Function to scroll to the top
 function scrollToTop() {
@@ -455,12 +455,12 @@ function scrollToTop() {
 }
 
 // Add event listener for the scroll-to-top button
-document.addEventListener("DOMContentLoaded", function () {
+function initializeScrollToTopButton() {
     const scrollToTopBtn = document.querySelector(".scroll-to-top-btn");
     if (scrollToTopBtn) {
         scrollToTopBtn.addEventListener("click", scrollToTop);
     }
-});
+};
 
 function setCSPHeaders() {
     const meta = document.createElement('meta');
@@ -489,15 +489,14 @@ function removeHoverOnTouch() {
         }
     }
 }
-
-document.addEventListener("DOMContentLoaded", function () {
+function initializeCSPHeader() {
     removeHoverOnTouch();
     const scrollToTopBtn = document.querySelector(".scroll-to-top-btn");
     if (scrollToTopBtn) {
         scrollToTopBtn.addEventListener("click", scrollToTop);
     }
     setCSPHeaders();
-});
+};
 
 // iOS viewport height calculation
 function setViewportHeight() {
@@ -507,10 +506,9 @@ function setViewportHeight() {
 
 // Update viewport height on load and resize
 window.addEventListener('resize', setViewportHeight);
-document.addEventListener('DOMContentLoaded', setViewportHeight);
 
 // Apply dynamic height to hero section
-document.addEventListener("DOMContentLoaded", function () {
+function initializeHeroSection() {
     const heroSection = document.querySelector(".section-hero");
     function updateHeroHeight() {
         const vh = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--vh'));
@@ -520,9 +518,9 @@ document.addEventListener("DOMContentLoaded", function () {
     setViewportHeight();
     updateHeroHeight();
     window.addEventListener('resize', updateHeroHeight);
-});
+};
 
-document.addEventListener("DOMContentLoaded", function () {
+function initializeDynamicScriptLoading() {
     const currentPath = window.location.pathname;
 
     // Dynamically load JavaScript based on the route
@@ -539,7 +537,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then((module) => module.initContact())
             .catch((err) => console.error("Error loading contact.js:", err));
     }
-});
+};
 
 function setupServiceWorker() {
     window.addEventListener('load', () => {
@@ -560,5 +558,19 @@ function setupServiceWorker() {
             .catch((error) => console.error('Service Worker registration failed:', error));
     });
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    initializeDynamicScriptLoading();
+    initializeHeroSection();
+    setViewportHeight();
+    initializeCSPHeader();
+    initializeScrollToTopButton();
+    initializeAuth();
+    initializeCTA();
+    initializeLocationInput();
+    initializeAria();
+    initializeButtonClick();
+    initializeSection();
+});
 
 setupServiceWorker();
