@@ -574,3 +574,41 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 setupServiceWorker();
+
+document.getElementById("myForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    const fullNameInput = document.getElementById("fullName");
+    const emailInput = document.getElementById("email");
+    const errorFullName = document.getElementById("error-fullName");
+    const errorEmail = document.getElementById("error-email");
+
+    let isValid = true;
+
+    // Reset error messages
+    errorFullName.textContent = "";
+    errorEmail.textContent = "";
+
+    // Full Name validation
+    if (!/^\w+\s+\w+/.test(fullNameInput.value.trim())) {
+        errorFullName.textContent = "Please enter your full name.";
+        fullNameInput.setAttribute("aria-invalid", "true");
+        isValid = false;
+    } else {
+        fullNameInput.setAttribute("aria-invalid", "false");
+    }
+
+    // Email validation
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+        errorEmail.textContent = "Please enter a valid email address.";
+        emailInput.setAttribute("aria-invalid", "true");
+        isValid = false;
+    } else {
+        emailInput.setAttribute("aria-invalid", "false");
+    }
+
+    if (isValid) {
+        console.log("Form submitted successfully!");
+        // Proceed with form submission logic (e.g., send data to the server)
+    }
+});
