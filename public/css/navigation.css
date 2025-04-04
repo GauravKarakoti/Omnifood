@@ -93,6 +93,7 @@
     display: inline-block;
     position: relative;
     padding-bottom: 0.5rem;
+    border:none;
 }
 
 /* Underline effect */
@@ -106,6 +107,7 @@
     background-color: #b35900; /* Darker shade for better contrast */
     transition: all var(--animation-duration-short) ease-in-out;
     transform: translateX(-50%);
+    text-decoration: none;
 }
 
 .main-nav-link:hover::after {
@@ -119,6 +121,7 @@
     transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
+
 .main-nav-link:focus {
     outline: var(--focus-outline);
     outline-offset: var(--focus-outline-offset);
@@ -130,15 +133,16 @@
     padding: 1.2rem 2.4rem;
     border-radius: 9px;
     color: #fff;
-    background-color: #cc6b19; /* Slightly darker for better contrast */
+    background-color: #de7b2b; /* Slightly darker for better contrast */
     transition: all var(--animation-duration-short) ease-in-out;
     -webkit-transition: all var(--animation-duration-short) ease-in-out;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+
 /* Hover effect for CTA */
 .nav-cta:hover {
-    background-color: #cf711f;
+    background-color: #d67016;
     transform: translateY(-2px);
     -webkit-transform: translateY(-2px);
     transition: all var(--animation-duration-short) ease-in-out;
@@ -154,6 +158,16 @@
     transition: all var(--animation-duration-short) ease-in-out;
     -webkit-transition: all var(--animation-duration-short) ease-in-out;
 }
+a {
+    color: #e74c3c; /* Vibrant link color */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    color: #c0392b; /* Darker shade on hover */
+    text-decoration: underline; /* Underline on hover */
+}
+
 
 /* MOBILE */
 .btn-mobile-nav {

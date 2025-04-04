@@ -21,6 +21,25 @@
 .feature:hover .feature-title {
     color: #e64a19; /* Adjusted hover color for better contrast */
 }
+.features-list {
+    list-style: none; /* Remove default list style */
+    padding: 0; /* Remove padding */
+    margin: 1.5rem 0; /* Margin for spacing */
+}
+
+.features-list li {
+    font-size: 1.6rem; /* Font size for features */
+    color: #333; /* Dark text color */
+    margin: 0.5rem 0; /* Margin for spacing */
+    display: flex; /* Flexbox for icon alignment */
+    align-items: center; /* Center items vertically */
+}
+
+.features-list li::before {
+    content: "✔"; /* Checkmark icon */
+    color: #27ae60; /* Green color for checkmark */
+    margin-right: 0.5rem; /* Space between icon and text */
+}
 
 .heading-featured-in {
     font-size: 1.4rem; /* Adjusted from fixed px */

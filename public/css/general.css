@@ -99,9 +99,9 @@ html {
 }
 
 body {
-    font-family: "Rubik", sans-serif;
     font-size: 1rem; /* Base font size for scaling */
     line-height: 1.5;
+    font-family: "Rubik", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 400;
     color: var(--text-color);
     margin: 0;
@@ -159,6 +159,15 @@ h1, h2, h3, h4, h5, h6 {
     font-family: inherit;
 }
 
+.header {
+    background-color: #2c3e50; /* Darker header color */
+    color: white; /* White text for contrast */
+}
+
+.footer {
+    background-color: #34495e; 
+    color: white; 
+}
 .btn:hover {
     transform: scale(var(--btn-hover-scale));
     transition: transform var(--transition-duration) ease-in-out;

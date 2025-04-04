@@ -41,7 +41,7 @@
     display: block;
     color: #ff005d;
     font-weight: 300;
-    font-family: Audiowide;
+    font-family: Audiowide , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-shadow: 0px 0px 6px var(--secondary-color); /* Enhanced shadow for better visibility */
     animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
     -webkit-animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
@@ -109,7 +109,7 @@
     padding: 0.75rem 1.5rem; /* Adjusted from fixed px */
     font-size: 1rem; /* Adjusted from fixed px */
     text-transform: uppercase;
-    font-family: Audiowide;
+    font-family: Audiowide , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: var(--primary-color);
     color: #ffffff; /* Ensure sufficient contrast with the background */
     border: none;
@@ -331,7 +331,7 @@
 
 .loading-text {
     color: var(--primary-color); /* Ensure sufficient contrast with the background */
-    font-family: Audiowide;
+    font-family: Audiowide , 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 24px;
     text-transform: uppercase;
 }
