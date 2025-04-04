@@ -110,6 +110,7 @@ function validatePassword(password) {
 
 // Server URL for authentication API
 const server_url = 'https://omnifood-login.onrender.com';
+//const server_url = "http://localhost:5000"
 
 // Function to check password validation
 function checkPassword(input) {
@@ -141,7 +142,7 @@ signInForm.addEventListener('submit', async function (e) {
       });
 
       const csrfData = await csrfResponse.json();
-
+   
       const response = await fetch(`${server_url}/api/auth/login`, {
         method: 'POST',
         headers: {
@@ -211,7 +212,7 @@ signUpForm.addEventListener('submit', async function (e) {
       });
 
       const csrfData = await csrfResponse.json();
-
+     
       const response = await fetch(`${server_url}/api/auth/signup`, {
         method: 'POST',
         headers: {
@@ -234,6 +235,7 @@ signUpForm.addEventListener('submit', async function (e) {
         localStorage.setItem('omni:authenticated', 'true');
       }
     } catch (error) {
+      
       alert(`${error.message}`);
     }
   }
