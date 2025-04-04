@@ -34,8 +34,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-top: 150px;
-    font-size: 32px;
+    margin-top: 10rem; /* Adjusted from fixed px */
+    font-size: 2rem; /* Adjusted from fixed px */
     text-transform: uppercase;
     transform: translate(-50%, -50%);
     display: block;
@@ -106,8 +106,8 @@
     top: 50%;
     left: 50%;
     margin-top: 220px;
-    padding: 12px 24px;
-    font-size: 18px;
+    padding: 0.75rem 1.5rem; /* Adjusted from fixed px */
+    font-size: 1rem; /* Adjusted from fixed px */
     text-transform: uppercase;
     font-family: Audiowide;
     background: var(--primary-color);

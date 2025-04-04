@@ -3,7 +3,7 @@
 /*******************************************/
 
 .section-cta {
-    padding: 9.6rem 0 12.8rem 0;
+    padding: 6rem 0 8rem 0; /* Adjusted from fixed px */
 }
 
 .cta {
@@ -17,7 +17,7 @@
     background-image: -ms-linear-gradient(to right bottom, #eb984e, #e67e22);
     background-image: linear-gradient(to right bottom, #eb984e, #e67e22);
     box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
-    border-radius: 11px;
+    border-radius: 0.6875rem; /* Converted px to rem */
     overflow: hidden;
     transition: all 0.3s ease-in-out;
 }
@@ -35,7 +35,7 @@
 
 .cta-text-box {
     color: #45260a;
-    padding: 4.8rem 6.4rem 6.4rem 6.4rem;
+    padding: 3rem 4rem; /* Adjusted from fixed px */
 }
 
 .cta-img-box {
@@ -184,8 +184,8 @@
 /* CTA Button */
 .cta-btn {
     display: inline-block;
-    padding: 1.2rem 2.4rem;
-    font-size: 1.6rem;
+    padding: 0.75rem 1.5rem; /* Adjusted from fixed px */
+    font-size: 1rem; /* Adjusted from fixed px */
     font-weight: bold;
     text-transform: uppercase;
     color: white;

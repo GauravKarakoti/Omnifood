@@ -100,10 +100,17 @@ html {
 
 body {
     font-family: "Rubik", sans-serif;
-    line-height: 1;
+    font-size: 1rem; /* Base font size for scaling */
+    line-height: 1.5;
     font-weight: 400;
     color: var(--text-color);
+    margin: 0;
+    padding: 0;
     overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1.5rem; /* Adjusted from fixed px */
 }
 
 /*******************************************/
@@ -230,9 +237,9 @@ body {
 }
 
 .container {
-    max-width: 120rem;
+    max-width: 90%; /* Adjusted from fixed width */
     margin: 0 auto;
-    padding: 0 3.2rem;
+    padding: 2rem; /* Adjusted from fixed px */
 }
 
 .subheading {

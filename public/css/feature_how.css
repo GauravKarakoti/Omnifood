@@ -3,8 +3,8 @@
 /*******************************************/
 .feature {
     text-align: center;
-    padding: 20px;
-    transition: transform 0.3s ease-in-out; /* Replaced --animation-duration-short */
+    padding: 1.25rem; /* Converted px to rem */
+    transition: transform 0.3s ease-in-out;
 }
 
 .feature:hover {
@@ -23,12 +23,12 @@
 }
 
 .heading-featured-in {
-    font-size: 1.4rem;
+    font-size: 1.4rem; /* Adjusted from fixed px */
     text-transform: uppercase;
     letter-spacing: 0.75px;
     font-weight: 500;
     text-align: center;
-    margin-bottom: 2.4rem;
+    margin-bottom: 1.5rem; /* Adjusted from fixed px */
     color: #555; /* Improved contrast for better readability */
 }
 
@@ -49,12 +49,14 @@
 .logos {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .logos img {
-    height: 3.2rem; /* Increase logo size for visibility */
+    height: 2rem; /* Adjusted from fixed px */
     filter: brightness(0);
     opacity: 50%;
+    margin: 1rem 0;
 }
 
 /*******************************************/
