@@ -20,6 +20,7 @@
     "express-rate-limit": "^7.5.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.12.2",
+    "node-cron": "^3.0.3",
     "nodemailer": "^6.10.0"
   }
 }
