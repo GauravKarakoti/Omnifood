@@ -32,8 +32,8 @@
 }
 
 .hero p {
-    font-size: 1.8rem; /* Medium font size for the paragraph */
-    margin-bottom: 2rem; /* Margin for spacing */
+    font-size: 1.8rem; 
+    margin-bottom: 2rem; 
 }
 
 .hero .button {
