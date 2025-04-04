@@ -161,6 +161,7 @@
     background: none;
     cursor: pointer;
     display: none;
+    /* display: block; */
     z-index: 999;
     position: relative;
 }

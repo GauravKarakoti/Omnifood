@@ -121,6 +121,10 @@
         font-size: 50%;
     }
 
+    .btn-mobile-nav{
+        display: block;
+    }
+
     .hero {
         grid-template-columns: 1fr;
         padding: 0 5vw;
