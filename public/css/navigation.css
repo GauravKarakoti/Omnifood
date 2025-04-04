@@ -37,6 +37,7 @@
     overflow: hidden;
 }
 
+
 .main-nav-list {
     list-style: none;
     display: flex;
@@ -103,7 +104,7 @@
     bottom: 0;
     width: 0;
     height: 3px;
-    background-color: #b35900; /* Darker shade for better contrast */
+    background-color: #0b0702; /* Darker shade for better contrast */
     transition: all var(--animation-duration-short) ease-in-out;
     transform: translateX(-50%);
 }
@@ -114,9 +115,10 @@
 
 /* Scaling and color transition */
 .main-nav-link:hover, .main-nav-link:active {
-    color: var(--nav-link-hover-color);
+    color: #fff;
     transform: scale(1.1);
     transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
+    font-weight: 500;
 }
 
 .main-nav-link:focus {
@@ -134,17 +136,20 @@
     transition: all var(--animation-duration-short) ease-in-out;
     -webkit-transition: all var(--animation-duration-short) ease-in-out;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
 }
 
 /* Hover effect for CTA */
 .nav-cta:hover {
-    background-color: #cf711f;
+    background-color: #5a300b;
     transform: translateY(-2px);
     -webkit-transform: translateY(-2px);
     transition: all var(--animation-duration-short) ease-in-out;
     -webkit-transition: all var(--animation-duration-short) ease-in-out;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
+
+
 
 /* Click effect */
 .nav-cta:active {
@@ -275,3 +280,5 @@
 .sticky .section-hero {
     margin-top: 0;
 }
+
+
