@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'YourFontFamily';
+    font-family: 'YourFontFamily', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     src: url('path/to/font.woff2') format('woff2'),
          url('path/to/font.woff') format('woff');
     font-weight: normal;
