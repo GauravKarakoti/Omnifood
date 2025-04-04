@@ -121,7 +121,7 @@
         font-size: 50%;
     }
 
-    .btn-mobile-nav{
+    .btn-mobile-nav {
         display: block;
     }
 
@@ -198,6 +198,38 @@
     .main-nav-list {
         flex-direction: column;
         gap: 4.8rem;
+    }
+}
+
+@media (max-width: 944px) {
+    .main-nav {
+        position: fixed; /* Ensure it slides in from the right */
+        top: 8rem;
+        right: -80%; /* Start off-screen to the right */
+        width: 80%; /* Reduce the width */
+        height: calc(100vh - 8rem); /* Full height minus the main navbar */
+        background-color: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(10px);
+        z-index: 998;
+        border-radius: 9px 0 0 9px; /* Rounded corners on the left */
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        transform: translateX(0); /* Ensure it starts off-screen */
+        transition: all 0.3s ease-in-out;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .header.nav-open .main-nav {
+        right: 0; /* Slide into view from the right */
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .btn-mobile-nav {
+        position: fixed; /* Ensure the button is always visible */
+        top: 1rem; /* Adjust position */
+        right: 1rem; /* Adjust position */
+        z-index: 1000; /* Ensure it stays above other elements */
     }
 }
 
@@ -354,7 +386,7 @@
         grid-template-columns: repeat(6, 1fr);
     }
 
-    .gallery-item{
+    .gallery-item {
         height: 110px;
     }
 
@@ -579,28 +611,6 @@
 
     .gallery {
         grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 944px) {
-    .main-nav {
-        position: fixed;
-        top: 8rem;
-        right: -100%;
-        width: 80%;
-        height: calc(100vh - 8rem);
-        background-color: rgba(255, 255, 255, 0.97);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        z-index: 998;
-        border-radius: 9px 0 0 9px;
-        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-        transform: translateX(100%);
-    }
-
-    .header.nav-open .main-nav {
-        right: 0;
-        transform: translateX(0);
     }
 }
 

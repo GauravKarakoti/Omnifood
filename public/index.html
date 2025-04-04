@@ -1001,10 +1001,18 @@
                 firstFocusableElement.focus();
 
                 mobileNav.addEventListener('keydown', trapFocus);
+                btnMobileNav.querySelector('.bi-list').style.display = 'none';
+                btnMobileNav.querySelector('.bi-x-lg').style.display = 'block';
             } else {
                 mobileNav.removeEventListener('keydown', trapFocus);
+                btnMobileNav.querySelector('.bi-list').style.display = 'block';
+                btnMobileNav.querySelector('.bi-x-lg').style.display = 'none';
             }
         });
+
+        btnMobileNav.style.position = 'fixed'; // Ensure the button is always visible
+        btnMobileNav.style.top = '1rem'; // Adjust position
+        btnMobileNav.style.right = '1rem'; // Adjust position
 
         function trapFocus(e) {
             if (e.key === 'Tab') {
