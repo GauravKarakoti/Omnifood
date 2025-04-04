@@ -68,12 +68,12 @@
 .hero-description {
     font-size: 1.8rem;
     line-height: 1.5;
-    margin-bottom: 2.5rem; /* Less bottom space */
+    margin-bottom: 2.5rem;
 }
 
 .btn {
     display: inline-block;
-    padding: 1rem 2rem; /* Smaller buttons */
+    padding: 1rem 2rem; 
     font-size: 1.6rem;
     min-height: 48px; /* Ensure minimum touch target size */
     transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
