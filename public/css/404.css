@@ -18,8 +18,6 @@
     background: -moz-radial-gradient(circle, black 0%, rgb(17, 16, 16) 100%);
     overflow: hidden;
     animation: hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
-    -webkit-animation: hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
-    -moz-animation: hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
     will-change: transform, filter;
   }
   
@@ -44,8 +42,6 @@
     font-family: Audiowide;
     text-shadow: 0px 0px 6px var(--secondary-color); /* Enhanced shadow for better visibility */
     animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
-    -webkit-animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
-    -moz-animation: fadeInText 3s ease-in 3.5s forwards, flicker4 5s linear 7.5s infinite, hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
     will-change: color, text-shadow;
 }
 
@@ -58,8 +54,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     animation: hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
-    -webkit-animation: hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
-    -moz-animation: hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
     will-change: transform, filter;
   }
   
@@ -81,24 +75,18 @@
     stroke-dasharray: 940px;
     stroke-dashoffset: -940px;
     animation: drawLine3 var(--animation-duration) ease-in-out 0s forwards, flicker3 var(--flicker-duration) linear 4s infinite;
-    -webkit-animation: drawLine3 var(--animation-duration) ease-in-out 0s forwards, flicker3 var(--flicker-duration) linear 4s infinite;
-    -moz-animation: drawLine3 var(--animation-duration) ease-in-out 0s forwards, flicker3 var(--flicker-duration) linear 4s infinite;
 }
 
 #id2_1 {
     stroke-dasharray: 735px;
     stroke-dashoffset: -735px;
     animation: drawLine2 var(--animation-duration) ease-in-out 0.5s forwards, flicker2 var(--flicker-duration) linear 4.5s infinite;
-    -webkit-animation: drawLine2 var(--animation-duration) ease-in-out 0.5s forwards, flicker2 var(--flicker-duration) linear 4.5s infinite;
-    -moz-animation: drawLine2 var(--animation-duration) ease-in-out 0.5s forwards, flicker2 var(--flicker-duration) linear 4.5s infinite;
 }
 
 #id1_1 {
     stroke-dasharray: 940px;
     stroke-dashoffset: -940px;
     animation: drawLine1 var(--animation-duration) ease-in-out 1s forwards, flicker1 var(--flicker-duration) linear 5s infinite;
-    -webkit-animation: drawLine1 var(--animation-duration) ease-in-out 1s forwards, flicker1 var(--flicker-duration) linear 5s infinite;
-    -moz-animation: drawLine1 var(--animation-duration) ease-in-out 1s forwards, flicker1 var(--flicker-duration) linear 5s infinite;
 }
 
 #homeButton {
@@ -201,82 +189,6 @@
 }
 
 @keyframes hueRotate {
-    0%  {filter: hue-rotate(0deg);}
-    50% {filter: hue-rotate(-120deg);}
-    100%{filter: hue-rotate(0deg);}
-}
-
-@-webkit-keyframes drawLine1 {
-    0%  {stroke-dashoffset: -940px;}
-    100%{stroke-dashoffset: 0px;}
-}
-
-@-webkit-keyframes drawLine2 {
-    0%  {stroke-dashoffset: -735px;}
-    100%{stroke-dashoffset: 0px;}
-}
-
-@-webkit-keyframes drawLine3 {
-    0%  {stroke-dashoffset: -940px;}
-    100%{stroke-dashoffset: 0px;}
-}
-
-@-webkit-keyframes flicker1 {
-    0%  {stroke: var(--primary-color);}
-    1%  {stroke: transparent;}
-    3%  {stroke: transparent;}
-    4%  {stroke: #ff005d;}
-    6%  {stroke: #ff005d;}
-    7%  {stroke: transparent;}
-    13% {stroke: transparent;}
-    14% {stroke: var(--primary-color);}
-    100%{stroke: var(--primary-color);}
-}
-
-@-webkit-keyframes flicker2 {
-    0%  {stroke: var(--primary-color);}
-    50% {stroke: var(--primary-color);}
-    51% {stroke: transparent;}
-    61% {stroke: transparent;}
-    62% {stroke: var(--primary-color);}
-    100%{stroke: var(--primary-color);}
-}
-
-@-webkit-keyframes flicker3 {
-    0%  {stroke: var(--primary-color);}
-    1%  {stroke: transparent;}
-    10% {stroke: transparent;}
-    11% {stroke: #ff005d;}
-    40% {stroke: #ff005d;}
-    41% {stroke: transparent;}
-    45% {stroke: transparent;}
-    46% {stroke: var(--primary-color);}
-    100%{stroke: var(--primary-color);}
-}
-
-@-webkit-keyframes flicker4 {
-    0%  {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    30% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    31% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    32% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    36% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    37% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    41% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    42% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    85% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    86% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    95% {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    96% {color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-    100%{color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-}
-
-@-webkit-keyframes fadeInText {
-    1%  {color: var(--secondary-color); text-shadow: 0px 0px 4px var(--secondary-color);}
-    70% {color: var(--primary-color); text-shadow: 0px 0px 14px var(--primary-color);}
-    100%{color: var(--primary-color); text-shadow: 0px 0px 4px var(--primary-color);}
-}
-
-@-webkit-keyframes hueRotate {
     0%  {filter: hue-rotate(0deg);}
     50% {filter: hue-rotate(-120deg);}
     100%{filter: hue-rotate(0deg);}
