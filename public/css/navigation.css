@@ -118,7 +118,7 @@
     color: #fff;
     transform: scale(1.1);
     transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .main-nav-link:focus {
