@@ -8,7 +8,7 @@
 
 body,
 input {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .container {
