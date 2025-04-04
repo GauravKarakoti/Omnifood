@@ -221,8 +221,16 @@
     }
 }
 
-.cta {
-    animation: fadeIn 1s ease-in-out;
+@keyframes hueRotate {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+    50% {
+        filter: hue-rotate(-120deg);
+    }
+    100% {
+        filter: hue-rotate(0deg);
+    }
 }
 
 /* Hide error messages by default */
