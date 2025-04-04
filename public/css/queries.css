@@ -315,6 +315,18 @@
         transform: translateX(0);
         -webkit-transform: translateX(0);
     }
+
+    .footer-container{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .footer-nav{
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 /* Responsive Form */
@@ -561,6 +573,56 @@
 /*******************************************/
 
 @media (max-width: 20rem) {
+    h2{
+        font-size: 3.6em !important;
+    }
+
+    .container{
+        padding: 0 2rem !important;
+    }
+
+    .testimonials-container{
+        padding: 8.5rem 1.8rem;
+    }
+
+    .pricing-plan{
+        padding: 4rem 1rem;
+    }
+
+    .pricing-plan--complete::after{
+        font-size: 0.8rem;
+        top: 12vw;
+        right: -30vw !important;
+    }
+
+    .features{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .cta-container{
+        padding: 0 0.2rem !important;
+    }
+
+    .section-newsletter{
+        padding: 4rem 0.2rem;
+    }
+
+    .heading-secondary{
+        font-size: 2.8rem !important;
+    }
+
+    .footer-container{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 0.8rem !important;
+    }
+
+    .footer-nav{
+        display: flex;
+        flex-direction: column;
+    }
+
     .hero-img {
         width: 60%;
     }
