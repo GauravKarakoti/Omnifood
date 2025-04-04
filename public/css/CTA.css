@@ -11,15 +11,22 @@
     grid-template-columns: 2fr 1fr;
     
     /* background-color: #e67e22; */
-    background-image: -webkit-linear-gradient(to right bottom, #eb984e, #e67e22);
-    background-image: -moz-linear-gradient(to right bottom, #eb984e, #e67e22);
-    background-image: -o-linear-gradient(to right bottom, #eb984e, #e67e22);
-    background-image: -ms-linear-gradient(to right bottom, #eb984e, #e67e22);
-    background-image: linear-gradient(to right bottom, #eb984e, #e67e22);
-    box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.15);
+    background-image: -webkit-linear-gradient(to right bottom, #76a0d9, #3ebdd3);
+    background-image: -moz-linear-gradient(to right bottom, #d3a67e, #057ba6);
+    background-image: -o-linear-gradient(to right bottom, #088dc2, #09a0b7);
+    background-image: -ms-linear-gradient(to right bottom, #4a6ac1, #0190bc);
+    background-image: linear-gradient(to right bottom, #2e60bd, #0c83be);
     border-radius: 11px;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
+    background-color: #fdf2e9; 
+    padding: 4rem 2rem; 
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+}
+#cta
+{
+    background-color: #aaa;
 }
 
 .cta *:focus {
@@ -111,6 +118,17 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
     color: inherit;
     transition: border 0.3s ease, background-color 0.3s ease;
+    width: 100%; 
+    padding: 1rem; 
+    border: 2px solid #e67e22; 
+    border-radius: 25px; 
+    margin-bottom: 1rem; 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.cta-form input:focus {
+    border-color: #d35400; /* Darker border on focus */
+    box-shadow: 0 0 5px rgba(211, 84, 0, 0.5); /* Shadow effect on focus */
 }
 
 .cta-form input:focus,
@@ -195,6 +213,20 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 }
+    .cta-form button {
+        background-color: #e67e22; 
+        color: white; 
+        padding: 1rem; 
+        border: none; 
+        border-radius: 25px; 
+        cursor: pointer; 
+        transition: background-color 0.3s ease, transform 0.3s ease; 
+    }
+    
+    .cta-form button:hover {
+        background-color: #d35400; /* Darker shade on hover */
+        transform: scale(1.05); /* Slightly enlarge on hover */
+    }
 
 .cta-btn:hover {
     background-color: #b5651a; /* Adjusted for better contrast */
@@ -236,6 +268,35 @@
 /* Hide error messages by default */
 .error-message {
     display: none; /* Hidden by default */
-    color:#e67e22;
-    font-size: 0%;
+    font-size: 0.9rem; 
+        color: red; 
+        margin-top: -0.5rem; 
+        margin-bottom: 1rem; 
+}
+
+.cta-form label {
+    font-weight: bold; 
+    margin-bottom: 0.5rem; 
+    display: block; 
+    color: #333; 
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cta-form {
+    animation: fadeIn 0.5s ease forwards; /* Apply animation */
+}
+
+.cta-form input::placeholder {
+    color: #aaa; 
+    opacity: 1; 
 }
