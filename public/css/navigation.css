@@ -228,8 +228,8 @@ a:hover {
     z-index: 998;
     border-radius: 9px 0 0 9px; /* Rounded corners on left side */
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    transform: translateX(0);
-    -webkit-transform: translateX(0);
+    transform: translateY(0); /* Slide into view */
+    -webkit-transform: translateY(0);
     transition: transform var(--animation-duration-medium) ease-in-out;
     -webkit-transition: -webkit-transform var(--animation-duration-medium) ease-in-out;
     backdrop-filter: blur(10px); /* Add blur effect */
@@ -255,19 +255,17 @@ a:hover {
     .main-nav {
         position: fixed;
         top: 8rem;
-        right: -100%;
+        transform: translateY(-100%); /* Slide from the top */
+        transition: transform 0.3s ease-in-out;
         width: 80%;
         height: calc(100vh - 8rem);
         background-color: var(--nav-bg-color);
         box-shadow: var(--nav-shadow);
-        transform: translateX(100%);
-        -webkit-transform: translateX(100%);
     }
 
     .header.nav-open .main-nav {
-        right: 0;
-        transform: translateX(0);
-        -webkit-transform: translateX(0);
+        transform: translateY(0); /* Slide into view */
+        -webkit-transform: translateY(0);
     }
 }
 

@@ -58,10 +58,16 @@
 
 /* ================= HERO IMAGE ================= */
 .hero img {
-    width: 100%;
+    width: 100%; /* Use percentage-based width for responsiveness */
     height: auto;
     aspect-ratio: 3 / 2; /* Maintain aspect ratio */
     object-fit: contain;
+}
+
+@media (max-width: var(--breakpoint-mobile)) {
+    .hero img {
+        width: 90%; /* Adjust for ultra-small screens */
+    }
 }
 
 /* ================= TEXT AND BUTTONS ================= */
