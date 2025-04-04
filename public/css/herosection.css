@@ -21,9 +21,6 @@
     align-items: center;
     gap: 4rem;
     height: fit-content;
-    /* padding: 4rem 2rem; Less padding for better spacing */
-}
-.hero {
     /*background: linear-gradient(135deg, #d5eaf7, #9edbe9); /* Gradient background */
     color: #514e4e; 
     text-align: center; 
