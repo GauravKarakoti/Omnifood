@@ -143,7 +143,7 @@ signInForm.addEventListener('submit', async function (e) {
 
       const csrfData = await csrfResponse.json();
    
-      const response = await fetch(`${server_url}/api/auth/login`, {
+      const response = await fetch(`${server_url}/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -213,7 +213,7 @@ signUpForm.addEventListener('submit', async function (e) {
 
       const csrfData = await csrfResponse.json();
      
-      const response = await fetch(`${server_url}/api/auth/signup`, {
+      const response = await fetch(`${server_url}/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
