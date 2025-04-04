@@ -26,7 +26,6 @@
 .hero {
     /*background: linear-gradient(135deg, #d5eaf7, #9edbe9); /* Gradient background */
     color: #514e4e; /* White text for contrast */
-    padding: 5rem 2rem; /* Padding for spacing */
     text-align: center; /* Centered text */
 }
 

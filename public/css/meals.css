@@ -86,7 +86,6 @@
     border-radius: 11px;
     overflow: hidden;
     transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
-    color: #ffffff;
     padding: 1rem;
 }
 
