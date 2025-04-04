@@ -94,6 +94,7 @@
     display: inline-block;
     position: relative;
     padding-bottom: 0.5rem;
+    border:none;
 }
 
 /* Underline effect */
@@ -107,6 +108,7 @@
     background-color: #0b0702; /* Darker shade for better contrast */
     transition: all var(--animation-duration-short) ease-in-out;
     transform: translateX(-50%);
+    text-decoration: none;
 }
 
 .main-nav-link:hover::after {
@@ -121,6 +123,7 @@
     font-weight: 500;
 }
 
+
 .main-nav-link:focus {
     outline: var(--focus-outline);
     outline-offset: var(--focus-outline-offset);
@@ -132,15 +135,17 @@
     padding: 1.2rem 2.4rem;
     border-radius: 9px;
     color: #fff;
-    background-color: #cc6b19; /* Slightly darker for better contrast */
+    background-color: #de7b2b; /* Slightly darker for better contrast */
     transition: all var(--animation-duration-short) ease-in-out;
     -webkit-transition: all var(--animation-duration-short) ease-in-out;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-weight: 600;
 }
 
+
 /* Hover effect for CTA */
 .nav-cta:hover {
+
     background-color: #5a300b;
     transform: translateY(-2px);
     -webkit-transform: translateY(-2px);
@@ -159,6 +164,16 @@
     transition: all var(--animation-duration-short) ease-in-out;
     -webkit-transition: all var(--animation-duration-short) ease-in-out;
 }
+a {
+    color: #e74c3c; /* Vibrant link color */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    color: #c0392b; /* Darker shade on hover */
+    text-decoration: underline; /* Underline on hover */
+}
+
 
 /* MOBILE */
 .btn-mobile-nav {
@@ -220,8 +235,8 @@
     z-index: 998;
     border-radius: 9px 0 0 9px; /* Rounded corners on left side */
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    transform: translateX(0);
-    -webkit-transform: translateX(0);
+    transform: translateY(0); /* Slide into view */
+    -webkit-transform: translateY(0);
     transition: transform var(--animation-duration-medium) ease-in-out;
     -webkit-transition: -webkit-transform var(--animation-duration-medium) ease-in-out;
     backdrop-filter: blur(10px); /* Add blur effect */
@@ -247,19 +262,17 @@
     .main-nav {
         position: fixed;
         top: 8rem;
-        right: -100%;
+        transform: translateY(-100%); /* Slide from the top */
+        transition: transform 0.3s ease-in-out;
         width: 80%;
         height: calc(100vh - 8rem);
         background-color: var(--nav-bg-color);
         box-shadow: var(--nav-shadow);
-        transform: translateX(100%);
-        -webkit-transform: translateX(100%);
     }
 
     .header.nav-open .main-nav {
-        right: 0;
-        transform: translateX(0);
-        -webkit-transform: translateX(0);
+        transform: translateY(0); /* Slide into view */
+        -webkit-transform: translateY(0);
     }
 }
 
