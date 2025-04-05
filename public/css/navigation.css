@@ -117,7 +117,7 @@
 
 /* Scaling and color transition */
 .main-nav-link:hover, .main-nav-link:active {
-    color: #fff;
+   
     transform: scale(1.1);
     transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
     font-weight: 500;
