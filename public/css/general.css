@@ -346,7 +346,7 @@ body {
 .newsletter-form button {
     padding: 1rem 2rem;
     font-size: 1.6rem;
-    background-color: #ff6f61;
+    background-color:linear-gradient(rgb(60, 51, 226),#f6630e);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -355,5 +355,5 @@ body {
 }
 
 .newsletter-form button:hover {
-    background-color: #e65c50;
+    background-color: #e62413;
 }
