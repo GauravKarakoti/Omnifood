@@ -368,6 +368,23 @@ function initializeAria() {
     });
 };
 
+function validateFormInputs() {
+    const inputs = document.querySelectorAll(".cta-form input");
+    inputs.forEach(input => {
+        const errorMessage = input.parentElement.querySelector(".error-message");
+        if (!input.checkValidity()) {
+            errorMessage.textContent = input.validationMessage;
+            errorMessage.style.display = "block";
+        } else {
+            errorMessage.style.display = "none";
+        }
+    });
+}
+
+document.querySelector(".cta-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    validateFormInputs();
+});
 
 document.querySelector("#try-for-free").addEventListener("click", () => trackClick("Try for free"));
 document.querySelector("#start-eating-well").addEventListener("click", () => trackClick("Start eating well"));

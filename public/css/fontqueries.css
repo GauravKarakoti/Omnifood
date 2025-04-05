@@ -1,5 +1,5 @@
 @font-face {
-    font-family: 'YourFontFamily';
+    font-family: 'YourFontFamily', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     src: url('path/to/font.woff2') format('woff2'),
          url('path/to/font.woff') format('woff');
     font-weight: normal;
@@ -47,6 +47,12 @@
         background-color: #e67e22;
         color: #fff;
         transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
+    }
+    .main-nav-link:hover{
+        background-color: transparent;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.2);
+
+
     }
 }
 
