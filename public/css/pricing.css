@@ -5,7 +5,23 @@
 .section-pricing {
     padding: 9.6rem 0;
 }
+.pricing-section
+{
+    display: flex;
+    justify-content: space-around; 
+    padding: 4rem 2rem; 
+    background-color: #f7f9fc;
+}
 
+.pricing-card {
+    background: white; /* Card background */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
+    padding: 2rem; 
+    text-align: center; /* Centered text */
+    transition: transform 0.3s ease; 
+    width: 300px; 
+    }
 .plan-name {
     color: #b35900; /* Adjusted for better contrast */
     font-weight: 600;
@@ -141,4 +157,15 @@
     background-color: #005f99; /* Adjusted for better contrast */
     color: #fff;
     transition: background-color var(--animation-duration-short) ease-in-out, color var(--animation-duration-short) ease-in-out;
+}
+
+@media (max-width: 768px) {
+    .pricing-section {
+        flex-direction: column; /* Stack cards vertically */
+        align-items: center; /* Center cards */
+    }
+
+    .pricing-card {
+        margin-bottom: 2rem; /* Margin for spacing between cards */
+    }
 }

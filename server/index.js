@@ -17,7 +17,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Define allowed origins
-const allowedOrigins = ["http://localhost:3000", "https://omnifood-meal-available.netlify.app"];
+const allowedOrigins = ["http://localhost:3000", "https://omnifood-meal-available.netlify.app",'http://127.0.0.1:5501'];
 
 // Connect to the database
 mongoose

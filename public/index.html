@@ -43,6 +43,7 @@
     <meta property="og:image" content="https://omnifood-meal-available.netlify.app/omnifood-logo.avif" />
     <meta property="og:url" content="https://omnifood-meal-available.netlify.app/" />
     <meta property="og:site_name" content="Omnifood" />
+    <meta http-equiv="Content-Security-Policy" content="connect-src 'self' https://api.example.com https://omnifood-login.onrender.com;">
 
     <!-- Instagram Meta Tags (Optional) -->
     <meta property="ig:app_id" content="gaurav._.karakoti" />
@@ -164,7 +165,7 @@
         }
 
         #scrollBtn {
-            background-color: #d35400;
+            background-color: #ed6f09;
             border-radius: 50%;
             width: 4rem;
             height: 4rem;
@@ -769,7 +770,7 @@
                     Both plans include the following:
                 </aside>
             </div>
-            <div class="container grid grid--4-cols">
+            <div class="container grid grid--4-cols features">
                 <div class="feature">
                     <i class="bi bi-infinity feature-icon" name="infinite-outline"></i>
                     <p class="feature-title">Never cook again!</p>
@@ -801,7 +802,7 @@
             </div>
         </section>
         <section class="section-cta" id="cta">
-            <div class="container">
+            <div class="container cta-container">
                 <div class="cta">
                     <div class="cta-text-box">
                         <h2 class="heading-secondary">
@@ -889,7 +890,7 @@
     </main>
 
     <footer class="footer">
-        <div class="container grid grid--5-cols">
+        <div class="container grid grid--5-cols footer-container">
             <div class="logo-col">
                 <a href="#" class="footer-logo">
                     <picture>
