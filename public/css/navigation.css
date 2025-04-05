@@ -218,23 +218,31 @@ a:hover {
     display: none;
 }
 
-/* Ensure mobile nav overlay covers full screen */
+/* Consolidated .header.nav-open .main-nav styles */
 .header.nav-open .main-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: fixed;
-    top: 8rem; /* Height of header */
-    left: 20%; /* Leave space on left */
-    width: 80%; /* Take up 80% of screen width */
-    height: calc(100vh - 8rem); /* Full height minus header */
-    background-color: rgba(255, 255, 255, 0.97);
-    z-index: 998;
-    border-radius: 9px 0 0 9px; /* Rounded corners on left side */
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    transform: translateY(0); /* Slide into view */
-    -webkit-transform: translateY(0);
-    transition: transform var(--animation-duration-medium) ease-in-out;
-    -webkit-transition: -webkit-transform var(--animation-duration-medium) ease-in-out;
-    backdrop-filter: blur(10px); /* Add blur effect */
-    -webkit-backdrop-filter: blur(10px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    z-index: 1000;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Ensure mobile-specific styles are applied consistently */
+.header.nav-open .main-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* Optional: Add a semi-transparent background */
