@@ -140,7 +140,7 @@ signInForm.addEventListener('submit', async function (e) {
         method: 'GET',
         credentials: 'include',
       });
-
+      
       const csrfData = await csrfResponse.json();
    
       const response = await fetch(`${server_url}/login`, {
@@ -195,7 +195,7 @@ signUpForm.addEventListener('submit', async function (e) {
   else if (!(/\d/.test(password)))
     showError(signUpPassword, 'Password must contain a digit');
   else if (!(/[@$!%*?&]/.test(password)))
-    showError(signUpPassword, 'Password must contain a sepical charchater');
+    showError(signUpPassword, 'Password must contain a special character');
   else {
     signUpPassword.classList.add('valid');
   }
@@ -238,5 +238,44 @@ signUpForm.addEventListener('submit', async function (e) {
       
       alert(`${error.message}`);
     }
+  }
+});
+//Adding forgot password functionality
+// Adding forgot password functionality
+const forgot_pass_btn = document.querySelector("#forgot-pass-btn");
+
+forgot_pass_btn.addEventListener("click", async () => {
+  const email = prompt("Please enter your registered email address:");
+
+  if (!email) {
+    alert("Email is required to reset your password.");
+    return;
+  }
+
+  const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/; // Email validation regex
+  if (!emailRegex.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  try {
+    const response = await fetch(`${server_url}/forgot-password`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      alert("Password reset email sent successfully. Please check your inbox.");
+    } else {
+      alert(`Error: ${data.message}`);
+    }
+  } catch (error) {
+    console.error("Error sending password reset request:", error);
+    alert("An error occurred while sending the password reset request. Please try again later.");
   }
 });

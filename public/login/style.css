@@ -74,7 +74,7 @@ form.sign-in-form {
   border-radius: 55px;
   display: flex;
   align-items: center;
-  gap: 10px; 
+  gap: 10px;
   position: relative;
 }
 
@@ -116,8 +116,8 @@ form.sign-in-form {
   left: 0;
   white-space: normal;
   word-wrap: break-word;
-  overflow: visible; 
-  max-width: 100%; 
+  overflow: visible;
+  max-width: 100%;
 }
 
 
@@ -151,6 +151,26 @@ form.sign-in-form {
   border-color: #e67e22;
 }
 
+.Forgot {
+  width: 150px;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  align-content: right;
+  height: 30px;
+  border-radius: 20px;
+  color: #e67e22;
+  font-weight: 300;
+  margin: 20px 0;
+  cursor: pointer;
+  transition: .5s;
+
+}
+
+.Forgot:hover {
+  color: #a54d00;
+}
+
 .btn {
   width: 150px;
   background-color: #e67e22;
@@ -169,6 +189,7 @@ form.sign-in-form {
 .btn:hover {
   background-color: #b0570a;
 }
+
 .panels-container {
   position: absolute;
   height: 100%;
@@ -198,9 +219,10 @@ form.sign-in-form {
   transition: transform 1.1s ease-in-out;
   transition-delay: 0.4s;
 }
-#register{
-  height:400px;
-  width:500px;
+
+#register {
+  height: 400px;
+  width: 500px;
 }
 
 .panel {
@@ -298,6 +320,7 @@ form.sign-in-form {
     min-height: 800px;
     height: 100vh;
   }
+
   .signin-signup {
     width: 100%;
     top: 95%;
@@ -394,7 +417,8 @@ form.sign-in-form {
     top: 5%;
     transform: translate(-50%, 0);
   }
-  .sign-in-form{
+
+  .sign-in-form {
     margin-top: 13%;
   }
 }
@@ -407,9 +431,11 @@ form.sign-in-form {
   .image {
     display: none;
   }
+
   .panel .content {
     padding: 0.5rem 1rem;
   }
+
   .container {
     padding: 1.5rem;
   }
@@ -424,8 +450,10 @@ form.sign-in-form {
     left: 50%;
   }
 }
+
 .left-panel {
-  position: relative; /* Ensure child elements are positioned relative to this */
+  position: relative;
+  /* Ensure child elements are positioned relative to this */
 }
 
 .back-btn {
@@ -440,7 +468,8 @@ form.sign-in-form {
   overflow: hidden;
   transition: all 0.3s ease-in-out;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-  z-index: 10; /* Ensure it appears above other elements */
+  z-index: 10;
+  /* Ensure it appears above other elements */
 }
 
 .back-btn img {
@@ -461,9 +490,12 @@ form.sign-in-form {
 }
 
 @keyframes bounce {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-5px);
   }
@@ -482,25 +514,31 @@ form.sign-in-form {
 
 .input-field {
   display: flex;
-  align-items: center; /* Align icon, label, and input */
-  gap: 8px; /* Adjust spacing between elements */
+  align-items: center;
+  /* Align icon, label, and input */
+  gap: 8px;
+  /* Adjust spacing between elements */
   margin-bottom: 10px;
 }
 
 .input-field i {
-  font-size: 18px; /* Adjust icon size */
-  color: #555; /* Adjust icon color */
+  font-size: 18px;
+  /* Adjust icon size */
+  color: #555;
+  /* Adjust icon color */
 }
 
 .input-field label {
   font-size: 16px;
   font-weight: 500;
   color: #333;
-  min-width: 80px; /* Ensure label has a fixed width */
+  min-width: 80px;
+  /* Ensure label has a fixed width */
 }
 
 .input-field input {
-  flex: 1; /* Make input take up remaining space */
+  flex: 1;
+  /* Make input take up remaining space */
   padding: 8px;
   font-size: 14px;
   border: 1px solid #ccc;
@@ -513,6 +551,6 @@ form.sign-in-form {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-#password-strength{
+#password-strength {
   margin-top: 1rem;
 }
