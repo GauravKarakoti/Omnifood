@@ -125,9 +125,14 @@
 <body>
     <header>
         <h1>Recipe Directory</h1>
-        <div class="search-bar">
-            <input type="text" id="search" placeholder="Search recipes...">
-        </div>
+        <form onsubmit="event.preventDefault();">
+            <div class="search-bar">
+                <input type="text" id="search" placeholder="Search recipes..." />
+                <button id="search-btn" type="button" style="border-style: none;">
+                    <img src="./img/seicon.png" alt="Search" style="height: 35px; width: 35px;" />
+                </button>
+            </div>
+          </form>
     </header>
     <section class="recipe-container" id="recipe-container"></section>
     <div class="modal" id="recipe-modal">
@@ -141,6 +146,7 @@
             <button class="close-modal" onclick="closeModal()">Close</button>
         </div>
     </div>
+    </body>
     <script>
         const recipes = [
             {
@@ -166,13 +172,70 @@
                 img: "img/reciepe3.jpg",
                 ingredients: ["500g beef strips", "1 onion", "2 cloves garlic", "200g mushrooms", "1 cup heavy cream", "1 tbsp mustard", "1 tbsp Worcestershire sauce", "Salt and pepper to taste", "2 tbsp butter"],
                 instructions: ["Heat butter in a pan and sauté onions and garlic until soft.", "Add beef strips and cook until browned.", "Stir in mushrooms and cook for a few minutes.", "Add mustard, Worcestershire sauce, and heavy cream.", "Simmer for 10 minutes until sauce thickens.", "Season with salt and pepper, then serve over rice or pasta."]
-            }
+            },
+            {
+                id: "chicken-alfredo",
+                title: "Chicken Alfredo",
+                description: "Rich and creamy Italian pasta dish with tender chicken and parmesan.",
+                img: "img/reciepe3.jpg",
+                ingredients: ["300g fettuccine", "2 chicken breasts", "2 cloves garlic", "1 cup heavy cream", "1/2 cup parmesan", "Salt and pepper", "2 tbsp butter", "Parsley for garnish"],
+                instructions: ["Cook pasta until al dente.", "Sauté garlic in butter, add chicken, cook until golden.", "Pour in cream, simmer gently.", "Add parmesan, stir until melted.", "Mix in pasta, season with salt and pepper.", "Top with parsley and serve hot."]
+            },
+            {
+    id: "mushroom-risotto",
+    title: "Mushroom Risotto",
+    description: "Creamy arborio rice dish with earthy mushrooms and a hint of white wine.",
+    img: "img/reciepe3.jpg",
+    ingredients: ["1 cup arborio rice", "200g mushrooms", "1 onion", "2 cloves garlic", "4 cups vegetable broth", "1/2 cup white wine", "2 tbsp butter", "1/4 cup parmesan", "Salt and pepper"],
+    instructions: ["Sauté onions and garlic in butter.", "Add mushrooms and cook until soft.", "Stir in rice and cook until translucent.", "Pour in wine and let it evaporate.", "Add broth gradually, stirring often.", "Finish with parmesan, salt, and pepper."]
+  },
+  {
+    id: "thai-green-curry",
+    title: "Thai Green Curry",
+    description: "Spicy and aromatic Thai curry with coconut milk and fresh herbs.",
+    img: "img/reciepe3.jpg",
+    ingredients: ["2 tbsp green curry paste", "400ml coconut milk", "1 chicken breast", "1 bell pepper", "1 zucchini", "1 tbsp fish sauce", "1 tsp sugar", "Basil leaves", "Jasmine rice for serving"],
+    instructions: ["Fry curry paste until fragrant.", "Add chicken and cook until sealed.", "Pour in coconut milk, simmer gently.", "Add vegetables, cook till tender.", "Stir in fish sauce, sugar, and basil.", "Serve hot with jasmine rice."]
+  },
+  {
+    id: "paneer-butter-masala",
+    title: "Paneer Butter Masala",
+    description: "North Indian classic with soft paneer cubes in a buttery tomato gravy.",
+    img: "img/reciepe3.jpg",
+    ingredients: ["250g paneer", "2 tomatoes", "1 onion", "2 tbsp butter", "1/4 cup cream", "1 tsp garam masala", "1 tsp ginger garlic paste", "Salt", "Kasuri methi"],
+    instructions: ["Sauté onion and tomato, blend to puree.", "Cook puree in butter with spices.", "Add paneer cubes and simmer.", "Pour in cream and finish with kasuri methi.", "Serve with naan or rice."]
+  },
+  {
+    id: "shakshuka",
+    title: "Shakshuka",
+    description: "Middle Eastern egg dish cooked in a spicy tomato and pepper sauce.",
+    img: "img/reciepe3.jpg",
+    ingredients: ["4 eggs", "2 tomatoes", "1 bell pepper", "1 onion", "2 cloves garlic", "1 tsp cumin", "1/2 tsp paprika", "Salt and pepper", "Olive oil"],
+    instructions: ["Sauté onion, pepper, and garlic in oil.", "Add tomatoes and spices, simmer to thicken.", "Make wells and crack eggs into them.", "Cover and cook until eggs are just set.", "Serve with crusty bread."]
+  },
+  {
+    id: "creamy-tuscan-salmon",
+    title: "Creamy Tuscan Salmon",
+    description: "Pan-seared salmon fillets in a creamy garlic sauce with sun-dried tomatoes.",
+    img: "img/reciepe3.jpg",
+    ingredients: ["2 salmon fillets", "2 cloves garlic", "1 cup spinach", "1/2 cup cream", "1/4 cup sun-dried tomatoes", "1 tbsp olive oil", "Salt and pepper", "Parmesan to finish"],
+    instructions: ["Pan-sear salmon until golden, set aside.", "Sauté garlic in same pan.", "Add cream, tomatoes, and spinach.", "Simmer until thickened.", "Return salmon to pan, coat in sauce.", "Serve hot with pasta or rice."]
+  },
+  {
+    id: "lemon-herb-chicken",
+    title: "Lemon Herb Chicken",
+    description: "Juicy chicken thighs marinated with lemon juice and fresh herbs.",
+    img: "img/reciepe3.jpg",
+    ingredients: ["4 chicken thighs", "2 tbsp lemon juice", "1 tsp rosemary", "1 tsp thyme", "3 cloves garlic", "Salt and pepper", "2 tbsp olive oil"],
+    instructions: ["Marinate chicken with lemon, herbs, and garlic.", "Pan-fry or grill until golden and cooked through.", "Serve with roasted veggies or salad."]
+  }
+            // Add more recipes if needed...
         ];
-
+    
         function getFavorites() {
             return JSON.parse(localStorage.getItem("favorites")) || [];
         }
-
+    
         function toggleFavorite(id) {
             let favorites = getFavorites();
             if (favorites.includes(id)) {
@@ -181,18 +244,27 @@
                 favorites.push(id);
             }
             localStorage.setItem("favorites", JSON.stringify(favorites));
-            loadRecipes();
+            loadRecipes(document.getElementById("search").value); // reload with current filter
         }
-
-        function loadRecipes() {
+    
+        function loadRecipes(filter = "") {
             const container = document.getElementById("recipe-container");
             container.innerHTML = "";
             const favorites = getFavorites();
-
-            recipes.forEach((recipe, index) => {
+    
+            const filteredRecipes = recipes.filter(recipe =>
+                recipe.title.toLowerCase().includes(filter.toLowerCase())
+            );
+    
+            if (filteredRecipes.length === 0) {
+                container.innerHTML = "<p>No matching recipes found.</p>";
+                return;
+            }
+    
+            filteredRecipes.forEach((recipe, index) => {
                 const card = document.createElement("div");
                 card.classList.add("recipe-card");
-
+    
                 const isFav = favorites.includes(recipe.id);
                 card.innerHTML = `
                     <div class="favorite ${isFav ? 'active' : ''}" onclick="event.stopPropagation(); toggleFavorite('${recipe.id}')">❤️</div>
@@ -200,27 +272,46 @@
                     <h3>${recipe.title}</h3>
                     <p>${recipe.description}</p>
                 `;
-                card.addEventListener("click", () => openModal(index));
+                card.addEventListener("click", () => openModal(recipe));
                 container.appendChild(card);
             });
         }
-
-        function openModal(index) {
-            const recipe = recipes[index];
+    
+        function openModal(recipe) {
             document.getElementById("modal-title").innerText = recipe.title;
             document.getElementById("modal-description").innerText = recipe.description;
             document.getElementById("modal-ingredients").innerHTML = recipe.ingredients.map(ing => `<li>${ing}</li>`).join("");
             document.getElementById("modal-instructions").innerHTML = recipe.instructions.map(ins => `<li>${ins}</li>`).join("");
             document.getElementById("recipe-modal").style.display = "flex";
         }
-
+    
         function closeModal() {
             document.getElementById("recipe-modal").style.display = "none";
         }
-
+    
+        // Handle DOM ready
         document.addEventListener("DOMContentLoaded", () => {
+            const searchInput = document.getElementById("search");
+            const searchBtn = document.getElementById("search-btn");
+    
+            // Initial load
             loadRecipes();
+    
+            // Search on button click
+            searchBtn.addEventListener("click", () => {
+                loadRecipes(searchInput.value);
+            });
+    
+            // Search on enter key
+            searchInput.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    loadRecipes(searchInput.value);
+                }
+            });
         });
+    
+        // Make modal functions globally accessible
+        window.closeModal = closeModal;
     </script>
-</body>
+    
 </html>
