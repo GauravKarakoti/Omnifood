@@ -194,17 +194,22 @@ body {
 }
 
 .btn--form {
-    background-color: #45260a;
-    color: var(--secondary-color);
+    background-color: #522809;
+    color: #fff;
     align-self: end;
     padding: 1.2rem;
     transition: transform var(--transition-duration) ease-in-out, box-shadow var(--transition-duration) ease-in-out;
 }
 
-.btn--form:hover {
-    background-color: #fff;
-    color: var(--text-color);
+#button:hover {
+    background-color: #12881c;
+    color: #000;
+    font-weight: bold;
+    box-shadow: 2px 2px #4b4646;
+    width: 100%;
 }
+
+
 
 .grid {
     display: grid;
@@ -292,7 +297,18 @@ body {
     line-height: 1.2;
     color: var(--text-color);
 }
+.list-item {
+    box-shadow: inset 0 0 0 0 var(--primary-color);
+    transition: box-shadow 0.3s ease-in-out;
+}
 
+.list-item:hover {
+    box-shadow: inset 200px 0 0 0 var(--primary-color);
+}
+.list-item span:hover {
+    cursor: pointer;            
+    color: #fff;
+}
 .text-center {
     text-align: center;
 }
