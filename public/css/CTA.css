@@ -89,6 +89,10 @@
     grid-template-columns: 1fr 1fr;
     column-gap: 3.2rem;
     row-gap: 2.4rem;
+    border-radius: 10px; /* Rounded corners */
+    padding: 2rem; /* Padding around the form */
+    max-width: 800px; 
+    margin: 0 auto;
 }
 
 .cta-form label {
@@ -96,6 +100,30 @@
     font-size: 1.6rem;
     font-weight: 500;
     margin-bottom: 1.2rem;
+    font-size: 1.4rem; 
+    margin-bottom: 0.5rem; /* Space below labels */
+    display: block; 
+    color: #333; 
+}
+
+cta-form .form-group {
+    margin-bottom: 1.5rem; 
+}
+
+.cta-form .btn--full {
+    background-color: #d35400; /* Button background color */
+    color: #fff; /* Button text color */
+    padding: 1rem; /* Padding inside the button */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 1.6rem; /* Font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+}
+
+.cta-form .btn--full:hover {
+    background-color: #c65d0e; /* Darker shade on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
 /* Input and Select Styling */
@@ -117,6 +145,24 @@
 .cta-form select:focus {
     border-color: #ff8c00;
     background-color: #fff3e0;
+}
+
+.cta-form input[type="text"],
+.cta-form input[type="email"],
+.cta-form select {
+    width: 100%; 
+    padding: 1rem; 
+    border: 1px solid #ccc; /* Light border */
+    border-radius: 5px; 
+    font-size: 1.6rem; 
+    transition: border-color 0.3s ease; 
+}
+
+.cta-form input[type="text"]:focus,
+.cta-form input[type="email"]:focus,
+.cta-form select:focus {
+    border-color: #d35400; 
+    outline: none; 
 }
 
 /* Placeholder Styling */
@@ -163,7 +209,7 @@
 /* 🔥 Adding Error Message Below Inputs */
 .cta-form .error-message {
     display: none; /* Default hidden */
-    color: #a10d1e;
+    color: #cb192e;
     font-weight: 500;
     font-size: 1.7rem;
     margin-top: 0.5rem;
@@ -238,4 +284,20 @@
     display: none; /* Hidden by default */
     color:#e67e22;
     font-size: 0%;
+}
+
+@media (max-width: 768px) {
+    .cta-form {
+        padding: 1.5rem; /* Adjust padding for smaller screens */
+    }
+
+    .cta-form input[type="text"],
+    .cta-form input[type="email"],
+    .cta-form select {
+        font-size: 1.4rem;
+    }
+
+    .cta-form .btn--full {
+        font-size: 1.4rem; /* Smaller font size for button */
+    }
 }
