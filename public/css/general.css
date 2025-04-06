@@ -381,7 +381,9 @@ body {
     border-radius: 5px;
     width: 100%;
     max-width: 300px;
+    
 }
+
 
 .newsletter-form button {
     padding: 1rem 2rem;
@@ -400,7 +402,46 @@ body {
     font-weight: 550;
 }
 
-.subscribe-button:active {
-    transform: translateY(0); 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.newsletter-input {
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: 300px; /* Fixed width for input */
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+.newsletter-input:focus {
+    border-color: #e77008; /* Change border color on focus */
+    outline: none; 
+}
+
+.newsletter-form button {
+    padding: 1rem 2rem;
+    font-size: 1.6rem;
+    background-color: #fc6d07;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    height: 50px; /* Fixed height to prevent movement */
+    box-sizing: border-box; /* Include padding and border in height */
+    display: flex; /* Align text vertically */
+    align-items: center; /* Center text vertically */
+}
+
+.newsletter-form button:hover {
+    background-color: #ee1a07;
+    transform: translateY(0); /* Prevent upward movement */
+    font-weight: 550;
 }
