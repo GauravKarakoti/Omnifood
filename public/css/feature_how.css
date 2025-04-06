@@ -7,24 +7,67 @@
     transition: transform 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
+.features-section {
+    padding: 60px 20px; 
+    background-color: #f9f9f9; 
+    text-align: center; 
+}
+
 .feature:hover {
     transform: scale(1.05);
+    font-weight: 600;
 }
 
 .feature-title {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     font-weight: bold;
-    color: #222; /* Improved contrast for better readability */
+    color: #333; 
     transition: color var(--animation-duration-short) ease-in-out;
+    margin-bottom: 40px;
 }
 
-.feature:hover .feature-title {
-    color: #e64a19; /* Adjusted hover color for better contrast */
+.features-container {
+    display: flex; 
+    justify-content: center; 
+    flex-wrap: wrap; 
+    gap: 20px; 
 }
+
+.feature:hover {
+    color: #e2a050; /* Adjusted hover color for better contrast */
+}
+
+.feature-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+}
+
+/* Feature title styles */
+.feature-title {
+    font-size: 1.8rem; /* Font size for titles */
+    color: #1a1919; /* Accent color for titles */
+    margin-bottom: 10px;
+}
+
+/* Feature description styles */
+.feature-description {
+    font-size: 1rem; /* Font size for descriptions */
+    color: #555; /* Dark gray for readability */
+}
+
 .features-list {
     list-style: none; /* Remove default list style */
     padding: 0; /* Remove padding */
     margin: 1.5rem 0; /* Margin for spacing */
+}
+
+.feature-card {
+    background-color: white; /* White background for cards */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    padding: 20px; /* Padding inside cards */
+    width: 300px; /* Fixed width for cards */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for hover effects */
 }
 
 .features-list li {
