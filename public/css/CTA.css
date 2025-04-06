@@ -145,6 +145,8 @@ cta-form .form-group {
 .cta-form select:focus {
     border-color: #ff8c00;
     background-color: #fff3e0;
+    outline: 2px solid #ff8c00; /* Orange outline */
+    outline-offset: 4px; /* Offset to ensure the outline is visible */
 }
 
 .cta-form input[type="text"],
