@@ -227,6 +227,14 @@ cta-form .form-group {
     margin-top: 0.5rem;
 }
 
+.sign-up-btn{
+    place-content: center;
+}
+
+.btn--form{
+    width:100%
+}
+
 /* CTA Button */
 .cta-btn {
     display: inline-block;
