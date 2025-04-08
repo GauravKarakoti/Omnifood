@@ -62,12 +62,17 @@
 }
 
 .feature-card {
-    background-color: white; /* White background for cards */
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    padding: 20px; /* Padding inside cards */
-    width: 300px; /* Fixed width for cards */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transition for hover effects */
+    composes: card;
+    padding: 2.4rem;
+    text-align: center;
+    width: 100%;
+    max-width: 35rem;
+}
+
+.feature-icon {
+    font-size: 4.8rem;
+    color: var(--primary-color);
+    margin-bottom: 2.4rem;
 }
 
 .features-list li {
