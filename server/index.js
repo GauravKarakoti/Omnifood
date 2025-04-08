@@ -7,7 +7,7 @@ const rateLimit = require("express-rate-limit");
 const path = require("path");
 const cron = require("node-cron");
 const csurf = require("csurf");
-
+const hotelRoutes = require('./routes/hotel.js')
 const { errorMiddleware } = require("./middlewares/error.js");
 const authRouter = require("./routes/user.js");
 
@@ -21,7 +21,7 @@ const allowedOrigins = ["http://localhost:3000", "https://omnifood-meal-availabl
 
 // Connect to the database
 mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGOURT, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
@@ -226,6 +226,6 @@ app.get("/email-verification", (req, res) => {
       </html>
     `);
 }); 
-
+app.use('/hotel',hotelRoutes)
 // Start server
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
