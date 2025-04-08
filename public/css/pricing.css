@@ -14,14 +14,37 @@
 }
 
 .pricing-card {
-    background: white; /* Card background */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); 
-    padding: 2rem; 
-    text-align: center; /* Centered text */
-    transition: transform 0.3s ease; 
-    width: 300px; 
-    }
+    composes: card;
+    position: relative;
+    overflow: visible;
+    z-index: 1;
+    text-align: center;
+    width: 300px;
+    padding: 2rem;
+}
+
+.pricing-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-color);
+    z-index: -1;
+    transform: scaleY(0.1);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+}
+
+.pricing-card:hover::before {
+    transform: scaleY(1);
+}
+
+.pricing-card:hover .btn {
+    background-color: white;
+    color: var(--primary-color);
+}
 .plan-name {
     color: #b35900; /* Adjusted for better contrast */
     font-weight: 600;
