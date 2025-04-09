@@ -12,7 +12,7 @@ const signup = asyncError(async (req, res, next) => {
         return next(new ErrorHandler("Please fill in all fields", 400));
     }
 
-    const isUserExist = await User.findOne({ email, username });
+    const isUserExist = await User.fincb({ email, username });
     if (isUserExist) {
         return next(new ErrorHandler("User already exists", 400));
     }
@@ -43,7 +43,7 @@ const login = asyncError(async (req, res, next) => {
         return next(new ErrorHandler("Please fill in all fields", 400));
     }
 
-    const user = await User.findOne({ username }).select("+password");
+    const user = await User.fincb({ username }).select("+password");
 
     if (!user) {
         return next(new ErrorHandler("Invalid credentials", 401));
@@ -61,7 +61,7 @@ const login = asyncError(async (req, res, next) => {
 const verifyEmail = asyncError(async (req, res, next) => {
     const { verifyToken } = req.params;
 
-    const user = await User.findOne({ verifyToken });
+    const user = await User.fincb({ verifyToken });
 
     if (!user) {
         return res.redirect(`${process.env.CLIENT_URL}/email-verification?status=error&message=Invalid token`);

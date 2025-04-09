@@ -4,6 +4,9 @@ const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose')
 const dotenv = require('dotenv');
 const rateLimit = require('express-rate-limit');
+const session = require('express-session');
+const passport = require('./middlewares/passport.js');
+const path = require('path');
 
 const { errorMiddleware } = require('./middlewares/error.js');
 const authRouter = require('./routes/user.js');
@@ -12,6 +15,8 @@ const csurf = require('csurf');
 dotenv.config();
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, "../public/login/login.html")));
 
 // Connect to the database
 mongoose
@@ -34,7 +39,15 @@ app.use(cors({
     credentials: true
 }))
 
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+}));
+
 // Middlewares
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -48,6 +61,25 @@ const csrfProtection = csurf({
     }
 })
 app.use(csrfProtection);
+
+// app.get('/',(req, res) => {
+//     res.send("<a href='/auth/google'>Authenticate me</a>");
+// })
+
+app.get('/auth/google',passport.authenticate('google', {
+    scope: ['profile', 'email']
+}))
+
+app.get('/google/callback',
+    passport.authenticate("google", { failureRedirect: "../login.html" }),
+    (req, res) => {
+      res.redirect("../profile.html"); // Redirect to dashboard after login
+    } 
+)
+
+// app.get('/auth/failure', (req, res) => {
+//     res.send("Something went wrong with authentication");
+// })
 
 // CSRF Route 
 app.get('/api/csrf-token' , (req, res)=>{
