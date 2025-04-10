@@ -51,7 +51,7 @@ passport.use(
 passport.use(new LinkedInStrategy({
   clientID: LINKEDIN_KEY,
   clientSecret:  LINKEDIN_SECRET,
-  callbackURL: "",
+  callbackURL: "/linkedin/callback",
   scope: ['r_emailaddress', 'r_liteprofile'],
   state: true
 },
@@ -65,7 +65,7 @@ function(accessToken, refreshToken, profile, done) {
 passport.use(new TwitterStrategy({
   consumerKey: TWITTER_CONSUMER_KEY,
   consumerSecret: TWITTER_CONSUMER_SECRET,
-  callbackURL:""
+  callbackURL:"/twitter/callback",
 },
 function(token, tokenSecret, profile, done){
   User.findOrCreate({ twitterId: profile.id }, function(err, user){
@@ -77,7 +77,7 @@ function(token, tokenSecret, profile, done){
 passport.use(new FacebookStrategy({
   clientID: FACEBOOK_APP_ID,
   clientSecret: FACEBOOK_APP_SECRET,
-  callbackURL: "",
+  callbackURL: "/facebook/callback",
 },
 function(accessToken, refreshToken, profile, done){
   User.findOrCreate({facebookId: profile.id } , function(err, user){

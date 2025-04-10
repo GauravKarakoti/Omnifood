@@ -79,7 +79,7 @@ app.get('/google/callback',
 app.get('/auth/linkedin', passport.authenticate('linkedin'),
 );
 
-app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
+app.get('/linkedin/callback', passport.authenticate('linkedin', {
     successRedirect: '/api/success',
     failureRedirect: '/auth/failure'
 }))
@@ -87,7 +87,7 @@ app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
 
 app.get('/auth/twitter', passport.authenticate('twitter'));
 
-app.get('/auth/twitter/callback',
+app.get('/twitter/callback',
     passport.authenticate('twitter', {
         successRedirect: '/api/success',
         failureRedirect:'/auth/failure'
@@ -98,7 +98,7 @@ app.get('/auth/facebook',
     passport.authenticate('facebook')
 );
 
-app.get('/auth/facebook/callback',
+app.get('/facebook/callback',
     passport.authenticate('facebook', {
         successRedirect: '/api/success',
         failureRedirect: '/auth/failure'
