@@ -247,6 +247,7 @@ a:hover {
 .btn-mobile-nav .bi-x-lg {
     display: none;
     z-index: 5000;
+}
 
 /* Consolidated .header.nav-open .main-nav styles */
 .header.nav-open .main-nav {
