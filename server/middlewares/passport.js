@@ -5,8 +5,8 @@ const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 
-GOOGLE_CLIENT_ID="790533275206-3bc8j0b1h97gqfkf0e48tehufj5r976q.apps.googleusercontent.com"
-GOOGLE_CLIENT_SECRET="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"
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
 
 
 
