@@ -71,15 +71,47 @@ app.get('/auth/google',passport.authenticate('google', {
 }))
 
 app.get('/google/callback',
-    passport.authenticate("google", { failureRedirect: "../login.html" }),
-    (req, res) => {
-      res.redirect("../profile.html"); // Redirect to dashboard after login
-    } 
+    passport.authenticate("google", { 
+        successRedirect:'/api/success',
+        failureRedirect: "/auth/failure" }),
 )
 
-// app.get('/auth/failure', (req, res) => {
-//     res.send("Something went wrong with authentication");
-// })
+app.get('/auth/linkedin', passport.authenticate('linkedin'),
+);
+
+app.get('/auth/linkedin/callback', passport.authenticate('linkedin', {
+    successRedirect: '/api/success',
+    failureRedirect: '/auth/failure'
+}))
+
+
+app.get('/auth/twitter', passport.authenticate('twitter'));
+
+app.get('/auth/twitter/callback',
+    passport.authenticate('twitter', {
+        successRedirect: '/api/success',
+        failureRedirect:'/auth/failure'
+    })
+)
+
+app.get('/auth/facebook',
+    passport.authenticate('facebook')
+);
+
+app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', {
+        successRedirect: '/api/success',
+        failureRedirect: '/auth/failure'
+    }),
+)
+
+app.get('/auth/failure', (req, res) => {
+    res.redirect('http://127.0.0.1:5500/public/login/login.html');
+})
+
+app.get('/api/success' , (req,res) => {
+    res.redirect('http://127.0.0.1:5500/public/profile.html');
+})
 
 // CSRF Route 
 app.get('/api/csrf-token' , (req, res)=>{

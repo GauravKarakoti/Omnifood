@@ -1,9 +1,14 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 // const User = require("../models/user");
+const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
+const TwitterStrategy = require('passport-twitter').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 
-GOOGLE_CLIENT_ID=
-GOOGLE_CLIENT_SECRET=
+GOOGLE_CLIENT_ID="790533275206-3bc8j0b1h97gqfkf0e48tehufj5r976q.apps.googleusercontent.com"
+GOOGLE_CLIENT_SECRET="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"
+
+
 
 passport.use(
   new GoogleStrategy(
@@ -42,6 +47,46 @@ passport.use(
     }
   )
 );
+
+passport.use(new LinkedInStrategy({
+  clientID: LINKEDIN_KEY,
+  clientSecret:  LINKEDIN_SECRET,
+  callbackURL: "",
+  scope: ['r_emailaddress', 'r_liteprofile'],
+  state: true
+},
+function(accessToken, refreshToken, profile, done) {
+  process.nextTick(function(){
+    return done(null, profile);
+  });
+
+}));
+
+passport.use(new TwitterStrategy({
+  consumerKey: TWITTER_CONSUMER_KEY,
+  consumerSecret: TWITTER_CONSUMER_SECRET,
+  callbackURL:""
+},
+function(token, tokenSecret, profile, done){
+  User.findOrCreate({ twitterId: profile.id }, function(err, user){
+    return done(err, user);
+  });
+}
+));
+
+passport.use(new FacebookStrategy({
+  clientID: FACEBOOK_APP_ID,
+  clientSecret: FACEBOOK_APP_SECRET,
+  callbackURL: "",
+},
+function(accessToken, refreshToken, profile, done){
+  User.findOrCreate({facebookId: profile.id } , function(err, user){
+    return done(err, user);
+  })
+}
+))
+
+
 
 passport.serializeUser(function(user, done) {
     return done(null, user);
