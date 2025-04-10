@@ -90,8 +90,8 @@
 
         /* Consolidated .header.nav-open .main-nav styles */
         .header.nav-open .main-nav {
-            display: block;
-            position: fixed;
+            /* display: flex; */
+            /* position: fixed; */
             top: 0;
             left: 0;
             width: 100%;
@@ -1049,6 +1049,16 @@
             const ionIcon = document.querySelector("ion-icon[name='arrow-up-outline']");
             if (!ionIcon) {
                 console.error("Ionicons library failed to load or icon name is incorrect.");
+            }
+        });
+
+        // Add resize event listener to handle screen width changes
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 944) {
+                mobileNav.classList.remove('nav-open');
+                document.body.classList.remove('no-scroll');
+                btnMobileNav.querySelector('.bi-list').style.display = 'block';
+                btnMobileNav.querySelector('.bi-x-lg').style.display = 'none';
             }
         });
     </script>

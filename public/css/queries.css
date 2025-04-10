@@ -190,9 +190,9 @@
         transform: translateX(100%);
         transition: all 0.5s ease-in; /* Replaced --animation-duration-medium */
         backdrop-filter: blur(0.625rem);
-        opacity: 0;
+        /* opacity: 0; */
         pointer-events: none;
-        visibility: hidden;
+        /* visibility: hidden; */
     }
 
     .main-nav-list {
@@ -715,5 +715,12 @@
         backdrop-filter: none;
         -webkit-backdrop-filter: none;
         box-shadow: none;
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .main-nav-list {
+        flex-direction: row;
+        gap: 4.8rem;
     }
 }
