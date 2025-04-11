@@ -62,9 +62,7 @@ const csrfProtection = csurf({
 })
 app.use(csrfProtection);
 
-// app.get('/',(req, res) => {
-//     res.send("<a href='/auth/google'>Authenticate me</a>");
-// })
+
 
 app.get('/auth/google',passport.authenticate('google', {
     scope: ['profile', 'email']
