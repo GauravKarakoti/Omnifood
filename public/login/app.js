@@ -39,11 +39,18 @@ const signUpUsername = document.getElementById('signUpUsername');
 const signUpEmail = document.getElementById('signUpEmail');
 const signUpPassword = document.getElementById('signUpPassword');
 
+// Replace localStorage with HttpOnly cookies for authentication
+function setAuthCookie(username, email) {
+  document.cookie = `omni_username=${username}; Secure; HttpOnly; SameSite=Strict`;
+  document.cookie = `omni_email=${email}; Secure; HttpOnly; SameSite=Strict`;
+}
+
 // Function to display error message and style invalid inputs
 function showError(input, message) {
   const error = input.nextElementSibling;   // Get the next sibling element (error message)
   error.textContent = message;              // Display the error message
   error.style.display = 'block';            // Make the error message visible
+  error.setAttribute("aria-live", "assertive"); // Add ARIA live region
   input.classList.add('invalid');           // Add invalid styling
   input.classList.remove('valid');          // Remove valid styling
 }
@@ -86,19 +93,14 @@ const uppercaseReq = document.getElementById('uppercase');
 const numberReq = document.getElementById('number');
 const specialReq = document.getElementById('special');
 
-// Function to update password strength meter
-function updatePasswordStrength(password) {
-  let strength = 0;
-
-  if (password.length >= passwordConfig.minLength) strength++;    // Check length
-  if (/[A-Z]/.test(password)) strength++;                         // Check uppercase
-  if (/\d/.test(password)) strength++;                            // Check number
-  if (/[@$!%*?&]/.test(password)) strength++;                     // Check special character
-
-  const levels = ['Weak', 'Moderate', 'Strong', 'Very Strong'];   // Strength levels
-  passwordStrength.textContent = `Password Strength: ${levels[strength === 0 ? 0 : strength - 1]}`;
-  passwordStrength.style.color = ['red', 'orange', 'blue', 'green'][strength === 0 ? 0 : strength - 1];
-}
+// Use zxcvbn for password strength validation
+signUpPassword.addEventListener('input', function () {
+  const zxcvbn = require('zxcvbn'); // Ensure zxcvbn is installed
+  const result = zxcvbn(signUpPassword.value);
+  passwordStrength.textContent = `Password Strength: ${result.score >= 3 ? 'Strong' : 'Weak'}`;
+  passwordStrength.style.color = result.score >= 3 ? 'green' : 'red';
+  validatePassword(signUpPassword.value); // Update visual indicators
+});
 
 // Function to validate password requirements visually
 function validatePassword(password) {
@@ -125,24 +127,23 @@ function checkPassword(input) {
 
 // SIGN IN FORM HANDLING
 signInForm.addEventListener('submit', async function (e) {
-  e.preventDefault();                           // Prevent form submission reload
+  e.preventDefault(); // Prevent form submission reload
 
-  checkUsername(signInUsername);                // Validate username
-  checkPassword(signInPassword);                // Validate password
+  checkUsername(signInUsername);
+  checkPassword(signInPassword);
 
   if (
     signInUsername.classList.contains('valid') &&
     signInPassword.classList.contains('valid')
   ) {
     try {
-      // Fetching CSRF token
       const csrfResponse = await fetch(`${server_url}/api/csrf-token`, {
         method: 'GET',
         credentials: 'include',
       });
 
       const csrfData = await csrfResponse.json();
-   
+
       const response = await fetch(`${server_url}/login`, {
         method: 'POST',
         headers: {
@@ -155,35 +156,28 @@ signInForm.addEventListener('submit', async function (e) {
           password: signInPassword.value,
         }),
       });
+
       const data = await response.json();
 
-      alert(`${data.message}`);                 // Display server message
       if (data.success) {
+        setAuthCookie(signInUsername.value, data.user.email);
         window.location.replace(`${window.location.origin}/index.html`);
-        localStorage.setItem('omni:username', signInUsername.value);
-        localStorage.setItem('omni:email', data.user.email);
-        localStorage.setItem('omni:authenticated', 'true');
+      } else {
+        showError(signInUsername, data.message); // Display error message
       }
-
     } catch (error) {
-      console.log(error);
-      alert(`${error.message}`);
+      console.error("Login failed:", error);
+      alert("An error occurred. Please try again.");
     }
   }
 });
 
-// Real-time password validation while typing
-signUpPassword.addEventListener('input', function () {
-  updatePasswordStrength(signUpPassword.value);   // Display strength indicator
-  validatePassword(signUpPassword.value);         // Validate password visually
-});
-
 // SIGN UP FORM HANDLING
 signUpForm.addEventListener('submit', async function (e) {
-  e.preventDefault();                             // Prevent form reload
+  e.preventDefault(); // Prevent form reload
 
-  checkUsername(signUpUsername);                  // Validate username
-  checkEmail(signUpEmail);                        // Validate email
+  checkUsername(signUpUsername);
+  checkEmail(signUpEmail);
   const password = signUpPassword.value.trim();
 
   if (
@@ -191,11 +185,11 @@ signUpForm.addEventListener('submit', async function (e) {
   )
     showError(signUpPassword, 'Password must contain at least 8 characters');
   else if (!(/[A-Z]/.test(password)))
-    showError(signUpPassword, 'Password must contain an alphabate');
+    showError(signUpPassword, 'Password must contain an uppercase letter');
   else if (!(/\d/.test(password)))
     showError(signUpPassword, 'Password must contain a digit');
   else if (!(/[@$!%*?&]/.test(password)))
-    showError(signUpPassword, 'Password must contain a sepical charchater');
+    showError(signUpPassword, 'Password must contain a special character');
   else {
     signUpPassword.classList.add('valid');
   }
@@ -212,7 +206,7 @@ signUpForm.addEventListener('submit', async function (e) {
       });
 
       const csrfData = await csrfResponse.json();
-     
+
       const response = await fetch(`${server_url}/signup`, {
         method: 'POST',
         headers: {
@@ -226,17 +220,15 @@ signUpForm.addEventListener('submit', async function (e) {
           password: signUpPassword.value,
         }),
       });
+
       const data = await response.json();
       alert(`${data.message}`);
       if (data.success) {
+        setAuthCookie(signUpUsername.value, data.user.email);
         window.location.replace(`${window.location.origin}/index.html`);
-        localStorage.setItem('omni:username', signInUsername.value);
-        localStorage.setItem('omni:email', data.user.email);
-        localStorage.setItem('omni:authenticated', 'true');
       }
     } catch (error) {
-      
-      alert(`${error.message}`);
+      alert("An error occurred. Please try again.");
     }
   }
 });
