@@ -37,6 +37,8 @@
     text-decoration: none;
     cursor: pointer;
     transition: color 0.3s ease-in-out; /* Replaced --animation-duration-short */
+    outline: 2px solid #cc6600; /* Adjusted orange for better contrast */
+    outline-offset: 4px; /* Offset to ensure the outline is visible */
 }
 
 #confirmation-message {
@@ -62,5 +64,7 @@
 button:focus, input:focus, select:focus, textarea:focus {
     transition: box-shadow var(--animation-duration-short) ease;
     box-shadow: 0 0 4px #cc6600; /* Added subtle shadow for better focus visibility */
+    outline: 2px solid #cc6600; /* Adjusted orange for better contrast */
+    outline-offset: 4px; /* Offset to ensure the outline is visible */
 }
 
