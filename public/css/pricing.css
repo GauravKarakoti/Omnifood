@@ -22,6 +22,10 @@
     transition: transform 0.3s ease; 
     width: 300px; 
     }
+
+    .pricing-card:hover{
+        box-shadow: 0 4px 8px black;
+    }
 .plan-name {
     color: #b35900; /* Adjusted for better contrast */
     font-weight: 600;
@@ -137,14 +141,22 @@
 
 /* Hover effect for the plan header text */
 .pricing-plan:hover .plan-header p {
-    color: #005f99; /* Adjusted for better contrast */
+    color: #fff; /* Adjusted for better contrast */
     transition: color var(--animation-duration-short) ease-in-out;
+}
+
+.plan-text:hover{
+    color: #000;
 }
 
 /* Hover effect for the plan list items */
 .pricing-plan:hover .list-item {
-    color: #222; /* Adjusted for better contrast */
+    color: #fff; /* Adjusted for better contrast */
     transition: color var(--animation-duration-short) ease-in-out;
+}
+
+.list-item .span:hover{
+    color: #000;
 }
 
 .pricing-plan:hover .list-icon {
