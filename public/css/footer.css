@@ -75,6 +75,7 @@
 .social-links {
     list-style: none;
     display: flex;
+    justify-content: center;
     gap: 1.2rem;
 }
 
@@ -83,7 +84,8 @@
 }
 
 .footer-logo {
-    display: block;
+    display: flex;
+    justify-content: center;
     margin-bottom: 3.2rem;
 }
 
@@ -102,7 +104,7 @@
     font-size: 1.4rem;
     color: #ccc3c3;
     line-height: 1.6;
-    margin-top: auto;
+    margin-top: 2rem;
     background-color: #121212; 
     padding: 1rem; 
     text-align: center; 
@@ -111,6 +113,8 @@
 .logo-col {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 .contacts {

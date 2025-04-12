@@ -1,143 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Carrier Network</title>
-    <style>
-        /* General Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f4;
-            line-height: 1.6;
-            color: #333;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="img/favicon.webp" />
+  <title>Career Network</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* Header Section */
-        header {
-            background-color: orangered;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        header h1 {
-            font-size: 36px;
-            font-weight: bold;
-        }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to bottom right, #fff8e1, #ffe0b2);
+      color: #333;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
 
-        /* Main Container */
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+    header {
+      background: linear-gradient(to right, #ff6f61, #ff3d00);
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      animation: slideInDown 0.8s ease-out;
+    }
 
-        /* Section Titles */
-        .section-title {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 28px;
-            color: #333;
-            font-weight: bold;
-        }
+    header h1 {
+      font-size: 3.5rem;
+      letter-spacing: 2px;
+      font-weight: 800;
+    }
 
-        /* Card */
-        .card-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 20px;
-        }
-        .card {
-            background-color: #fafafa;
-            border-radius: 8px;
-            padding: 20px;
-            flex: 0 0 48%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-        .card h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
-        }
-        .card p {
-            font-size: 16px;
-            color: #666;
-        }
+    .container {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 20px;
+      animation: fadeIn 1s ease-in-out;
+    }
 
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            background-color: #ff6f61;
-            color: #fff;
-            padding: 10px 20px;
-            margin-top: 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            text-align: center;
-            transition: background-color 0.3s ease;
-        }
-        .btn:hover {
-            background-color: #ff4b3a;
-        }
+    .section-title {
+      font-size: 2.8rem;
+      text-align: center;
+      margin-bottom: 50px;
+      color: #ff5722;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
 
-        /* Footer */
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 15px;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+    .card-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+    }
 
-    </style>
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      position: relative;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-15px);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h3 {
+      font-size: 2rem;
+      color: #e64a19;
+      margin-bottom: 20px;
+    }
+
+    .card p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background: linear-gradient(to right, #ff6f61, #ff3d00);
+      color: white;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    .btn:hover {
+      background: linear-gradient(to right, #ff3d00, #ff6f61);
+      transform: scale(1.05);
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      background: #fff;
+      padding: 40px;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 450px;
+      text-align: center;
+      animation: fadeInUp 0.6s ease;
+      position: relative;
+    }
+
+    .popup-content h2 {
+      color: #ff5722;
+      margin-bottom: 20px;
+    }
+
+    .popup input, .popup button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      font-size: 1rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .popup button {
+      background-color: #ff5722;
+      color: white;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .popup button:hover {
+      background-color: #e64a19;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 30px;
+      margin-top: 80px;
+      font-size: 1rem;
+    }
+
+    @keyframes slideInDown {
+      0% { transform: translateY(-100px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>Powering the Fastest Career Network</h1>
+  </header>
 
-    <!-- Header Section -->
-    <header>
-        <h1>Our Carrier Network</h1>
-    </header>
-
-    <!-- Main Content Section -->
-    <div class="container">
-        <section id="carrier">
-            <h2 class="section-title">Why Join Our Carrier Network?</h2>
-            <div class="card-container">
-                <div class="card">
-                    <h3>Reliable & Fast Delivery</h3>
-                    <p>Our carriers ensure timely and safe delivery of food to customers, with tracking systems in place.</p>
-                    <a href="#" class="btn">Join Us Now</a>
-                </div>
-                <div class="card">
-                    <h3>Nationwide Reach</h3>
-                    <p>Our carrier network spans the entire nation, ensuring food deliveries are made anywhere, anytime.</p>
-                    <a href="#" class="btn">Become a Carrier</a>
-                </div>
-            </div>
-        </section>
+  <div class="container">
+    <h2 class="section-title">Why Join Our Career Network?</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>Reliable & Fast Delivery</h3>
+        <p>Get your meals to customers fast with GPS-tracked routes, 24/7 support, and optimized logistics tools.</p>
+        <button class="btn" onclick="openForm()">Join Now</button>
+      </div>
+      <div class="card">
+        <h3>Nationwide Coverage</h3>
+        <p>Expand your business potential with our wide delivery network that covers even the most remote areas.</p>
+        <button class="btn" onclick="openForm()">Become a Career</button>
+      </div>
     </div>
+  </div>
 
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2025 Food Delivery Service. All Rights Reserved.</p>
-    </footer>
+  <div id="popupForm" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closeForm()">&times;</span>
+      <h2>Become a Career Partner</h2>
+      <form name="carrier-partner" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="carrier-partner">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="number" name="number" placeholder="Your Number" required>
+        <input type="text" name="experience" placeholder="Your Delivery Experience" required>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
 
+  <footer>
+    <p>&copy; 2025 FoodOrder Network. Crafted with passion and purpose.</p>
+  </footer>
+
+  <script>
+    function openForm() {
+      document.getElementById("popupForm").style.display = "flex";
+    }
+
+    function closeForm() {
+      document.getElementById("popupForm").style.display = "none";
+    }
+
+    window.onclick = function(event) {
+      const popup = document.getElementById("popupForm");
+      if (event.target === popup) closeForm();
+    }
+  </script>
 </body>
 </html>

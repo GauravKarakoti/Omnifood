@@ -7,7 +7,7 @@ const rateLimit = require("express-rate-limit");
 const path = require("path");
 const cron = require("node-cron");
 const csurf = require("csurf");
-
+const hotelRoutes = require('./routes/hotel.js')
 const { errorMiddleware } = require("./middlewares/error.js");
 const authRouter = require("./routes/user.js");
 
@@ -17,11 +17,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Define allowed origins
-const allowedOrigins = ["http://localhost:3000", "https://omnifood-meal-available.netlify.app"];
+const allowedOrigins = ["http://localhost:3000", "https://omnifood-meal-available.netlify.app", 'http://127.0.0.1:5501'];
 
 // Connect to the database
 mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGOURT, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
@@ -52,15 +52,19 @@ app.use(cors({
   credentials: true,
 }));
 
-app.use(express.static(path.join(__dirname, "public"), {
-    setHeaders: (res, path) => {
-        if (path.endsWith('.html')) {
-            res.setHeader('Cache-Control', 'no-cache');
-        }   else {
-        res.setHeader('Cache-Control', 'public, max-age=31536000');
+app.use(express.static(path.join(__dirname.replace("server", ""), "public"), {
+  setHeaders: (res, path) => {
+    if (path.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'no-cache');
+    } else {
+      res.setHeader('Cache-Control', 'public, max-age=31536000');
     }
-    }
+  }
 }));
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname.replace("server", ""), "public", "index.html"));
+})
 
 // CSRF Protection
 const csrfProtection = csurf({
@@ -159,19 +163,19 @@ async function flushBeforeExit() {
     }
   }
 }
-process.on("SIGINT", async () => { 
-    console.log("\n🚨 SIGTERM received. Flushing remaining clicks...");
-    await flushBeforeExit(); 
-    process.exit(0); 
+process.on("SIGINT", async () => {
+  console.log("\n🚨 SIGTERM received. Flushing remaining clicks...");
+  await flushBeforeExit();
+  process.exit(0);
 });
-process.on("SIGTERM", async () => { 
-    console.log("\n🚨 SIGTERM received. Flushing remaining clicks...");
-    await flushBeforeExit();
-    process.exit(0); 
+process.on("SIGTERM", async () => {
+  console.log("\n🚨 SIGTERM received. Flushing remaining clicks...");
+  await flushBeforeExit();
+  process.exit(0);
 });
 process.on("exit", async () => {
-    console.log("\n🔄 Process exiting. Flushing remaining clicks...");
-    await flushBeforeExit(); 
+  console.log("\n🔄 Process exiting. Flushing remaining clicks...");
+  await flushBeforeExit();
 });
 
 // Error handling middleware
@@ -182,9 +186,9 @@ app.use((err, req, res, next) => {
 });
 
 app.get("/email-verification", (req, res) => {
-    const { status, message } = req.query;
+  const { status, message } = req.query;
 
-    res.send(`
+  res.send(`
       <!DOCTYPE html>
       <html lang="en">
       <head>
@@ -226,6 +230,6 @@ app.get("/email-verification", (req, res) => {
       </html>
     `);
 }); 
-
+app.use('/hotel',hotelRoutes)
 // Start server
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
