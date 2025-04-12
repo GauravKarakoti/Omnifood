@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.webp" />
+    <title>Omnifood - Search</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(to right bottom, #fdf2e9, #e67e22);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .search-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #e67e22;
+            border-radius: 5px;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        input:focus {
+            border-color: #cf711f;
+            box-shadow: 0 0 0 4px rgba(230, 126, 34, 0.1);
+        }
+
+        button {
+            padding: 1rem 2rem;
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background-color: #cf711f;
+            transform: translateY(-2px);
+        }
+
+        #results {
+            margin-top: 2rem;
+        }
+
+        .hotel-card {
+            background: #fdf2e9;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .hotel-name {
+            color: #e67e22;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <h1 style="text-align: center; color: #e67e22; margin-bottom: 2rem;">
+            Search Hotels & Food
+        </h1>
+        <div class="search-box">
+            <input 
+                type="text" 
+                id="searchInput" 
+                placeholder="Search for hotels, cities, or food items..."
+            >
+            <button onclick="searchHotels()">Search</button>
+        </div>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        async function searchHotels() {
+            const searchTerm = document.getElementById('searchInput').value;
+            const resultsDiv = document.getElementById('results');
+            
+            if (!searchTerm.trim()) {
+                resultsDiv.innerHTML = '<p style="color: #e67e22;">Please enter a search term</p>';
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:5000/hotel/food?request=${searchTerm}`);
+                const data = await response.json();
+                console.log(data)
+                if (response.ok) {
+                    resultsDiv.innerHTML = '';
+                    if (data.length === 0) {
+                        resultsDiv.innerHTML = '<p style="color: #e67e22;">No results found</p>';
+                        return;
+                    }
+
+                    // Inside the searchHotels function, replace the data.forEach block with:
+
+data.forEach(hotel => {
+    const hotelDiv = document.createElement('div');
+    hotelDiv.className = 'hotel-card';
+    hotelDiv.style.display = 'block';
+    
+    // Create menu items HTML
+    const menuItemsHtml = hotel.items.map(item => `
+        <div style="margin: 0.5rem 0; padding: 0.5rem; background: white; border-radius: 5px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="color: #333; font-weight: 500;">${item.foodName}</span>
+                <span style="color: #e67e22; font-weight: 600;">₹${item.price}</span>
+            </div>
+            <div style="color: #666; font-size: 0.9rem;">${item.description || ''}</div>
+            <div style="color: #888; font-size: 0.8rem; margin-top: 0.2rem;">
+                ${item.category} • ${item.isVegetarian ? '🌱 Veg' : '🍖 Non-veg'}
+            </div>
+        </div>
+    `).join('');
+
+    hotelDiv.innerHTML = `
+        <div class="hotel-name">${hotel.name}</div>
+        <div style="color: #666; margin-bottom: 1rem;">
+            ${hotel.city}, ${hotel.country}
+        </div>
+        <div style="margin-top: 0.5rem;">
+            <strong>Menu Items:</strong>
+        </div>
+        ${menuItemsHtml}
+    `;
+    resultsDiv.appendChild(hotelDiv);
+});
+                } else {
+                    throw new Error('Search failed');
+                }
+            } catch (error) {
+                console.log(error)
+                resultsDiv.innerHTML = `
+                    <p style="color: red;">
+                        Error: Not found. Please try again.
+                    </p>
+                `;
+            }
+        }
+
+        // Allow search on Enter key press
+        document.getElementById('searchInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchHotels();
+            }
+        });
+    </script>
+</body>
+</html>
