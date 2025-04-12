@@ -90,8 +90,8 @@
 
         /* Consolidated .header.nav-open .main-nav styles */
         .header.nav-open .main-nav {
-            display: block;
-            position: fixed;
+            /* display: flex; */
+            /* position: fixed; */
             top: 0;
             left: 0;
             width: 100%;
@@ -875,13 +875,16 @@
                     Stay updated with the latest recipes, tips, and exclusive offers. Sign up now!
                 </p>
                 <form class="newsletter-form">
-                    <div>
-                        <label for="newsletter-email" class="visually-hidden"></label>
-                        <input type="email" id="newsletter-email" name="newsletter-email"
-                            placeholder="Your email address" required aria-required="true" />
+                    <div class="newsletter-field">
+                      <label for="newsletter-email" class="visually-hidden">Email</label>
+                      <input type="email" id="newsletter-email" name="newsletter-email"
+                             placeholder="Your email address" required aria-required="true" />
                     </div>
-                    <button type="submit" class="btn btn--form">Subscribe</button>
-                </form>
+                    <div class="newsletter-field">
+                      <button type="submit" class="btn btn--form">Subscribe</button>
+                    </div>
+                  </form>
+                  
             </div>
         </section>
 
@@ -1003,10 +1006,18 @@
                 firstFocusableElement.focus();
 
                 mobileNav.addEventListener('keydown', trapFocus);
+                btnMobileNav.querySelector('.bi-list').style.display = 'none';
+                btnMobileNav.querySelector('.bi-x-lg').style.display = 'block';
             } else {
                 mobileNav.removeEventListener('keydown', trapFocus);
+                btnMobileNav.querySelector('.bi-list').style.display = 'block';
+                btnMobileNav.querySelector('.bi-x-lg').style.display = 'none';
             }
         });
+
+        btnMobileNav.style.position = 'fixed'; // Ensure the button is always visible
+        btnMobileNav.style.top = '1rem'; // Adjust position
+        btnMobileNav.style.right = '1rem'; // Adjust position
 
         function trapFocus(e) {
             if (e.key === 'Tab') {
@@ -1042,6 +1053,16 @@
             const ionIcon = document.querySelector("ion-icon[name='arrow-up-outline']");
             if (!ionIcon) {
                 console.error("Ionicons library failed to load or icon name is incorrect.");
+            }
+        });
+
+        // Add resize event listener to handle screen width changes
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 944) {
+                mobileNav.classList.remove('nav-open');
+                document.body.classList.remove('no-scroll');
+                btnMobileNav.querySelector('.bi-list').style.display = 'block';
+                btnMobileNav.querySelector('.bi-x-lg').style.display = 'none';
             }
         });
     </script>
