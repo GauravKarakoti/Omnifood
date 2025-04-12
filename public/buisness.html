@@ -11,23 +11,32 @@
       font-family: 'Montserrat', sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom right, #fff3e0, #ffe0b2);
+      background: linear-gradient(to bottom right, #fff3e0, #e9d4b4);
       color: #333;
     }
 
     .header {
-      background: linear-gradient(to right, #ff5722, #e64a19);
+      background: linear-gradient(to right, #e0a104,rgb(244, 121, 5), #c00909);
       color: white;
       text-align: center;
       padding: 60px 20px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       animation: fadeInDown 1s ease-out;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        position: relative;
     }
 
     .header h1 {
       font-size: 3rem;
       margin: 0;
       letter-spacing: 1px;
+      font-size: 4rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
 
     .container {
@@ -40,21 +49,25 @@
     }
 
     .card {
-      background-color: #fff;
+      background-color: #e3eff0;
       border-radius: 12px;
       padding: 20px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s, box-shadow 0.3s;
       animation: fadeInUp 0.8s ease;
+      transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+      color: #000;
     }
 
     .card:hover {
       transform: translateY(-10px);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      transform: scale(1.05);
+      background-color: #a5fefa; 
     }
 
     .card h2 {
-      color: #ff7043;
+      color: #d53f11;
       font-size: 1.8rem;
       margin-bottom: 10px;
       position: relative;
@@ -84,7 +97,21 @@
       font-size: 1rem;
       letter-spacing: 1px;
       animation: fadeInUp 1s ease-in;
+      background: linear-gradient(to right, #e7643d, #f26940);
+    color: rgb(77, 73, 73);
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    position: relative;
     }
+
+    @media (max-width: 768px) {
+      .header h1 {
+          font-size: 2.5rem;
+      }
+  }
 
     @keyframes fadeInDown {
       from { opacity: 0; transform: translateY(-20px); }
