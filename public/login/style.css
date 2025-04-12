@@ -511,6 +511,8 @@ form.sign-in-form {
 .input-field input:focus {
   border-color: #007bff;
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: 2px solid #007bff;
+  outline-offset: 4px;
 }
 
 #password-strength{
