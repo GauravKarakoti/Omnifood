@@ -22,7 +22,9 @@
 }
 
 .testimonial:hover {
-    transform: translateY(-5px);
+    box-shadow: 0 4px 8px #000;
+    background-color: #fff;
+    color: #b35900;
 }
 
 .testimonial-img {
@@ -35,6 +37,10 @@
     font-size: 1.8rem;
     line-height: 1.8;
     margin-bottom: 1.6rem;
+}
+
+.testimonial-text:hover{
+    color: #974f07;
 }
 
 .testimonial-name {
