@@ -153,7 +153,7 @@ body {
 }
 
 .header {
-    background-color: #2c3e50; /* Darker header color */
+    background-color: #233649; /* Darker header color */
     color: white; /* White text for contrast */
 }
 
@@ -304,6 +304,7 @@ body {
 
 .list-item:hover {
     box-shadow: inset 200px 0 0 0 var(--primary-color);
+    background: rgb(55, 55, 161);
 }
 .list-item span:hover {
     cursor: pointer;            
@@ -320,6 +321,41 @@ body {
     justify-content: center;
     align-items: flex-start;
 }
+
+.diet-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.diet-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.diet-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.diet-icon {
+    font-size: 2rem;
+    color: #4caf50; /* Change color as needed */
+}
+
+.diet-name {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.diet-description {
+    font-size: 1rem;
+    color: #666;
+}
+
 
 /* Newsletter signup component styles */
 .section-newsletter {
