@@ -206,7 +206,6 @@ body {
     color: #000;
     font-weight: bold;
     box-shadow: 2px 2px #4b4646;
-    width: 100%;
 }
 
 
@@ -326,6 +325,9 @@ body {
     padding: 4rem 2rem;
     background-color: #fdf2e9;
     text-align: center;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .section-newsletter .heading-secondary {
@@ -337,11 +339,111 @@ body {
     letter-spacing: 0.5px; /* Slightly spaced letters for readability */
 }
 
+.newsletter-title {
+    font-size: 2.4rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
 .newsletter-description {
     font-size: 1.6rem;
     margin-bottom: 2.4rem;
     color: #555;
+    margin-bottom: 20px;
 }
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+        align-items: center;
+            flex-wrap: nowrap;
+}
+          
+.newsletter-input {
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: 300px; /* Fixed width for input */
+    transition: border-color 0.3s ease;
+}
+
+.newsletter-input:focus {
+    border-color: #e77008; /* Change border color on focus */
+    outline: none; 
+}
+
+.newsletter-form input[type="email"] {
+        padding: 1rem;
+        font-size: 1.6rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        width: 100%;
+        max-width: 300px;
+        height: 50px; /* Same as button */
+        box-sizing: border-box;
+        padding: 1.4rem 2rem;
+  font-size: 1.6rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 300px;
+  height: 50px; /* Fixed height */
+  box-sizing: border-box;
+  flex-shrink: 0;
+    padding: 1.4rem;
+    font-size: 1.6rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 300px;
+    height: 50px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+
+.newsletter-form button {
+        font-weight: 550; /* Fixed weight */
+        height: 50px;
+        padding: 0 2rem;
+        font-size: 1.6rem;
+        background-color: #fc6d07;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-sizing: border-box;
+            height: 50px;
+            width: 150px;
+            padding: 0;
+            font-size: 1.6rem;
+            font-weight: 600;
+            background-color: #fc6d07;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+          
+    }
+
+.newsletter-form button:hover {
+    background-color: #ee1a07;
+    /*transform: none; 
+    font-weight: 550;*/
+}
+
 
 .newsletter-form {
     display: flex;
@@ -350,26 +452,17 @@ body {
     flex-wrap: wrap;
 }
 
-.newsletter-form input[type="email"] {
-    padding: 1rem;
-    font-size: 1.6rem;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 100%;
-    max-width: 300px;
+.newsletter-input {
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    width: 300px; /* Fixed width for input */
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; /* Include padding and border in width */
 }
 
-.newsletter-form button {
-    padding: 1rem 2rem;
-    font-size: 1.6rem;
-    background-color: #ff6f61;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.newsletter-form button:hover {
-    background-color: #e65c50;
+.newsletter-input:focus {
+    border-color: #e77008; /* Change border color on focus */
+    outline: none; 
 }
