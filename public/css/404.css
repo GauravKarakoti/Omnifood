@@ -5,7 +5,9 @@
     --flicker-duration: 4s;
     --hue-rotate-duration: 6s;
 }
-
+body {
+    cursor: url(/public/img/cursor.png), auto;
+}
 .main {
     position: absolute;
     top: 0%;
@@ -19,9 +21,9 @@
     overflow: hidden;
     animation: hueRotate var(--hue-rotate-duration) ease-in-out 3s infinite;
     will-change: transform, filter;
-  }
-  
-  .wrap {
+}
+
+.wrap {
     position: absolute;
     left: 50%;
     top: 50%;

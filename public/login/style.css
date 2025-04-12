@@ -9,6 +9,7 @@
 body,
 input {
   font-family: "Poppins", 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  cursor: url(/public/img/cursor.png), auto;
 }
 
 .container {
