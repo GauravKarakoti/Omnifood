@@ -43,6 +43,7 @@
     <meta property="og:image" content="https://omnifood-meal-available.netlify.app/omnifood-logo.avif" />
     <meta property="og:url" content="https://omnifood-meal-available.netlify.app/" />
     <meta property="og:site_name" content="Omnifood" />
+    <meta http-equiv="Content-Security-Policy" content="connect-src 'self' https://api.example.com https://omnifood-login.onrender.com;">
 
     <!-- Instagram Meta Tags (Optional) -->
     <meta property="ig:app_id" content="gaurav._.karakoti" />
@@ -89,8 +90,8 @@
 
         /* Consolidated .header.nav-open .main-nav styles */
         .header.nav-open .main-nav {
-            display: block;
-            position: fixed;
+            /* display: flex; */
+            /* position: fixed; */
             top: 0;
             left: 0;
             width: 100%;
@@ -193,6 +194,8 @@
             <ul class="main-nav-list">
                 <li><a href="#how" class="main-nav-link">How it works</a></li>
                 <li><a href="#meals" class="main-nav-link">Meals</a></li>
+                <li><a href="search.html" class="main-nav-link">Search-Food</a></li>
+
                 <li><a href="#testimonials" class="main-nav-link">Testimonials</a></li>
                 <li><a href="#pricing" class="main-nav-link">Pricing</a></li>
                 <li><a href="./login/login.html" class="main-nav-link auth">Login</a></li>
@@ -769,7 +772,7 @@
                     Both plans include the following:
                 </aside>
             </div>
-            <div class="container grid grid--4-cols">
+            <div class="container grid grid--4-cols features">
                 <div class="feature">
                     <i class="bi bi-infinity feature-icon" name="infinite-outline"></i>
                     <p class="feature-title">Never cook again!</p>
@@ -801,7 +804,7 @@
             </div>
         </section>
         <section class="section-cta" id="cta">
-            <div class="container">
+            <div class="container cta-container">
                 <div class="cta">
                     <div class="cta-text-box">
                         <h2 class="heading-secondary">
@@ -850,7 +853,13 @@
                                 </p>
                             </div>
 
+
                             <button type="submit" class="btn btn--form" id="button">Sign up now</button>
+
+                            <div class="sign-up-btn">
+                                <button type="submit" class="btn btn--form btn-sign-up" id="button">Sign up now</button>
+                            </div>
+
                         </form>
                     </div>
                     <div class="cta-img-box" role="img" aria-label="Woman enjoying food"></div>
@@ -873,13 +882,16 @@
                     Stay updated with the latest recipes, tips, and exclusive offers. Sign up now!
                 </p>
                 <form class="newsletter-form">
-                    <div>
-                        <label for="newsletter-email" class="visually-hidden"></label>
-                        <input type="email" id="newsletter-email" name="newsletter-email"
-                            placeholder="Your email address" required aria-required="true" />
+                    <div class="newsletter-field">
+                      <label for="newsletter-email" class="visually-hidden">Email</label>
+                      <input type="email" id="newsletter-email" name="newsletter-email"
+                             placeholder="Your email address" required aria-required="true" />
                     </div>
-                    <button type="submit" class="btn btn--form">Subscribe</button>
-                </form>
+                    <div class="newsletter-field">
+                      <button type="submit" class="btn btn--form">Subscribe</button>
+                    </div>
+                  </form>
+                  
             </div>
         </section>
 
@@ -889,7 +901,7 @@
     </main>
 
     <footer class="footer">
-        <div class="container grid grid--5-cols">
+        <div class="container grid grid--5-cols footer-container">
             <div class="logo-col">
                 <a href="#" class="footer-logo">
                     <picture>
@@ -956,7 +968,7 @@
                 <p class="footer-heading">Resources</p>
                 <ul class="footer-nav">
                     <li><a class="footer-link" href="reciepe.html">Recipe directory</a></li>
-                    <li><a class="footer-link" href="#">Help center</a></li>
+                    <li><a class="footer-link" href="helpcenter.html">Help center</a></li>
                     <li><a class="footer-link" href="#">Privacy & terms</a></li>
                 </ul>
             </nav>
@@ -1001,10 +1013,18 @@
                 firstFocusableElement.focus();
 
                 mobileNav.addEventListener('keydown', trapFocus);
+                btnMobileNav.querySelector('.bi-list').style.display = 'none';
+                btnMobileNav.querySelector('.bi-x-lg').style.display = 'block';
             } else {
                 mobileNav.removeEventListener('keydown', trapFocus);
+                btnMobileNav.querySelector('.bi-list').style.display = 'block';
+                btnMobileNav.querySelector('.bi-x-lg').style.display = 'none';
             }
         });
+
+        btnMobileNav.style.position = 'fixed'; // Ensure the button is always visible
+        btnMobileNav.style.top = '1rem'; // Adjust position
+        btnMobileNav.style.right = '1rem'; // Adjust position
 
         function trapFocus(e) {
             if (e.key === 'Tab') {
@@ -1040,6 +1060,16 @@
             const ionIcon = document.querySelector("ion-icon[name='arrow-up-outline']");
             if (!ionIcon) {
                 console.error("Ionicons library failed to load or icon name is incorrect.");
+            }
+        });
+
+        // Add resize event listener to handle screen width changes
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 944) {
+                mobileNav.classList.remove('nav-open');
+                document.body.classList.remove('no-scroll');
+                btnMobileNav.querySelector('.bi-list').style.display = 'block';
+                btnMobileNav.querySelector('.bi-x-lg').style.display = 'none';
             }
         });
     </script>

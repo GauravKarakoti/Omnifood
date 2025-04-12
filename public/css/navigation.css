@@ -93,7 +93,6 @@
     transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
     display: inline-block;
     position: relative;
-    padding-bottom: 0.5rem;
     border:none;
 }
 
@@ -117,10 +116,17 @@
 
 /* Scaling and color transition */
 .main-nav-link:hover, .main-nav-link:active {
+
    
     transform: scale(1.1);
     transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
     font-weight: 500;
+
+    color: #f75b13;
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
+    font-weight: 600;
+
 }
 
 
@@ -181,8 +187,11 @@ a:hover {
     background: none;
     cursor: pointer;
     display: none;
-    z-index: 999;
-    position: relative;
+    /* display: block; */
+    z-index: 1000; /* Ensure it stays above other elements */
+    position: fixed; /* Ensure the button is always visible */
+    top: 1rem; /* Adjust position */
+    right: 1rem; /* Adjust position */
 }
 
 .btn-mobile-nav:active {
@@ -225,36 +234,73 @@ a:hover {
 }
 
 /* Ensure mobile nav overlay covers full screen */
+.main-nav {
+    position: static; /* Reset position for desktop */
+    right: auto;
+    top: auto;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    backdrop-filter: none;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    box-shadow: none;
+    border-radius: 0;
+    z-index: 1;
+}
+
 .header.nav-open .main-nav {
+    right: 0; /* Slide into view from the right */
+    visibility: visible;
+    opacity: 1;
+}
+
+.btn-mobile-nav .bi-x-lg {
+    display: none;
+    z-index: 5000;
+}
+
+/* Consolidated .header.nav-open .main-nav styles */
+.header.nav-open .main-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: fixed;
-    top: 8rem; /* Height of header */
-    left: 20%; /* Leave space on left */
-    width: 80%; /* Take up 80% of screen width */
-    height: calc(100vh - 8rem); /* Full height minus header */
-    background-color: rgba(255, 255, 255, 0.97);
-    z-index: 998;
-    border-radius: 9px 0 0 9px; /* Rounded corners on left side */
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    transform: translateY(0); /* Slide into view */
-    -webkit-transform: translateY(0);
-    transition: transform var(--animation-duration-medium) ease-in-out;
-    -webkit-transition: -webkit-transform var(--animation-duration-medium) ease-in-out;
-    backdrop-filter: blur(10px); /* Add blur effect */
-    -webkit-backdrop-filter: blur(10px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    z-index: 1000;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Ensure mobile-specific styles are applied consistently */
+.header.nav-open .main-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* Optional: Add a semi-transparent background */
 .header.nav-open::before {
     content: '';
     position: fixed;
-    top: 0;
+    top: 10vh !important;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: 90vh !important;
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-    transition: opacity 0.3s ease-in-out; /* Replaced --animation-duration-short */
+    transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
+    padding-top: 2em;
 }
 
 /* Ensure responsive design for mobile navigation */
@@ -262,17 +308,33 @@ a:hover {
     .main-nav {
         position: fixed;
         top: 8rem;
-        transform: translateY(-100%); /* Slide from the top */
-        transition: transform 0.3s ease-in-out;
+        right: -80%;
         width: 80%;
         height: calc(100vh - 8rem);
-        background-color: var(--nav-bg-color);
-        box-shadow: var(--nav-shadow);
+        background-color: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(10px);
+        z-index: 998;
+        border-radius: 9px 0 0 9px;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+        transform: translateX(0);
+        transition: right 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        visibility: hidden;
+        opacity: 0;
     }
 
     .header.nav-open .main-nav {
-        transform: translateY(0); /* Slide into view */
-        -webkit-transform: translateY(0);
+        right: 0;
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .btn-mobile-nav {
+        display: block;
+    }
+
+    .main-nav-list {
+        flex-direction: column;
+        gap: 4.8rem;
     }
 }
 
