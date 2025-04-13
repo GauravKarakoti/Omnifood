@@ -93,14 +93,51 @@ const uppercaseReq = document.getElementById('uppercase');
 const numberReq = document.getElementById('number');
 const specialReq = document.getElementById('special');
 
-// Use zxcvbn for password strength validation
+// Ensure zxcvbn is loaded properly and validate password requirements
 signUpPassword.addEventListener('input', function () {
-  const zxcvbn = require('zxcvbn'); // Ensure zxcvbn is installed
-  const result = zxcvbn(signUpPassword.value);
-  passwordStrength.textContent = `Password Strength: ${result.score >= 3 ? 'Strong' : 'Weak'}`;
-  passwordStrength.style.color = result.score >= 3 ? 'green' : 'red';
-  validatePassword(signUpPassword.value); // Update visual indicators
+  const password = signUpPassword.value;
+
+  // Validate password requirements visually
+  validatePassword(password);
+
+  // Check password strength using zxcvbn and custom logic
+  let isCustomValid = 
+    password.length >= passwordConfig.minLength &&
+    /[A-Z]/.test(password) &&
+    /\d/.test(password) &&
+    /[@$!%*?&]/.test(password);
+
+  if (typeof zxcvbn !== 'undefined') {
+    const result = zxcvbn(password); // Use zxcvbn to evaluate password strength
+    const strengthLevel = getStrengthLevel(result.score, isCustomValid);
+    passwordStrength.textContent = `Password Strength: ${strengthLevel}`;
+    passwordStrength.style.color = getStrengthColor(strengthLevel);
+  } else {
+    console.error('zxcvbn is not loaded. Ensure the library is included in your HTML.');
+    const strengthLevel = isCustomValid ? 'Medium' : 'Weak';
+    passwordStrength.textContent = `Password Strength: ${strengthLevel}`;
+    passwordStrength.style.color = getStrengthColor(strengthLevel);
+  }
 });
+
+// Function to determine strength level
+function getStrengthLevel(score, isCustomValid) {
+  if (score >= 4 && isCustomValid) return 'Very Strong';
+  if (score === 3 && isCustomValid) return 'Strong';
+  if (score === 2) return 'Medium';
+  return 'Weak';
+}
+
+// Function to determine strength color
+function getStrengthColor(level) {
+  switch (level) {
+    case 'Very Strong': return 'darkgreen';
+    case 'Strong': return 'green';
+    case 'Medium': return 'orange';
+    case 'Weak': return 'red';
+    default: return 'black';
+  }
+}
 
 // Function to validate password requirements visually
 function validatePassword(password) {
