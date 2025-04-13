@@ -1,7 +1,17 @@
 /*******************************************/
 /* HEADER */
 /*******************************************/
-/* Removed :root block and replaced variables with hardcoded values */
+:root {
+    --animation-duration-short: 0.3s;
+    --animation-duration-medium: 0.4s;
+    --animation-duration-long: 1s;
+    --nav-bg-color: rgba(255, 255, 255, 0.97);
+    --nav-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.03);
+    --nav-link-color: #333; /* Ensure sufficient contrast */
+    --nav-link-hover-color: #cf711f;
+    --focus-outline: 2px solid #ff8000;
+    --focus-outline-offset: 4px;
+}
 
 .logo {
     height: 8rem; /* Reduced height */
@@ -26,6 +36,7 @@
     width: 100%;
     overflow: hidden;
 }
+
 
 .main-nav-list {
     list-style: none;
@@ -76,13 +87,13 @@
 /* Basic styles */
 .main-nav-link:link, .main-nav-link:visited {
     text-decoration: none;
-    color: #222; /* Darker color for better contrast */
+    color: var(--nav-link-color);
     font-weight: 500;
     font-size: 1.8rem;
     transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
     display: inline-block;
     position: relative;
-    padding-bottom: 0.5rem;
+    border:none;
 }
 
 /* Underline effect */
@@ -93,9 +104,10 @@
     bottom: 0;
     width: 0;
     height: 3px;
-    background-color: #b35900; /* Darker shade for better contrast */
+    background-color: #0b0702; /* Darker shade for better contrast */
     transition: all var(--animation-duration-short) ease-in-out;
     transform: translateX(-50%);
+    text-decoration: none;
 }
 
 .main-nav-link:hover::after {
@@ -104,35 +116,63 @@
 
 /* Scaling and color transition */
 .main-nav-link:hover, .main-nav-link:active {
-    color: #b35900; /* Darker hover color for better contrast */
+    color: #f75b13;
     transform: scale(1.1);
     transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
+    font-weight: 600;
+}
+
+
+.main-nav-link:focus {
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
+    box-shadow: none;
 }
 
 /* Call-to-action (CTA) button */
-.main-nav-link.nav-cta:link, .main-nav-link.nav-cta:visited {
+.nav-cta {
     padding: 1.2rem 2.4rem;
     border-radius: 9px;
     color: #fff;
-    background-color: #cc6b19; /* Slightly darker for better contrast */
+    background-color: #de7b2b; /* Slightly darker for better contrast */
     transition: all var(--animation-duration-short) ease-in-out;
+    -webkit-transition: all var(--animation-duration-short) ease-in-out;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
 }
+
 
 /* Hover effect for CTA */
-.main-nav-link.nav-cta:hover, .main-nav-link.nav-cta:active {
-    background-color: #b35900; /* Darker hover color for better contrast */
+.nav-cta:hover {
+
+    background-color: #5a300b;
     transform: translateY(-2px);
+    -webkit-transform: translateY(-2px);
+    transition: all var(--animation-duration-short) ease-in-out;
+    -webkit-transition: all var(--animation-duration-short) ease-in-out;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
 }
 
+
+
 /* Click effect */
-.main-nav-link.nav-cta:active {
+.nav-cta:active {
     transform: translateY(1px);
+    -webkit-transform: translateY(1px);
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease-in-out; /* Replaced --animation-duration-short */
+    transition: all var(--animation-duration-short) ease-in-out;
+    -webkit-transition: all var(--animation-duration-short) ease-in-out;
 }
+a {
+    color: #e74c3c; /* Vibrant link color */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    color: #c0392b; /* Darker shade on hover */
+    text-decoration: underline; /* Underline on hover */
+}
+
 
 /* MOBILE */
 .btn-mobile-nav {
@@ -160,16 +200,17 @@
 }
 
 .btn-mobile-nav:focus {
-    outline: 2px solid #ff8000;
-    outline-offset: 2px;
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
+    box-shadow: none;
     transition: outline 0.3s ease-in-out;
 }
 
 .btn:focus {
     transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    outline: 2px solid #ff8000;
-    outline-offset: 2px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, outline 0.3s ease-in-out;
 }
 
@@ -182,18 +223,31 @@
     display: none;
 }
 
-/* Ensure mobile nav overlay covers full screen */
+/* Consolidated .header.nav-open .main-nav styles */
 .header.nav-open .main-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: fixed;
-    top: 8rem; /* Height of header */
-    left: 20%; /* Leave space on left */
-    width: 80%; /* Take up 80% of screen width */
-    height: calc(100vh - 8rem); /* Full height minus header */
-    background-color: rgba(255, 255, 255, 0.97);
-    z-index: 998;
-    border-radius: 9px 0 0 9px; /* Rounded corners on left side */
-    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s ease-in-out; /* Replaced --animation-duration-medium */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    z-index: 1000;
+    transform: translateX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Ensure mobile-specific styles are applied consistently */
+.header.nav-open .main-nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 /* Optional: Add a semi-transparent background */
@@ -208,6 +262,25 @@
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     transition: opacity 0.3s ease-in-out; /* Replaced --animation-duration-short */
+}
+
+/* Ensure responsive design for mobile navigation */
+@media (max-width: 944px) {
+    .main-nav {
+        position: fixed;
+        top: 8rem;
+        transform: translateY(-100%); /* Slide from the top */
+        transition: transform 0.3s ease-in-out;
+        width: 80%;
+        height: calc(100vh - 8rem);
+        background-color: var(--nav-bg-color);
+        box-shadow: var(--nav-shadow);
+    }
+
+    .header.nav-open .main-nav {
+        transform: translateY(0); /* Slide into view */
+        -webkit-transform: translateY(0);
+    }
 }
 
 /* STICKY NAVIGATION */
@@ -227,3 +300,5 @@
 .sticky .section-hero {
     margin-top: 0;
 }
+
+

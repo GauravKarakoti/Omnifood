@@ -7,6 +7,8 @@
     display: grid;
     grid-template-columns: 55fr 45fr;
     align-items: center;
+    padding: 4rem 2rem; 
+    border-radius: 10px;
 }
 
 .testimonials {
@@ -16,9 +18,10 @@
     column-gap: 8rem;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    transition: transform 0.3s ease-in-out; /* Replaced --animation-duration-short */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out; 
+    border-radius: 10px; 
+    padding: 2rem; 
 }
 
 .testimonial:hover {
@@ -26,20 +29,39 @@
 }
 
 .testimonial-img {
-    width: 6.4rem;
     border-radius: 50%;
     margin-bottom: 1.2rem;
+    width: 80px; 
+    height: 80px; 
+    object-fit: cover; 
+    border: 3px solid #e67e22; 
 }
 
 .testimonial-text {
     font-size: 1.8rem;
-    line-height: 1.8;
     margin-bottom: 1.6rem;
+    line-height: 1.5; 
+    color: #333; 
 }
 
 .testimonial-name {
     font-size: 1.6rem;
-    color: #6f6f6f;
+    font-weight: bold; 
+    margin-top: 1rem; 
+    color: #e67e22; 
+}
+
+.testimonial {
+    position: relative; 
+}
+
+.testimonial::before {
+    content: "“"; 
+    font-size: 3rem; 
+    color: #e67e22; 
+    position: absolute; 
+    top: -20px; 
+    left: 20px; 
 }
 
 .gallery-item {
@@ -49,7 +71,10 @@
 .gallery-item img {
     display: block;
     width: 100%;
-    transition: all 0.4s ease-in-out; /* Replaced --animation-duration-medium */
+    height: auto;
+    aspect-ratio: 4 / 3; /* Maintain aspect ratio */
+    object-fit: cover;
+    transition: all 0.4s;
 }
 
 .gallery-item img:hover {
@@ -77,4 +102,31 @@
 
 .testimonials-container {
     padding: 9.6rem;
+}
+
+@media (max-width: 768px) {
+    .testimonials {
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .testimonial {
+        width: 90%; 
+        margin-bottom: 2rem; 
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.testimonial {
+    animation: fadeIn 0.5s ease forwards; /* Apply animation */
 }

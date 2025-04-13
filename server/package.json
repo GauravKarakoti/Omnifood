@@ -29,6 +29,8 @@
     "passport-oauth": "^1.0.0",
     "passport-oauth2": "^1.8.0",
     "passport-twitter": "^1.0.4",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+
+    "node-cron": "^3.0.3"
   }
 }

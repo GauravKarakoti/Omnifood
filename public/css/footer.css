@@ -5,12 +5,23 @@
 .footer {
     padding: 12.8rem 0;
     border-top: 1px solid #eee;
+    background: linear-gradient(135deg, #333, #444);
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.footer-link:hover, .footer-link:active {
+    color: #e4ac14;
+    background-color: rgba(255, 126, 95, 0.2); /* Light background on hover */
+    border-radius: 5px; 
 }
 
 .footer-heading {
     font-size: 1.8rem;
     font-weight: 500;
     margin-bottom: 4rem;
+    text-decoration: underline;
+    letter-spacing: 0.05em;
 }
 
 .footer {
@@ -28,7 +39,15 @@
     display: flex;
     flex-direction: column;
     gap: 2.4rem;
-}
+    }
+    
+    @media (max-width: 768px) {
+        .footer-nav {
+            flex-direction: row; /* Change to row on smaller screens */
+            justify-content: center; /* Center items */
+        }
+    }
+
 
 .no-flexbox-gap .footer-nav {
     margin-inline: 2.4rem;
@@ -42,11 +61,11 @@
 }
 
 .footer-link:hover, .footer-link:active {
-    color: #ff7e5f;
+    color: #f5c105;
 }
 
 .footer-link:focus {
-    outline: 2px solid #ff8000; /* Visible outline with sufficient contrast */
+    outline: 2px solid #ffaa00; /* Visible outline with sufficient contrast */
     outline-offset: 4px; /* Offset to ensure the outline is visible */
     box-shadow: none; /* Remove box-shadow */
     background-color: rgba(255, 126, 95, 0.1); 
@@ -56,6 +75,7 @@
 .social-links {
     list-style: none;
     display: flex;
+    justify-content: center;
     gap: 1.2rem;
 }
 
@@ -64,30 +84,37 @@
 }
 
 .footer-logo {
-    display: block;
+    display: flex;
+    justify-content: center;
     margin-bottom: 3.2rem;
 }
 
 .social-icon {
     height: 2.4rem;
     width: 2.4rem;
-    transition: transform 0.3s ease-in-out; /* Replaced --animation-duration-short */
+    transition: transform 0.3s ease-in-out; 
 }
 
 .social-icon:hover {
     transform: scale(1.1);
+    filter: brightness(1.2);
 }
 
 .copyright {
     font-size: 1.4rem;
-    color: #767676;
+    color: #ccc3c3;
     line-height: 1.6;
-    margin-top: auto;
+    margin-top: 2rem;
+    background-color: #121212; 
+    padding: 1rem; 
+    text-align: center; 
 }
 
 .logo-col {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    height: 100%;
 }
 
 .contacts {
