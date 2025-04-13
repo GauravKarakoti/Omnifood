@@ -10,7 +10,7 @@ const path = require('path');
 
 const cron = require("node-cron");
 const csurf = require("csurf");
-
+const hotelRoutes = require('./routes/hotel.js')
 const { errorMiddleware } = require("./middlewares/error.js");
 const authRouter = require("./routes/user.js");
 
@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, "../public/login/login.html")));
 
 // Connect to the database
 mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGOURT, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
@@ -301,7 +301,7 @@ app.get("/email-verification", (req, res) => {
       </body>
       </html>
     `);
-});
-
+}); 
+app.use('/hotel',hotelRoutes)
 // Start server
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
