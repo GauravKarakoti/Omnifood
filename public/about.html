@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 </head>
 <body>
-    <nav class="navbar">
+    <nav class="navbar" class="fixed-top small-navbar">
         <div class="navbar-container">
             About Us
             
@@ -129,32 +129,28 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    padding: 15px 0;
+    padding: 20px 0;
     font-size: 2vw;
-    color:#0044ff;
+    color:#efab25;
     z-index: 1000;
+    width:100%;
     background: rgba(255, 255, 255, 0.98);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     position: relative;
-    padding: 80px 20px;
     overflow: hidden;
     background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-weight: 700;
 }
 
 .navbar-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    max-width: 1200px;
     margin: auto;
-    padding: 40px;
-    width: 90%;
     text-align: left;
 }
 
