@@ -138,11 +138,11 @@ app.get('/facebook/callback',
 )
 
 app.get('/auth/failure', (req, res) => {
-    res.redirect('http://127.0.0.1:5500/public/login/login.html');
+    res.redirect('https://omnifood-meal-available.netlify.app/public/login/login.html');
 })
 
 app.get('/api/success' , (req,res) => {
-    res.redirect('http://127.0.0.1:5500/public/profile.html');
+    res.redirect('https://omnifood-meal-available.netlify.app/public/profile.html');
 })
 
 // CSRF Route 
