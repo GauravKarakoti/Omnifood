@@ -113,7 +113,7 @@ const obs = new IntersectionObserver(function (entries) {
 }, {
     root: null, // Observe relative to viewport
     threshold: 0,// Trigger as soon as it leaves
-    rootMargin: `-${headerEl.offsetHeight}px` // Adjust dynamically
+    rootMargin: `-${headerEl.getBoundingClientRect().height}px` // Adjust dynamically
 });
 obs.observe(sectionHeroEl); // Start observing the hero section
 
@@ -222,6 +222,21 @@ function initializeButtonClick() {
     trackButtonClick("start-eating-well", "Start eating well");
 };
 
+// Consolidated button click tracking logic
+function initializeButtonClickTracking() {
+    const buttons = [
+        { id: "try-for-free", action: "Try for free" },
+        { id: "start-eating-well", action: "Start eating well" }
+    ];
+
+    buttons.forEach(({ id, action }) => {
+        const button = document.getElementById(id);
+        if (button) {
+            button.addEventListener("click", () => trackClick(action));
+        }
+    });
+}
+
 // Track button clicks
 const trackClick = async (buttonName) => {
     try {
@@ -287,7 +302,8 @@ function initializeAria() {
         }
 
         // Email validation: Must be a valid email format
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(emailInput.value.trim())) {
             emailInput.classList.add("error");
             emailInput.setAttribute("aria-invalid", "true");
             errorEmail.style.display = "block";
@@ -351,7 +367,7 @@ function initializeAria() {
 
     // Validate email field on blur (when the user leaves the field)
     emailInput.addEventListener("blur", function () {
-        if (/^[^\s@]+\@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+        if (emailRegex.test(emailInput.value.trim())) {
             emailInput.classList.remove("error");
             emailInput.setAttribute("aria-invalid", "false");
             errorEmail.style.display = "none";
@@ -366,6 +382,14 @@ function initializeAria() {
             errorSelect.style.display = "none";
         }
     });
+
+    // Add ARIA attributes for error messages
+    errorName.setAttribute("aria-live", "assertive");
+    errorName.setAttribute("aria-atomic", "true");
+    errorEmail.setAttribute("aria-live", "assertive");
+    errorEmail.setAttribute("aria-atomic", "true");
+    errorSelect.setAttribute("aria-live", "assertive");
+    errorSelect.setAttribute("aria-atomic", "true");
 };
 
 function validateFormInputs() {
@@ -454,6 +478,25 @@ function initializeCTA() {
             isSubmitting = false; // Reset flag when modal is closed
         }
     });
+
+    // Add focus trap for modals
+    function trapFocus(modal) {
+        const focusableElements = modal.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
+        modal.addEventListener("keydown", function (e) {
+            if (e.key === "Tab") {
+                if (e.shiftKey && document.activeElement === firstElement) {
+                    e.preventDefault();
+                    lastElement.focus();
+                } else if (!e.shiftKey && document.activeElement === lastElement) {
+                    e.preventDefault();
+                    firstElement.focus();
+                }
+            }
+        });
+    }
 };
 
 function initializeAuth() {
@@ -479,10 +522,11 @@ function initializeScrollToTopButton() {
     }
 };
 
+// Improved CSP setup using meta tag for fallback
 function setCSPHeaders() {
     const meta = document.createElement('meta');
     meta.httpEquiv = "Content-Security-Policy";
-    meta.content = "default-src 'self'; script-src 'self' https://apis.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://api.example.com";
+    meta.content = "default-src 'self'; script-src 'self' https://apis.google.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://omnifood-clicks.onrender.com";
     document.head.appendChild(meta);
 }
 
@@ -519,6 +563,8 @@ function initializeCSPHeader() {
 function setViewportHeight() {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
+    const heroSection = document.querySelector(".section-hero");
+    heroSection.style.height = `calc(var(--vh, 1vh) * 100)`;
 }
 
 // Update viewport height on load and resize
@@ -529,7 +575,7 @@ function initializeHeroSection() {
     const heroSection = document.querySelector(".section-hero");
     function updateHeroHeight() {
         const vh = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--vh'));
-        heroSection.style.height = `${vh * 100}px`;
+        heroSection.style.height = `calc(var(--vh, 1vh) * 100)`;
     }
 
     setViewportHeight();
@@ -555,6 +601,15 @@ function initializeDynamicScriptLoading() {
             .catch((err) => console.error("Error loading contact.js:", err));
     }
 };
+
+// Cleanup event listeners to prevent memory leaks
+function cleanupEventListeners() {
+    btnNavEl.removeEventListener("click", toggleNav);
+    document.removeEventListener("click", closeNavOnClickOutside);
+    mainNav.removeEventListener("click", preventNavClose);
+    window.removeEventListener("resize", handleResize);
+    document.removeEventListener("keydown", closeNavbarOnEscape);
+}
 
 function setupServiceWorker() {
     window.addEventListener('load', () => {
@@ -588,6 +643,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initializeAria();
     initializeButtonClick();
     initializeSection();
+    initializeButtonClickTracking();
 });
 
 setupServiceWorker();

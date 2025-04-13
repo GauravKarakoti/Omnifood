@@ -27,6 +27,10 @@ const userSchema = new mongoose.Schema({
     verifyExpire: {
         type: Date
     },
+    // googleId:{
+    //     type: String,
+    //     allowNull: true,
+    // }
 }, {
     timestamps: true
 })

@@ -1,10 +1,13 @@
-const express = require("express");
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-const rateLimit = require("express-rate-limit");
-const path = require("path");
+const express = require('express');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose')
+const dotenv = require('dotenv');
+const rateLimit = require('express-rate-limit');
+const session = require('express-session');
+const passport = require('./middlewares/passport.js');
+const path = require('path');
+
 const cron = require("node-cron");
 const csurf = require("csurf");
 const hotelRoutes = require('./routes/hotel.js')
@@ -18,6 +21,8 @@ const PORT = process.env.PORT || 5000;
 
 // Define allowed origins
 const allowedOrigins = ["http://localhost:3000", "https://omnifood-meal-available.netlify.app", 'http://127.0.0.1:5501'];
+
+app.use(express.static(path.join(__dirname, "../public/login/login.html")));
 
 // Connect to the database
 mongoose
@@ -34,7 +39,22 @@ const limiter = rateLimit({
   legacyHeaders: false,
 });
 
+// handle cors policy
+app.use(cors({
+    origin: process.env.CLIENT_URL,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true
+}))
+
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+}));
+
 // Middlewares
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -75,6 +95,58 @@ const csrfProtection = csurf({
   },
 });
 app.use(csrfProtection);
+
+
+
+app.get('/auth/google',passport.authenticate('google', {
+    scope: ['profile', 'email']
+}))
+
+app.get('/google/callback',
+    passport.authenticate("google", { 
+        successRedirect:'/api/success',
+        failureRedirect: "/auth/failure" }),
+)
+
+app.get('/auth/linkedin', passport.authenticate('linkedin'),
+);
+
+app.get('/linkedin/callback', passport.authenticate('linkedin', {
+    successRedirect: '/api/success',
+    failureRedirect: '/auth/failure'
+}))
+
+
+app.get('/auth/twitter', passport.authenticate('twitter'));
+
+app.get('/twitter/callback',
+    passport.authenticate('twitter', {
+        successRedirect: '/api/success',
+        failureRedirect:'/auth/failure'
+    })
+)
+
+app.get('/auth/facebook',
+    passport.authenticate('facebook')
+);
+
+app.get('/facebook/callback',
+    passport.authenticate('facebook', {
+        successRedirect: '/api/success',
+        failureRedirect: '/auth/failure'
+    }),
+)
+
+app.get('/auth/failure', (req, res) => {
+    res.redirect('https://omnifood-meal-available.netlify.app/public/login/login.html');
+})
+
+app.get('/api/success' , (req,res) => {
+    res.redirect('https://omnifood-meal-available.netlify.app/public/profile.html');
+})
+
+// CSRF Route 
+
 app.get("/api/csrf-token", (req, res) => {
   res.status(200).json({ csrfToken: req.csrfToken() });
 });
