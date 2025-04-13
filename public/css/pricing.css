@@ -165,7 +165,7 @@
     transition: color var(--animation-duration-short) ease-in-out;
 }
 
-.list-item .span:hover{
+.list-item span:hover{
     color: #000;
 }
 

@@ -301,6 +301,25 @@ body {
     transition: box-shadow 0.3s ease-in-out;
 }
 
+
+.list-item:hover{
+    background-color: #cf711f;
+    color: white;
+    font-weight: 700;
+    box-shadow: 0 4px 8px black;
+}
+
+.list-item:hover i{
+    color: white;
+    font-weight: bold;
+}
+
+.list-item i:hover{
+    color: #1164b7;
+    font-weight: bold;
+}
+
+
 .list-item:hover {
     box-shadow: inset 200px 0 0 0 var(--primary-color);
     background: rgb(55, 55, 161);
@@ -309,6 +328,7 @@ body {
     cursor: pointer;            
     color: #fff;
 }
+
 .text-center {
     text-align: center;
 }
