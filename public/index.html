@@ -192,6 +192,12 @@
         </a>
         <nav class="main-nav">
             <ul class="main-nav-list">
+                <!-- Location Section -->
+                <div class="location-container">
+                    <img src="img/location-dot-solid.svg" alt="Location" class="location-icon">
+                    <span class="location-text">Delhi, India</span>
+                    <input type="text" class="location-input" placeholder=" Enter location...">
+                </div>
                 <li><a href="#how" class="main-nav-link">How it works</a></li>
                 <li><a href="#meals" class="main-nav-link">Meals</a></li>
                 <li><a href="search.html" class="main-nav-link">Search-Food</a></li>
@@ -1050,14 +1056,6 @@
 
         // Remove hover state on touch devices
         document.addEventListener('touchstart', function () { }, true);
-
-        // Ensure Ionicons library is loaded
-        document.addEventListener("DOMContentLoaded", () => {
-            const ionIcon = document.querySelector("ion-icon[name='arrow-up-outline']");
-            if (!ionIcon) {
-                console.error("Ionicons library failed to load or icon name is incorrect.");
-            }
-        });
 
         // Add resize event listener to handle screen width changes
         window.addEventListener('resize', () => {

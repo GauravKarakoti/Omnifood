@@ -10,6 +10,7 @@ const urlsToCache = [
   "/img/favicon-512.webp",
   '/img/omnifood-logo.avif',
   '/img/hero-min.webp',
+  '/img/cursor.png',
   '/img/customers/customer-1.avif',
   '/img/customers/customer-2.avif',
   '/img/customers/customer-3.avif',
