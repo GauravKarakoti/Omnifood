@@ -30,10 +30,6 @@ const urlsToCache = [
   '/img/gallery/gallery-10.avif',
   '/img/gallery/gallery-11.avif',
   '/img/gallery/gallery-12.avif',
-  '/img/meals/meal-3.avif',
-  '/img/meals/meal-4.avif',
-  '/img/meals/meal-5.avif',
-  '/img/meals/meal-6.avif'
 ];
 
 //Install Service Worker and Cache Static Files

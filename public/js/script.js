@@ -533,23 +533,45 @@ function setCSPHeaders() {
 function removeHoverOnTouch() {
     if ('ontouchstart' in document.documentElement) {
         try {
-            for (let si in document.styleSheets) {
-                let styleSheet = document.styleSheets[si];
-                if (!styleSheet.rules) continue;
-
-                for (let ri = styleSheet.rules.length - 1; ri >= 0; ri--) {
-                    if (!styleSheet.rules[ri].selectorText) continue;
-
-                    if (styleSheet.rules[ri].selectorText.match(':hover')) {
-                        styleSheet.deleteRule(ri);
+            // Convert to array for safer iteration
+            Array.from(document.styleSheets).forEach(styleSheet => {
+                try {
+                    // Skip cross-origin stylesheets
+                    if (styleSheet.href && !styleSheet.href.startsWith(window.location.origin)) {
+                        return;
                     }
+
+                    // Handle both rules and cssRules properties
+                    const rules = styleSheet.rules || styleSheet.cssRules;
+                    
+                    // Iterate backwards through rules
+                    Array.from(rules).reverse().forEach((rule, index) => {
+                        try {
+                            if (rule.selectorText && rule.selectorText.includes(':hover')) {
+                                styleSheet.deleteRule(index);
+                            }
+                            // Handle media queries
+                            if (rule.media) {
+                                Array.from(rule.cssRules).reverse().forEach((mediaRule, mediaIndex) => {
+                                    if (mediaRule.selectorText && mediaRule.selectorText.includes(':hover')) {
+                                        rule.deleteRule(mediaIndex);
+                                    }
+                                });
+                            }
+                        } catch (e) {
+                            console.warn('Error processing rule:', e);
+                        }
+                    });
+                } catch (e) {
+                    console.warn('Error accessing stylesheet:', e);
                 }
-            }
+            });
         } catch (ex) {
             console.error("Error removing hover states:", ex);
         }
     }
 }
+
 function initializeCSPHeader() {
     removeHoverOnTouch();
     const scrollToTopBtn = document.querySelector(".scroll-to-top-btn");
