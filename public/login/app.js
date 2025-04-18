@@ -41,8 +41,8 @@ const signUpPassword = document.getElementById('signUpPassword');
 
 // Replace localStorage with HttpOnly cookies for authentication
 function setAuthCookie(username, email) {
-  document.cookie = `omni_username=${username}; Secure; HttpOnly; SameSite=Strict`;
-  document.cookie = `omni_email=${email}; Secure; HttpOnly; SameSite=Strict`;
+  document.cookie = `omni_username=${username}; Secure; HttpOnly; SameSite=none`;
+  document.cookie = `omni_email=${email}; Secure; HttpOnly; SameSite=none`;
 }
 
 // Function to display error message and style invalid inputs
@@ -248,7 +248,7 @@ signUpForm.addEventListener('submit', async function (e) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-CSRF-TOKEN': csrfData.csrfToken,
+          'X-CSRF-TOKEN': csrfData,
         },
         credentials: 'include',
         body: JSON.stringify({
