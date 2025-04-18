@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const { asyncError } = require('./error.js');
 const ErrorHandler = require('../utils/error.js');
 const User = require('../models/user.js');
+require("dotenv").config
 
 const isAuthenticated = asyncError(async (req, res, next) => {
     const { token } = req.cookies;

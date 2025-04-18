@@ -3,7 +3,6 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 // const User = require("../models/user");
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 const TwitterStrategy = require('passport-twitter').Strategy;
-const FacebookStrategy = require('passport-facebook').Strategy;
 require('dotenv').config();
 
 
@@ -56,20 +55,6 @@ function(token, tokenSecret, profile, done){
   });
 }
 ));
-
-passport.use(new FacebookStrategy({
-  clientID: process.env.FACEBOOK_APP_ID,
-  clientSecret: process.env.FACEBOOK_APP_SECRET,
-  callbackURL: "/facebook/callback",
-},
-function(accessToken, refreshToken, profile, done){
-  User.findOrCreate({facebookId: profile.id } , function(err, user){
-    return done(err, user);
-  })
-}
-))
-
-
 
 passport.serializeUser(function(user, done) {
     return done(null, user);

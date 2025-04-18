@@ -114,7 +114,7 @@
             }
 
             try {
-                const response = await fetch(`http://localhost:5000/hotel/food?request=${searchTerm}`);
+                const response = await fetch(`https://omnifood-login.onrender.com/hotel/food?request=${searchTerm}`);
                 const data = await response.json();
                 console.log(data)
                 if (response.ok) {
@@ -124,39 +124,37 @@
                         return;
                     }
 
-                    // Inside the searchHotels function, replace the data.forEach block with:
+                    data.forEach(hotel => {
+                        const hotelDiv = document.createElement('div');
+                        hotelDiv.className = 'hotel-card';
+                        hotelDiv.style.display = 'block';
+                        
+                        // Create menu items HTML
+                        const menuItemsHtml = hotel.items.map(item => `
+                            <div style="margin: 0.5rem 0; padding: 0.5rem; background: white; border-radius: 5px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <span style="color: #333; font-weight: 500;">${item.foodName}</span>
+                                    <span style="color: #e67e22; font-weight: 600;">₹${item.price}</span>
+                                </div>
+                                <div style="color: #666; font-size: 0.9rem;">${item.description || ''}</div>
+                                <div style="color: #888; font-size: 0.8rem; margin-top: 0.2rem;">
+                                    ${item.category} • ${item.isVegetarian ? '🌱 Veg' : '🍖 Non-veg'}
+                                </div>
+                            </div>
+                        `).join('');
 
-data.forEach(hotel => {
-    const hotelDiv = document.createElement('div');
-    hotelDiv.className = 'hotel-card';
-    hotelDiv.style.display = 'block';
-    
-    // Create menu items HTML
-    const menuItemsHtml = hotel.items.map(item => `
-        <div style="margin: 0.5rem 0; padding: 0.5rem; background: white; border-radius: 5px;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span style="color: #333; font-weight: 500;">${item.foodName}</span>
-                <span style="color: #e67e22; font-weight: 600;">₹${item.price}</span>
-            </div>
-            <div style="color: #666; font-size: 0.9rem;">${item.description || ''}</div>
-            <div style="color: #888; font-size: 0.8rem; margin-top: 0.2rem;">
-                ${item.category} • ${item.isVegetarian ? '🌱 Veg' : '🍖 Non-veg'}
-            </div>
-        </div>
-    `).join('');
-
-    hotelDiv.innerHTML = `
-        <div class="hotel-name">${hotel.name}</div>
-        <div style="color: #666; margin-bottom: 1rem;">
-            ${hotel.city}, ${hotel.country}
-        </div>
-        <div style="margin-top: 0.5rem;">
-            <strong>Menu Items:</strong>
-        </div>
-        ${menuItemsHtml}
-    `;
-    resultsDiv.appendChild(hotelDiv);
-});
+                        hotelDiv.innerHTML = `
+                            <div class="hotel-name">${hotel.name}</div>
+                            <div style="color: #666; margin-bottom: 1rem;">
+                                ${hotel.city}, ${hotel.country}
+                            </div>
+                            <div style="margin-top: 0.5rem;">
+                                <strong>Menu Items:</strong>
+                            </div>
+                            ${menuItemsHtml}
+                        `;
+                        resultsDiv.appendChild(hotelDiv);
+                    });
                 } else {
                     throw new Error('Search failed');
                 }

@@ -1,3 +1,5 @@
+require("dotenv").config;
+
 const cookieOptions = {
     secure: process.env.NODE_ENV === "Development" ? false : true,
     httpOnly: process.env.NODE_ENV === "Development" ? false : true,

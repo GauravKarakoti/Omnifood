@@ -5,6 +5,7 @@ const { asyncError } = require("../middlewares/error.js");
 const ErrorHandler = require("../utils/error.js");
 const { sendVerificationEmail } = require("../utils/sendMail.js");
 const crypto = require("crypto")
+require("dotenv").config;
 
 const signup = asyncError(async (req, res, next) => {
     const { username, email, password } = req.body;

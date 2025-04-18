@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+require("dotenv").config;
 
 const sendVerificationEmail = async (user, verificationLink) => {
     const transporter = nodemailer.createTransport({
@@ -10,7 +11,7 @@ const sendVerificationEmail = async (user, verificationLink) => {
     });
 
     const mailOptions = {
-        from: process.env.EMAIL_USER,
+        from: process.env.EMAIL,
         to: user.email,
         subject: "Verify Your Email - Omnifood",
         html: `

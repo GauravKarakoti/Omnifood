@@ -26,7 +26,7 @@ app.use(express.static(path.join(__dirname, "../public/login/login.html")));
 
 // Connect to the database
 mongoose
-  .connect(process.env.MONGOURT, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
@@ -124,17 +124,6 @@ app.get('/twitter/callback',
         successRedirect: '/api/success',
         failureRedirect:'/auth/failure'
     })
-)
-
-app.get('/auth/facebook',
-    passport.authenticate('facebook')
-);
-
-app.get('/facebook/callback',
-    passport.authenticate('facebook', {
-        successRedirect: '/api/success',
-        failureRedirect: '/auth/failure'
-    }),
 )
 
 app.get('/auth/failure', (req, res) => {
