@@ -11,7 +11,8 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: '/google/callback',
+      callbackURL: `${process.env.SERVER_URL}/google/callback`,
+      proxy: true
 
     },
     async function (accessToken,refreshToken, profile, done) {
@@ -33,9 +34,10 @@ passport.use(
 passport.use(new LinkedInStrategy({
   clientID: process.env.LINKEDIN_KEY,
   clientSecret:  process.env.LINKEDIN_SECRET,
-  callbackURL: "/linkedin/callback",
+  callbackURL: `${process.env.SERVER_URL}/linkedin/callback`,
   scope: ['r_emailaddress', 'r_liteprofile'],
-  state: true
+  state: true,
+  proxy: true
 },
 function(accessToken, refreshToken, profile, done) {
   process.nextTick(function(){
@@ -47,7 +49,9 @@ function(accessToken, refreshToken, profile, done) {
 passport.use(new TwitterStrategy({
   consumerKey: process.env.TWITTER_CONSUMER_KEY,
   consumerSecret: process.env.TWITTER_CONSUMER_SECRET,
-  callbackURL:"/twitter/callback",
+  callbackURL:`${process.env.SERVER_URL}/twitter/callback`,
+  includeEmail: true,
+  proxy: true
 },
 function(token, tokenSecret, profile, done){
   User.findOrCreate({ twitterId: profile.id }, function(err, user){

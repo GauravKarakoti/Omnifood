@@ -50,6 +50,11 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
+    cookie: {
+      secure: true, // Requires HTTPS
+      sameSite: 'none',
+      maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    }
 }));
 
 // Middlewares
@@ -70,6 +75,7 @@ app.use(cors({
   },
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true,
+  exposedHeaders: ['set-cookie']
 }));
 
 app.use(express.static(path.join(__dirname.replace("server", ""), "public"), {
@@ -292,5 +298,12 @@ app.get("/email-verification", (req, res) => {
     `);
 }); 
 app.use('/hotel',hotelRoutes)
+passport.serializeUser((user, done) => {
+  done(null, {
+    id: user.id,
+    provider: user.provider,
+    email: user.emails?.[0]?.value
+  });
+});
 // Start server
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
