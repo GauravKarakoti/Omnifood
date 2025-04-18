@@ -37,9 +37,7 @@ function removeEventListeners() {
 function toggleNav(e) {
     e.stopPropagation(); // Prevent click from bubbling to document
     headerEl.classList.toggle("nav-open");
-    if (headerEl.classList.contains("nav-open")) {
-        openNavbar();
-    } else {
+    if (!headerEl.classList.contains("nav-open")) {
         closeNavbar();
     }
 }
