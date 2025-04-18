@@ -47,6 +47,10 @@ self.addEventListener("fetch", (event) => {
   event.respondWith(
     fetch(event.request)
       .then((networkResponse) => {
+        const protocol = new URL(event.request.url).protocol;
+        if (!/^https?:$/.test(protocol)) {
+          return networkResponse;  // Skip unsupported schemes
+        }
         const cacheResponse = networkResponse.clone();
         if (networkResponse && networkResponse.status === 200) {
           caches.open(CACHE_NAME).then((cache) => {

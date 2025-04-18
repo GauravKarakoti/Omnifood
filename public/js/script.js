@@ -529,44 +529,65 @@ function setCSPHeaders() {
 }
 
 function removeHoverOnTouch() {
-    if ('ontouchstart' in document.documentElement) {
-        try {
-            // Convert to array for safer iteration
-            Array.from(document.styleSheets).forEach(styleSheet => {
-                try {
-                    // Skip cross-origin stylesheets
-                    if (styleSheet.href && !styleSheet.href.startsWith(window.location.origin)) {
-                        return;
+    if (!('ontouchstart' in document.documentElement)) return;
+
+    try {
+        Array.from(document.styleSheets).forEach(styleSheet => {
+            try {
+                // Skip cross-origin stylesheets
+                if (styleSheet.href && !styleSheet.href.startsWith(window.location.origin)) {
+                    return;
+                }
+
+                // Process regular rules
+                const rules = styleSheet.cssRules || styleSheet.rules;
+                if (!rules) return;
+
+                // Collect hover rule indices
+                const hoverIndices = [];
+                Array.from(rules).forEach((rule, index) => {
+                    if (rule.selectorText?.includes(':hover')) {
+                        hoverIndices.push(index);
                     }
 
-                    // Handle both rules and cssRules properties
-                    const rules = styleSheet.rules || styleSheet.cssRules;
-                    
-                    // Iterate backwards through rules
-                    Array.from(rules).reverse().forEach((rule, index) => {
-                        try {
-                            if (rule.selectorText && rule.selectorText.includes(':hover')) {
-                                styleSheet.deleteRule(index);
+                    // Process media rules
+                    if (rule.media) {
+                        const mediaRules = rule.cssRules || rule.rules;
+                        if (!mediaRules) return;
+
+                        const mediaHoverIndices = [];
+                        Array.from(mediaRules).forEach((mediaRule, mediaIndex) => {
+                            if (mediaRule.selectorText?.includes(':hover')) {
+                                mediaHoverIndices.push(mediaIndex);
                             }
-                            // Handle media queries
-                            if (rule.media) {
-                                Array.from(rule.cssRules).reverse().forEach((mediaRule, mediaIndex) => {
-                                    if (mediaRule.selectorText && mediaRule.selectorText.includes(':hover')) {
-                                        rule.deleteRule(mediaIndex);
-                                    }
-                                });
+                        });
+
+                        // Delete media hover rules in reverse order
+                        mediaHoverIndices.reverse().forEach(mediaIndex => {
+                            try {
+                                rule.deleteRule(mediaIndex);
+                            } catch (e) {
+                                console.warn('Error deleting media rule:', e);
                             }
-                        } catch (e) {
-                            console.warn('Error processing rule:', e);
-                        }
-                    });
-                } catch (e) {
-                    console.warn('Error accessing stylesheet:', e);
-                }
-            });
-        } catch (ex) {
-            console.error("Error removing hover states:", ex);
-        }
+                        });
+                    }
+                });
+
+                // Delete main hover rules in reverse order
+                hoverIndices.reverse().forEach(index => {
+                    try {
+                        styleSheet.deleteRule(index);
+                    } catch (e) {
+                        console.warn('Error deleting main rule:', e);
+                    }
+                });
+
+            } catch (e) {
+                console.warn('Error processing stylesheet:', e);
+            }
+        });
+    } catch (ex) {
+        console.error("Error removing hover states:", ex);
     }
 }
 
