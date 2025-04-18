@@ -176,6 +176,7 @@ signInForm.addEventListener('submit', async function (e) {
     try {
       const csrfResponse = await fetch(`${server_url}/api/csrf-token`, {
         method: 'GET',
+        mode: 'cors',
         credentials: 'include',
       });
 
@@ -187,6 +188,7 @@ signInForm.addEventListener('submit', async function (e) {
           'Content-Type': 'application/json',
           'X-CSRF-TOKEN': csrfData.csrfToken,
         },
+        mode: 'cors',
         credentials: 'include',
         body: JSON.stringify({
           username: signInUsername.value,
@@ -239,6 +241,7 @@ signUpForm.addEventListener('submit', async function (e) {
     try {
       const csrfResponse = await fetch(`${server_url}/api/csrf-token`, {
         method: 'GET',
+        mode: 'cors',
         credentials: 'include',
       });
 
@@ -248,8 +251,9 @@ signUpForm.addEventListener('submit', async function (e) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-CSRF-TOKEN': csrfData,
+          'X-CSRF-TOKEN': csrfData.csrfToken,
         },
+        mode: 'cors',
         credentials: 'include',
         body: JSON.stringify({
           username: signUpUsername.value,
