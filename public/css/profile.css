@@ -1,3 +1,7 @@
+body {
+    cursor: url(../img/cursor.png?v=2) auto;
+}
+
 .profile-header {
     text-align: center;
     color: #ffffff; /* Ensure high contrast with background */

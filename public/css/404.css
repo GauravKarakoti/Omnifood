@@ -6,7 +6,7 @@
     --hue-rotate-duration: 6s;
 }
 body {
-    cursor: url(/public/img/cursor.png), auto;
+    cursor: url(../img/cursor.png?v=2), auto;
 }
 .main {
     position: absolute;

@@ -79,7 +79,7 @@ Medium: 11px
     box-sizing: border-box;
 }
 body {
-    cursor: url(/public/img/cursor.png), auto;
+    cursor: url(../img/cursor.png?v=2), auto;
 }
 *:focus {
     outline: var(--focus-outline);

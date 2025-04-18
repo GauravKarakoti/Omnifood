@@ -2,7 +2,6 @@ const CACHE_NAME = "app-cache-v2"; // Versioning to prevent stale cache
 const urlsToCache = [
   "/",
   "/index.html",
-  "/css/style.css",
   "/css/general.css",
   "/css/queries.css",
   "/js/script.js",
